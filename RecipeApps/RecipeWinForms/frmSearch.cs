@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace RecipeWinForms
 {
-    public partial class frmRecipe : Form
+    public partial class frmSearch : Form
     {
-        public frmRecipe()
+        public frmSearch()
         {
             InitializeComponent();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
