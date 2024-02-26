@@ -17,24 +17,27 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
+            FormatGrid();
         }
 
         private void SearchForRecipe(string recipename)
         {
-            string sql = "select * from Recipe r where r.recipename = '%" + recipename + "%'";
+            string sql = "select r.recipename from Recipe r where r.recipename like '%" + recipename + "%'";
             DataTable dt = SQLUtility.GetDataTable(sql);
             gRecipe.DataSource = dt; 
         }
 
-        //private void SearchForPresident(string lastname)
-        //{
-        //    string sql = "select PresidentId, Num, LastName, FirstName from president p where p.lastname like '%" + lastname + "%'";
+        private void FormatGrid()
+        {
+            gRecipe.AllowUserToAddRows = false;
+            gRecipe.ReadOnly = true;
+            gRecipe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gRecipe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
 
-        //    DataTable dt = SQLUtility.GetDataTable(sql);
-        //    gPresidents.DataSource = dt;
-        //    gPresidents.Columns["PresidentId"].Visible = false;
-
-        //}
+        
+        
+       
 
 
 
