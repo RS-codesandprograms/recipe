@@ -18,7 +18,10 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
             FormatGrid();
+            gRecipe.CellDoubleClick += GRecipe_CellDoubleClick;
         }
+
+       
 
         private void SearchForRecipe(string recipename)
         {
@@ -41,8 +44,12 @@ namespace RecipeWinForms
             frmRecipe frm = new frmRecipe();
             frm.ShowForm(id);
         }
-        
 
+        private void GRecipe_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            ShowRecipeForm(e.RowIndex);
+        }
+      
 
 
 
