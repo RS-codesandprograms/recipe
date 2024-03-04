@@ -22,7 +22,7 @@ namespace RecipeWinForms
 
         private void SearchForRecipe(string recipename)
         {
-            string sql = "select r.recipename from Recipe r where r.recipename like '%" + recipename + "%'";
+            string sql = "select r.RecipeId, r.RecipeName from Recipe r where r.recipename like '%" + recipename + "%'";
             DataTable dt = SQLUtility.GetDataTable(sql);
             gRecipe.DataSource = dt; 
         }
@@ -35,9 +35,15 @@ namespace RecipeWinForms
             gRecipe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        private void ShowRecipeForm(int rowindex)
+            {
+            int id = (int)gRecipe.Rows[rowindex].Cells["RecipeID"].Value;
+            frmRecipe frm = new frmRecipe();
+            frm.ShowForm(id);
+        }
         
-        
-       
+
+
 
 
 
