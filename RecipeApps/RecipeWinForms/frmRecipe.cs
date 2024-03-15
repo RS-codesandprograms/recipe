@@ -32,12 +32,12 @@ namespace RecipeWinForms
             txtRecipeName.DataBindings.Add("Text", dt, "RecipeName");
             txtFirstName.DataBindings.Add("Text", dt, "FirstName");
             txtLastName.DataBindings.Add("Text", dt, "LastName");
-            txtCuisineType.DataBindings.Add("Text", dt, "CuisineName");
+            lblCuisineType.DataBindings.Add("Text", dt, "CuisineName");
             txtCalories.DataBindings.Add("Text", dt, "Calories");
             txtDraftDate.DataBindings.Add("Text", dt, "DraftDate");
             txtPublishedDate.DataBindings.Add("Text", dt, "PublishedDate");
             txtArchivedDate.DataBindings.Add("Text", dt, "ArchivedDate");
-            txtCurrentStatus.DataBindings.Add("Text", dt, "CurrentStatus");
+            lblCurrentStatus.DataBindings.Add("Text", dt, "CurrentStatus");
             txtPicture.DataBindings.Add("Text", dt, "RecipePicture");
             this.Show();
 

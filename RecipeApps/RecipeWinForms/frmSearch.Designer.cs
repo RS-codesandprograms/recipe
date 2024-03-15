@@ -74,20 +74,20 @@
             // 
             this.lblRecipeName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblRecipeName.AutoSize = true;
-            this.lblRecipeName.Location = new System.Drawing.Point(3, 13);
+            this.lblRecipeName.Location = new System.Drawing.Point(3, 23);
             this.lblRecipeName.Name = "lblRecipeName";
-            this.lblRecipeName.Size = new System.Drawing.Size(211, 45);
+            this.lblRecipeName.Size = new System.Drawing.Size(122, 25);
             this.lblRecipeName.TabIndex = 0;
             this.lblRecipeName.Text = "Recipe Name";
             // 
             // txtRecipeName
             // 
             this.txtRecipeName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtRecipeName.BackColor = System.Drawing.Color.Linen;
-            this.txtRecipeName.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtRecipeName.Location = new System.Drawing.Point(220, 10);
+            this.txtRecipeName.BackColor = System.Drawing.Color.White;
+            this.txtRecipeName.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtRecipeName.Location = new System.Drawing.Point(131, 19);
             this.txtRecipeName.Name = "txtRecipeName";
-            this.txtRecipeName.Size = new System.Drawing.Size(270, 51);
+            this.txtRecipeName.Size = new System.Drawing.Size(270, 33);
             this.txtRecipeName.TabIndex = 1;
             // 
             // btnSearch
@@ -98,7 +98,7 @@
             this.btnSearch.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlText;
             this.btnSearch.FlatAppearance.BorderSize = 2;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Location = new System.Drawing.Point(496, 8);
+            this.btnSearch.Location = new System.Drawing.Point(407, 8);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(131, 55);
             this.btnSearch.TabIndex = 2;
@@ -118,7 +118,7 @@
             // 
             // frmSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 45F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 514);
             this.Controls.Add(this.tblMain);
