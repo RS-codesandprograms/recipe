@@ -22,7 +22,7 @@ namespace RecipeWinForms
         public void ShowForm(int RecipeID)
         {
             string sql =
-                "select r.RecipeName, s.FirstName, s.LastName,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
+                "select r.RecipeID, r.RecipeName, s.FirstName, s.LastName,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
                 " from Recipe r" +
                 " join Staff s" +
                 " on r.StaffID = s.StaffID" +
@@ -63,6 +63,8 @@ namespace RecipeWinForms
         {
             SQLUtility.DebugPrintDataTable(dtRecipe);
             DataRow r = dtRecipe.Rows[0];
+            //string sql = "update recipe set " +
+            //     "where RecipeId = r[RecipeID]";
             string sql = string.Join(Environment.NewLine, $"update recipe set",
                 $"RecipeName = '{r["RecipeName"]}',",
                 $"FirstName = '{r["Firstname"]}',",
@@ -72,11 +74,12 @@ namespace RecipeWinForms
                 $"DraftDate = '{r["Draftdate"]}',",
                 $"PublishedDate = '{r["PublishedDate"]}',",
                 $"ArchivedDate = '{r["ArchivedDate"]}',",
-                $"RecipePicture = '{r["RecipePicture"]}',",
-                $" where RecipeID = {r["RecipeID"]}");
+                $"RecipePicture = '{r["RecipePicture"]}'",
+                $"where RecipeId = r[RecipeID]");
 
             Debug.Print("---------------");
             Debug.Print(sql);
+            SQLUtility.DebugPrintDataTable(dtRecipe);
 
         }
 
