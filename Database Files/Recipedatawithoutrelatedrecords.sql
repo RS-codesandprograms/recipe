@@ -38,15 +38,22 @@ Create table dbo.CuisineType(
         constraint u_Cuisine_Type_cuisine_name unique
     )
 
+create table dbo.Staff(
+    StaffID int not null identity primary key,
+    FirstName varchar(50) not null constraint ck_Staff_first_name_cannot_be_blank check(FirstName <> ''),
+    LastName varchar(50) not null constraint ck_Staff_last_name_cannot_be_blank check(LastName <> ''),
+    UserName varchar(25) not null 
+        constraint ck_Staff_user_name_cannot_be_blank check(UserName <> '')
+        constraint u_Staff_user_name unique
+    )
+go
 
 
 
 Create table dbo.Recipe(
     RecipeID int not null identity primary key,
+    StaffID int not null constraint f_Staff_Recipe foreign key references Staff(StaffID),
     CuisineTypeID int not null constraint f_CuisineType_Recipe foreign key references CuisineType(CuisineTypeID),
-    UserName varchar(25) not null 
-        constraint ck_Staff_user_name_cannot_be_blank check(UserName <> '')
-        constraint u_Staff_user_name unique,
     RecipeName varchar(50) not null 
         constraint ck_Recipe_recipe_name_cannot_be_blank check(RecipeName <> '')
         constraint u_Recipe_recipe_name unique,
@@ -69,12 +76,19 @@ Create table dbo.Recipe(
 go       
 
 
-
 --CuisineType
 insert CuisineType(CuisineName)
 select 'American'
 union select 'French'
 union select 'English'
+
+--Staff
+insert Staff(FirstName, LastName, UserName)
+Select 'Robbin', 'Greenwich', 'RGreenwich'
+Union Select 'Rachel', 'Stevens', 'RStevens'
+Union Select 'Thomas', 'Kelly', 'TKelly'
+Union Select 'Anne', 'Chavitz', 'AChavitz'
+Union Select 'Lea', 'Green', 'LGreen'
 
 
 
@@ -93,10 +107,17 @@ with x as(
     Union select 'TKelly', 'French', 'Wine Roasted Chicken', 98, '11/12/2021 23:34:45', null, null
 
 )
-Insert Recipe (CuisineTypeID, RecipeName, Calories, DraftDate, PublishedDate, ArchivedDate)
-Select ct.CuisineTypeID, x.UserName, x.RecipeName, x.Calories, x.DraftDate, x.PublishedDate, x.ArchivedDate
+Insert Recipe (StaffID, CuisineTypeID, RecipeName, Calories, DraftDate, PublishedDate, ArchivedDate)
+Select s.StaffID, ct.CuisineTypeID, x.RecipeName, x.Calories, x.DraftDate, x.PublishedDate, x.ArchivedDate
 from x 
+join Staff s 
+on x.UserName = s.UserName
 join CuisineType ct 
 on x.CuisineName = ct.CuisineName
 
 
+
+
+select * 
+from recipe r 
+where r.RecipeID = 3
