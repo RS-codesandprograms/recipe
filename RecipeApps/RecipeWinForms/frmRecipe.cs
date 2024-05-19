@@ -1,22 +1,23 @@
 ﻿using CPUFramework;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace RecipeWinForms
 {
+
+
     public partial class frmRecipe : Form
     {
+        DataTable dtRecipe;
+
         public frmRecipe()
         {
             InitializeComponent();
+            btnSave.Click += BtnSave_Click;
+            btnDelete.Click += BtnDelete_Click;
         }
+
+
 
         public void ShowForm(int RecipeID)
         {
@@ -28,32 +29,81 @@ namespace RecipeWinForms
                 " join CuisineType c" +
                 " on r.CuisineTypeID = c.CuisineTypeID" +
                 " where r.RecipeID = " + RecipeID.ToString();
-            DataTable dt = SQLUtility.GetDataTable(sql);
-            txtRecipeName.DataBindings.Add("Text", dt, "RecipeName");
-            txtFirstName.DataBindings.Add("Text", dt, "FirstName");
-            txtLastName.DataBindings.Add("Text", dt, "LastName");
-            lblCuisineType.DataBindings.Add("Text", dt, "CuisineName");
-            txtCalories.DataBindings.Add("Text", dt, "Calories");
-            txtDraftDate.DataBindings.Add("Text", dt, "DraftDate");
-            txtPublishedDate.DataBindings.Add("Text", dt, "PublishedDate");
-            txtArchivedDate.DataBindings.Add("Text", dt, "ArchivedDate");
-            lblCurrentStatus.DataBindings.Add("Text", dt, "CurrentStatus");
-            txtPicture.DataBindings.Add("Text", dt, "RecipePicture");
+            dtRecipe = SQLUtility.GetDataTable(sql);
+            SetControlBinding(txtRecipeName, dtRecipe);
+            SetControlBinding(txtFirstName, dtRecipe);
+            SetControlBinding(txtLastName, dtRecipe);
+            SetControlBinding(lblCuisineName, dtRecipe);
+            SetControlBinding(txtCalories, dtRecipe);
+            SetControlBinding(txtDraftDate, dtRecipe);
+            SetControlBinding(txtPublishedDate, dtRecipe);
+            SetControlBinding(txtArchivedDate, dtRecipe);
+            SetControlBinding(lblCurrentStatus, dtRecipe);
+            SetControlBinding(txtRecipePicture, dtRecipe);
             this.Show();
 
         }
 
-        private void lblCaptionStaff_Click(object sender, EventArgs e)
+        public void SetControlBinding(Control ctrl, DataTable dt)
+        {
+            string propertyname = "";
+            string columnname = "";
+            string controlname = ctrl.Name.ToLower();
+            if (controlname.StartsWith("txt") || controlname.StartsWith("lbl"))
+            {
+                propertyname = "Text";
+                columnname = controlname.Substring(3);
+            }
+            if (propertyname != "" && columnname != "")
+            { ctrl.DataBindings.Add(propertyname, dt, columnname, true, DataSourceUpdateMode.OnPropertyChanged); }
+
+        }
+
+        private void Save()
+        {
+            SQLUtility.DebugPrintDataTable(dtRecipe);
+            DataRow r = dtRecipe.Rows[0];
+            string sql = string.Join(Environment.NewLine, $"update recipe set",
+                $"RecipeName = '{r["RecipeName"]}',",
+                $"FirstName = '{r["Firstname"]}',",
+                $"LastName = '{r["LastName"]}',",
+                $"CuisineName = '{r["CuisineName"]}',",
+                $"Calories = '{r["Calories"]}',",
+                $"DraftDate = '{r["Draftdate"]}',",
+                $"PublishedDate = '{r["PublishedDate"]}',",
+                $"ArchivedDate = '{r["ArchivedDate"]}',",
+                $"RecipePicture = '{r["RecipePicture"]}',",
+                $" where RecipeID = {r["RecipeID"]}");
+
+            Debug.Print("---------------");
+            Debug.Print(sql);
+
+        }
+
+
+
+
+        private void Delete()
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object? sender, EventArgs e)
         {
+            Delete();
 
         }
 
-        private void tblMain_Paint(object sender, PaintEventArgs e)
+        private void BtnSave_Click(object? sender, EventArgs e)
+        {
+
+            Save();
+
+
+
+        }
+
+        private void lblCaptionCuisineType_Click(object sender, EventArgs e)
         {
 
         }
