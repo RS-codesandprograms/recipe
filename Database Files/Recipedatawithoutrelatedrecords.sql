@@ -71,7 +71,7 @@ Create table dbo.Recipe(
             else 'Archived' 
         end,
         RecipePicture as concat('Recipe-', replace(RecipeName,' ', '-'), '.jpg'),
-    Constraint ck_Recipe_published_date_must_be_between_draft_date_and_archived_date check(DraftDate < PublishedDate and PublishedDate < ArchivedDate)
+    --Constraint ck_Recipe_published_date_must_be_between_draft_date_and_archived_date check(DraftDate < PublishedDate and PublishedDate < ArchivedDate)
     )
 go       
 
