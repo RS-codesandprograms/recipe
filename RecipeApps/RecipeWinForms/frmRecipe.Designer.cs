@@ -222,6 +222,7 @@
             this.txtRecipePicture.Location = new System.Drawing.Point(403, 516);
             this.txtRecipePicture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRecipePicture.Name = "txtRecipePicture";
+            this.txtRecipePicture.ReadOnly = true;
             this.txtRecipePicture.Size = new System.Drawing.Size(395, 45);
             this.txtRecipePicture.TabIndex = 13;
             // 

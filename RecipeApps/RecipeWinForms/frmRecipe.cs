@@ -15,12 +15,11 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
-            
+
         }
 
 
-
-        public  void ShowForm(int RecipeID)
+        public void ShowForm(int RecipeID)
         {
             string sql =
                 "select r.RecipeID, r.RecipeName, s.StaffID, s.FirstName, s.LastName, c.CuisineTypeId,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
@@ -35,20 +34,15 @@ namespace RecipeWinForms
             DataTable dtusernames = SQLUtility.GetDataTable("select StaffID, UserName from Staff");
             SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
             SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
-
-
             SetControlBinding(txtRecipeName, dtRecipe);
-            //SetControlBinding(txtFirstName, dtRecipe);
-            //SetControlBinding(txtLastName, dtRecipe);
-            //SetControlBinding(lblCuisineName, dtRecipe);
             SetControlBinding(txtCalories, dtRecipe);
             SetControlBinding(txtDraftDate, dtRecipe);
             SetControlBinding(txtPublishedDate, dtRecipe);
             SetControlBinding(txtArchivedDate, dtRecipe);
             SetControlBinding(lblCurrentStatus, dtRecipe);
             SetControlBinding(txtRecipePicture, dtRecipe);
-            this.Show();
 
+            this.Show();
         }
 
         public static void SetListBinding(ComboBox lst, DataTable sourcedt, DataTable targetdt, string tablename)
@@ -56,25 +50,9 @@ namespace RecipeWinForms
             lst.DataSource = sourcedt;
             lst.ValueMember = tablename + "ID";
             lst.DisplayMember = lst.Name.Substring(3);
-            
             lst.DataBindings.Add("SelectedValue", targetdt, lst.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
-            
         }
 
-     
-
-        /*
-         
-         * lst.ValueMember = tablename + "Id";
-        public static void SetListBinding(ComboBox lst, DataTable sourcedt, DataTable targetdt, string tablename)
-        {
-            lst.DataSource = sourcedt;
-            lst.ValueMember = tablename + "Id";
-            lst.DisplayMember = lst.Name.Substring(3);
-            lst.DataBindings.Add("SelectedValue", targetdt, lst.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
-
-        }
-        */
 
         public void SetControlBinding(Control ctrl, DataTable dt)
         {
@@ -97,32 +75,15 @@ namespace RecipeWinForms
             DataRow r = dtRecipe.Rows[0];
             string sql = string.Join(Environment.NewLine, $"update recipe set",
                 $"RecipeName = '{r["RecipeName"]}',",
-                //$"FirstName = '{r["Firstname"]}',",
-                //$"LastName = '{r["LastName"]}',",
                 $"CuisineTypeID = '{r["CuisineTypeID"]}',",
                 $"Calories = '{r["Calories"]}',",
                 $"DraftDate = '{r["Draftdate"]}',",
                 $"PublishedDate = '{r["PublishedDate"]}',",
-                $"ArchivedDate = '{r["ArchivedDate"]}',",
-                $"RecipePicture = '{r["RecipePicture"]}'",
+                $"ArchivedDate = '{r["ArchivedDate"]}'",
                 $"where RecipeId = {r["RecipeId"]}");
 
-            /*
-             * 
-             * $"update president set",
-                   $"PartyId = '{r["PartyId"]}',",
-                   $"Num = '{r["Num"]}',",
-                   $"LastName = '{r["LastName"]}',",
-                   $"FirstName = '{r["FirstName"]}',",
-                   $"DateBorn = '{r["DateBorn"]}',",
-                  $"TermStart = '{r["TermStart"]}'",
-                    $" where PresidentId = {r["PresidentId"]}");
-             * */
-
-
-
-            Debug.Print("---------------");
             Debug.Print(sql);
+            Debug.Print("---------------");
             SQLUtility.DebugPrintDataTable(dtRecipe);
 
         }
@@ -143,11 +104,7 @@ namespace RecipeWinForms
 
         private void BtnSave_Click(object? sender, EventArgs e)
         {
-
             Save();
-
-
-
         }
 
 
