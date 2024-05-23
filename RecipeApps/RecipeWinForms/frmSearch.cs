@@ -51,10 +51,6 @@ namespace RecipeWinForms
         }
       
 
-
-
-
-
         private void BtnSearch_Click(object? sender, EventArgs e)
         {
             SearchForRecipe(txtRecipeName.Text);

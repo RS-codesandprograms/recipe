@@ -8,21 +8,22 @@ namespace RecipeWinForms
 
     public partial class frmRecipe : Form
     {
-        DataTable dtRecipe;
+        public DataTable dtRecipe;
 
         public frmRecipe()
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
+            
         }
 
 
 
-        public void ShowForm(int RecipeID)
+        public  void ShowForm(int RecipeID)
         {
             string sql =
-                "select r.RecipeID, r.RecipeName, s.FirstName, s.LastName,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
+                "select r.RecipeID, r.RecipeName, s.StaffID, s.FirstName, s.LastName, c.CuisineTypeId,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
                 " from Recipe r" +
                 " join Staff s" +
                 " on r.StaffID = s.StaffID" +
@@ -30,10 +31,14 @@ namespace RecipeWinForms
                 " on r.CuisineTypeID = c.CuisineTypeID" +
                 " where r.RecipeID = " + RecipeID.ToString();
             dtRecipe = SQLUtility.GetDataTable(sql);
+            DataTable dtcuisines = SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
+            SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
+
+
             SetControlBinding(txtRecipeName, dtRecipe);
             SetControlBinding(txtFirstName, dtRecipe);
             SetControlBinding(txtLastName, dtRecipe);
-            SetControlBinding(lblCuisineName, dtRecipe);
+            //SetControlBinding(lblCuisineName, dtRecipe);
             SetControlBinding(txtCalories, dtRecipe);
             SetControlBinding(txtDraftDate, dtRecipe);
             SetControlBinding(txtPublishedDate, dtRecipe);
@@ -43,6 +48,31 @@ namespace RecipeWinForms
             this.Show();
 
         }
+
+        public static void SetListBinding(ComboBox lst, DataTable sourcedt, DataTable targetdt, string tablename)
+        {
+            lst.DataSource = sourcedt;
+            lst.ValueMember = tablename + "ID";
+            lst.DisplayMember = lst.Name.Substring(3);
+            
+            lst.DataBindings.Add("SelectedValue", targetdt, lst.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
+            
+        }
+
+     
+
+        /*
+         
+         * lst.ValueMember = tablename + "Id";
+        public static void SetListBinding(ComboBox lst, DataTable sourcedt, DataTable targetdt, string tablename)
+        {
+            lst.DataSource = sourcedt;
+            lst.ValueMember = tablename + "Id";
+            lst.DisplayMember = lst.Name.Substring(3);
+            lst.DataBindings.Add("SelectedValue", targetdt, lst.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
+
+        }
+        */
 
         public void SetControlBinding(Control ctrl, DataTable dt)
         {
@@ -63,19 +93,31 @@ namespace RecipeWinForms
         {
             SQLUtility.DebugPrintDataTable(dtRecipe);
             DataRow r = dtRecipe.Rows[0];
-            //string sql = "update recipe set " +
-            //     "where RecipeId = r[RecipeID]";
             string sql = string.Join(Environment.NewLine, $"update recipe set",
                 $"RecipeName = '{r["RecipeName"]}',",
-                $"FirstName = '{r["Firstname"]}',",
-                $"LastName = '{r["LastName"]}',",
-                $"CuisineName = '{r["CuisineName"]}',",
+                //$"FirstName = '{r["Firstname"]}',",
+                //$"LastName = '{r["LastName"]}',",
+                $"CuisineTypeID = '{r["CuisineTypeID"]}',",
                 $"Calories = '{r["Calories"]}',",
                 $"DraftDate = '{r["Draftdate"]}',",
                 $"PublishedDate = '{r["PublishedDate"]}',",
                 $"ArchivedDate = '{r["ArchivedDate"]}',",
                 $"RecipePicture = '{r["RecipePicture"]}'",
-                $"where RecipeId = r[RecipeID]");
+                $"where RecipeId = {r["RecipeId"]}");
+
+            /*
+             * 
+             * $"update president set",
+                   $"PartyId = '{r["PartyId"]}',",
+                   $"Num = '{r["Num"]}',",
+                   $"LastName = '{r["LastName"]}',",
+                   $"FirstName = '{r["FirstName"]}',",
+                   $"DateBorn = '{r["DateBorn"]}',",
+                  $"TermStart = '{r["TermStart"]}'",
+                    $" where PresidentId = {r["PresidentId"]}");
+             * */
+
+
 
             Debug.Print("---------------");
             Debug.Print(sql);
@@ -106,9 +148,6 @@ namespace RecipeWinForms
 
         }
 
-        private void lblCaptionCuisineType_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
