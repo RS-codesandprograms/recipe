@@ -32,12 +32,14 @@ namespace RecipeWinForms
                 " where r.RecipeID = " + RecipeID.ToString();
             dtRecipe = SQLUtility.GetDataTable(sql);
             DataTable dtcuisines = SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
+            DataTable dtusernames = SQLUtility.GetDataTable("select StaffID, UserName from Staff");
             SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
+            SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
 
 
             SetControlBinding(txtRecipeName, dtRecipe);
-            SetControlBinding(txtFirstName, dtRecipe);
-            SetControlBinding(txtLastName, dtRecipe);
+            //SetControlBinding(txtFirstName, dtRecipe);
+            //SetControlBinding(txtLastName, dtRecipe);
             //SetControlBinding(lblCuisineName, dtRecipe);
             SetControlBinding(txtCalories, dtRecipe);
             SetControlBinding(txtDraftDate, dtRecipe);
