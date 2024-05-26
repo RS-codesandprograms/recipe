@@ -22,7 +22,8 @@ namespace RecipeWinForms
         public void ShowForm(int RecipeID)
         {
             string sql =
-                "select r.RecipeID, r.RecipeName, s.StaffID, s.FirstName, s.LastName, c.CuisineTypeId,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
+                //"select r.RecipeID, r.RecipeName, s.StaffID, s.UserName, c.CuisineTypeID,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
+                "Select r.*, s.StaffID, c.CuisineTypeID" +
                 " from Recipe r" +
                 " join Staff s" +
                 " on r.StaffID = s.StaffID" +
@@ -40,7 +41,7 @@ namespace RecipeWinForms
             SetControlBinding(txtPublishedDate, dtRecipe);
             SetControlBinding(txtArchivedDate, dtRecipe);
             SetControlBinding(lblCurrentStatus, dtRecipe);
-            SetControlBinding(txtRecipePicture, dtRecipe);
+            //SetControlBinding(txtRecipePicture, dtRecipe);
 
             this.Show();
         }
@@ -74,8 +75,10 @@ namespace RecipeWinForms
             SQLUtility.DebugPrintDataTable(dtRecipe);
             DataRow r = dtRecipe.Rows[0];
             string sql = string.Join(Environment.NewLine, $"update recipe set",
-                $"RecipeName = '{r["RecipeName"]}',",
-                $"CuisineTypeID = '{r["CuisineTypeID"]}',",
+               $"RecipeName = '{r["RecipeName"]}',",
+               $"StaffID = '{r["StaffID"]}',",
+               $"CuisineTypeID = '{r["CuisineTypeID"]}',",
+
                 $"Calories = '{r["Calories"]}',",
                 $"DraftDate = '{r["Draftdate"]}',",
                 $"PublishedDate = '{r["PublishedDate"]}',",
