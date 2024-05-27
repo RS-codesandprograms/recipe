@@ -1,4 +1,5 @@
 ﻿using CPUFramework;
+using CPUWindowsFormsFramework;
 using System.Data;
 
 namespace RecipeWinForms
@@ -10,7 +11,7 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
             btnNew.Click += BtnNew_Click;
-            FormatGrid();
+            WindowsFormUtility.FormatGridForSearchResults(gRecipe);
             gRecipe.CellDoubleClick += GRecipe_CellDoubleClick;
         }
 
@@ -23,13 +24,7 @@ namespace RecipeWinForms
             gRecipe.DataSource = dt;
         }
 
-        private void FormatGrid()
-        {
-            gRecipe.AllowUserToAddRows = false;
-            gRecipe.ReadOnly = true;
-            gRecipe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            gRecipe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
+     
 
         private void ShowRecipeForm(int rowindex)
         {

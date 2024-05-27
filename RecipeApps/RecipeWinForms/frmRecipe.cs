@@ -1,4 +1,5 @@
 ﻿using CPUFramework;
+using CPUWindowsFormsFramework;
 using System.Data;
 using System.Diagnostics;
 
@@ -37,44 +38,15 @@ namespace RecipeWinForms
             }
             DataTable dtcuisines = SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
             DataTable dtusernames = SQLUtility.GetDataTable("select StaffID, UserName from Staff");
-            SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
-            SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
-            SetControlBinding(txtRecipeName, dtRecipe);
-            SetControlBinding(txtCalories, dtRecipe);
-            SetControlBinding(txtDraftDate, dtRecipe);
-            SetControlBinding(txtPublishedDate, dtRecipe);
-            SetControlBinding(txtArchivedDate, dtRecipe);
-            //SetControlBinding(lblCurrentStatus, dtRecipe);
-            //SetControlBinding(txtRecipePicture, dtRecipe);
 
+            WindowsFormUtility.SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
+            WindowsFormUtility.SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
+            WindowsFormUtility.SetControlBinding(txtRecipeName, dtRecipe);
+            WindowsFormUtility.SetControlBinding(txtCalories, dtRecipe);
+            WindowsFormUtility.SetControlBinding(txtDraftDate, dtRecipe);
+            WindowsFormUtility.SetControlBinding(txtPublishedDate, dtRecipe);
+            WindowsFormUtility.SetControlBinding(txtArchivedDate, dtRecipe);
             this.Show();
-        }
-
-        public static void SetListBinding(ComboBox lst, DataTable sourcedt, DataTable targetdt, string tablename)
-        {
-            lst.DataSource = sourcedt;
-            lst.ValueMember = tablename + "ID";
-            lst.DisplayMember = lst.Name.Substring(3);
-            lst.DataBindings.Add("SelectedValue", targetdt, lst.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
-        }
-
-
-        public void SetControlBinding(Control ctrl, DataTable dt)
-        {
-            string propertyname = "";
-             string controlname = ctrl.Name.ToLower();
-            string controltype = controlname.Substring(0, 3);
-            string columnname = controlname.Substring(3);
-            switch (controltype)
-            {
-                case "txt":
-                case "lbl":
-                    propertyname = "Text";
-                    break;
-            }
-            if (propertyname != "" && columnname != "")
-            { ctrl.DataBindings.Add(propertyname, dt, columnname, true, DataSourceUpdateMode.OnPropertyChanged); }
-
         }
 
         private void Save()
