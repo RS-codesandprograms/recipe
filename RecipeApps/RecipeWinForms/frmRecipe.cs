@@ -23,7 +23,7 @@ namespace RecipeWinForms
         {
             string sql =
                 //"select r.RecipeID, r.RecipeName, s.StaffID, s.UserName, c.CuisineTypeID,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
-                "Select r.*, s.StaffID, c.CuisineTypeID" +
+                "Select r.*, s.UserName, c.CuisineName" +
                 " from Recipe r" +
                 " join Staff s" +
                 " on r.StaffID = s.StaffID" +
@@ -31,6 +31,10 @@ namespace RecipeWinForms
                 " on r.CuisineTypeID = c.CuisineTypeID" +
                 " where r.RecipeID = " + RecipeID.ToString();
             dtRecipe = SQLUtility.GetDataTable(sql);
+            if (RecipeID == 0)
+            {
+                dtRecipe.Rows.Add();
+            }
             DataTable dtcuisines = SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
             DataTable dtusernames = SQLUtility.GetDataTable("select StaffID, UserName from Staff");
             SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
@@ -40,7 +44,7 @@ namespace RecipeWinForms
             SetControlBinding(txtDraftDate, dtRecipe);
             SetControlBinding(txtPublishedDate, dtRecipe);
             SetControlBinding(txtArchivedDate, dtRecipe);
-            SetControlBinding(lblCurrentStatus, dtRecipe);
+            //SetControlBinding(lblCurrentStatus, dtRecipe);
             //SetControlBinding(txtRecipePicture, dtRecipe);
 
             this.Show();
@@ -58,12 +62,15 @@ namespace RecipeWinForms
         public void SetControlBinding(Control ctrl, DataTable dt)
         {
             string propertyname = "";
-            string columnname = "";
-            string controlname = ctrl.Name.ToLower();
-            if (controlname.StartsWith("txt") || controlname.StartsWith("lbl"))
+             string controlname = ctrl.Name.ToLower();
+            string controltype = controlname.Substring(0, 3);
+            string columnname = controlname.Substring(3);
+            switch (controltype)
             {
-                propertyname = "Text";
-                columnname = controlname.Substring(3);
+                case "txt":
+                case "lbl":
+                    propertyname = "Text";
+                    break;
             }
             if (propertyname != "" && columnname != "")
             { ctrl.DataBindings.Add(propertyname, dt, columnname, true, DataSourceUpdateMode.OnPropertyChanged); }
@@ -74,22 +81,34 @@ namespace RecipeWinForms
         {
             SQLUtility.DebugPrintDataTable(dtRecipe);
             DataRow r = dtRecipe.Rows[0];
-            string sql = string.Join(Environment.NewLine, $"update recipe set",
+            int id = (int)r["RecipeID"];
+            string sql = "";
+            if (id > 0)
+            {
+                sql = string.Join(Environment.NewLine, $"update recipe set",
                $"RecipeName = '{r["RecipeName"]}',",
                $"StaffID = '{r["StaffID"]}',",
                $"CuisineTypeID = '{r["CuisineTypeID"]}',",
+               $"Calories = '{r["Calories"]}',",
+               $"DraftDate = '{r["Draftdate"]}',",
+               $"PublishedDate = '{r["PublishedDate"]}',",
+               $"ArchivedDate = '{r["ArchivedDate"]}'",
+               $"where RecipeId = {r["RecipeId"]}");
+            }
+            else
+            {
+                sql = "Insert Recipe(RecipeName, StaffID, CuisineTypeID, Calories, DraftDate, PublishedDate, ArchivedDate) ";
+                sql += $"select '{r["RecipeName"]}','{r["StaffID"]}', '{r["CuisineTypeID"]}', '{r["Calories"]}', '{r["Draftdate"]}','{r["PublishedDate"]}', '{r["ArchivedDate"]}'";
 
-                $"Calories = '{r["Calories"]}',",
-                $"DraftDate = '{r["Draftdate"]}',",
-                $"PublishedDate = '{r["PublishedDate"]}',",
-                $"ArchivedDate = '{r["ArchivedDate"]}'",
-                $"where RecipeId = {r["RecipeId"]}");
 
+
+            }
             Debug.Print(sql);
             Debug.Print("---------------");
             SQLUtility.DebugPrintDataTable(dtRecipe);
-
         }
+
+
 
 
 

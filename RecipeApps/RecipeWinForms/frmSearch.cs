@@ -1,13 +1,5 @@
 ﻿using CPUFramework;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace RecipeWinForms
 {
@@ -17,17 +9,18 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
+            btnNew.Click += BtnNew_Click;
             FormatGrid();
             gRecipe.CellDoubleClick += GRecipe_CellDoubleClick;
         }
 
-       
+
 
         private void SearchForRecipe(string recipename)
         {
             string sql = "select r.RecipeId, r.RecipeName from Recipe r where r.recipename like '%" + recipename + "%'";
             DataTable dt = SQLUtility.GetDataTable(sql);
-            gRecipe.DataSource = dt; 
+            gRecipe.DataSource = dt;
         }
 
         private void FormatGrid()
@@ -39,8 +32,12 @@ namespace RecipeWinForms
         }
 
         private void ShowRecipeForm(int rowindex)
+        {
+            int id = 0;
+            if (rowindex > -1)
             {
-            int id = (int)gRecipe.Rows[rowindex].Cells["RecipeID"].Value;
+                id = (int)gRecipe.Rows[rowindex].Cells["RecipeID"].Value;
+            }
             frmRecipe frm = new frmRecipe();
             frm.ShowForm(id);
         }
@@ -49,14 +46,18 @@ namespace RecipeWinForms
         {
             ShowRecipeForm(e.RowIndex);
         }
-      
+
 
         private void BtnSearch_Click(object? sender, EventArgs e)
         {
             SearchForRecipe(txtRecipeName.Text);
         }
-        
 
+        private void BtnNew_Click(object? sender, EventArgs e)
+        {
+            ShowRecipeForm(-1);
+
+        }
 
     }
 }

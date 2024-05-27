@@ -33,8 +33,8 @@
             this.lblRecipeName = new System.Windows.Forms.Label();
             this.txtRecipeName = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.gRecipe = new System.Windows.Forms.DataGridView();
             this.btnNew = new System.Windows.Forms.Button();
+            this.gRecipe = new System.Windows.Forms.DataGridView();
             this.tblMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gRecipe)).BeginInit();
@@ -77,9 +77,9 @@
             // 
             this.lblRecipeName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblRecipeName.AutoSize = true;
-            this.lblRecipeName.Location = new System.Drawing.Point(3, 13);
+            this.lblRecipeName.Location = new System.Drawing.Point(3, 23);
             this.lblRecipeName.Name = "lblRecipeName";
-            this.lblRecipeName.Size = new System.Drawing.Size(217, 46);
+            this.lblRecipeName.Size = new System.Drawing.Size(122, 25);
             this.lblRecipeName.TabIndex = 0;
             this.lblRecipeName.Text = "Recipe Name";
             // 
@@ -88,9 +88,9 @@
             this.txtRecipeName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtRecipeName.BackColor = System.Drawing.Color.White;
             this.txtRecipeName.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtRecipeName.Location = new System.Drawing.Point(226, 10);
+            this.txtRecipeName.Location = new System.Drawing.Point(131, 19);
             this.txtRecipeName.Name = "txtRecipeName";
-            this.txtRecipeName.Size = new System.Drawing.Size(228, 51);
+            this.txtRecipeName.Size = new System.Drawing.Size(228, 33);
             this.txtRecipeName.TabIndex = 1;
             // 
             // btnSearch
@@ -101,12 +101,27 @@
             this.btnSearch.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlText;
             this.btnSearch.FlatAppearance.BorderSize = 2;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Location = new System.Drawing.Point(460, 8);
+            this.btnSearch.Location = new System.Drawing.Point(365, 8);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(131, 56);
             this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnNew.AutoSize = true;
+            this.btnNew.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnNew.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlText;
+            this.btnNew.FlatAppearance.BorderSize = 2;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNew.Location = new System.Drawing.Point(502, 8);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(115, 56);
+            this.btnNew.TabIndex = 3;
+            this.btnNew.Text = "&New";
+            this.btnNew.UseVisualStyleBackColor = false;
             // 
             // gRecipe
             // 
@@ -119,24 +134,9 @@
             this.gRecipe.Size = new System.Drawing.Size(721, 430);
             this.gRecipe.TabIndex = 1;
             // 
-            // btnNew
-            // 
-            this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNew.AutoSize = true;
-            this.btnNew.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnNew.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlText;
-            this.btnNew.FlatAppearance.BorderSize = 2;
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNew.Location = new System.Drawing.Point(597, 8);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(115, 56);
-            this.btnNew.TabIndex = 3;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = false;
-            // 
             // frmSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 45F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 514);
             this.Controls.Add(this.tblMain);
