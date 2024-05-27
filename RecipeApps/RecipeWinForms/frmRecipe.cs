@@ -105,7 +105,7 @@ namespace RecipeWinForms
             }
             Debug.Print(sql);
             Debug.Print("---------------");
-            SQLUtility.DebugPrintDataTable(dtRecipe);
+            SQLUtility.ExecuteSQL(sql);
         }
 
 
@@ -115,7 +115,10 @@ namespace RecipeWinForms
 
         private void Delete()
         {
-
+            int id = (int)dtRecipe.Rows[0]["RecipeID"];
+            string sql = "delete Recipe where RecipeID = " + id;
+            SQLUtility.ExecuteSQL(sql);
+            this.Close();
         }
 
         private void BtnDelete_Click(object? sender, EventArgs e)
