@@ -91,7 +91,7 @@
             this.txtRecipeName.Location = new System.Drawing.Point(131, 19);
             this.txtRecipeName.Name = "txtRecipeName";
             this.txtRecipeName.Size = new System.Drawing.Size(228, 33);
-            this.txtRecipeName.TabIndex = 1;
+            this.txtRecipeName.TabIndex = 0;
             // 
             // btnSearch
             // 
@@ -104,7 +104,7 @@
             this.btnSearch.Location = new System.Drawing.Point(365, 8);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(131, 56);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
@@ -119,7 +119,7 @@
             this.btnNew.Location = new System.Drawing.Point(502, 8);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(115, 56);
-            this.btnNew.TabIndex = 3;
+            this.btnNew.TabIndex = 2;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = false;
             // 
