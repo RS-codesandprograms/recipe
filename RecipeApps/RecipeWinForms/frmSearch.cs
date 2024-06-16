@@ -24,7 +24,6 @@ namespace RecipeWinForms
             gRecipe.DataSource = dt;
         }
 
-     
 
         private void ShowRecipeForm(int rowindex)
         {
