@@ -118,6 +118,3 @@ on x.CuisineName = ct.CuisineName
 
 
 
-select * 
-from recipe r 
-where r.RecipeID = 3
