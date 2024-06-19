@@ -46,6 +46,8 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtDraftDate, dtRecipe);
             WindowsFormUtility.SetControlBinding(txtPublishedDate, dtRecipe);
             WindowsFormUtility.SetControlBinding(txtArchivedDate, dtRecipe);
+            WindowsFormUtility.SetControlBinding(lblCurrentStatus, dtRecipe);
+            WindowsFormUtility.SetControlBinding(lblRecipePicture, dtRecipe);
             this.Show();
         }
 
