@@ -1,5 +1,6 @@
 ﻿using CPUFramework;
 using CPUWindowsFormsFramework;
+using RecipeSystem;
 using System.Data;
 using System.Diagnostics;
 
@@ -22,16 +23,8 @@ namespace RecipeWinForms
 
         public void ShowForm(int RecipeID)
         {
-            string sql =
-                //"select r.RecipeID, r.RecipeName, s.StaffID, s.UserName, c.CuisineTypeID,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
-                "Select r.*, s.UserName, c.CuisineName" +
-                " from Recipe r" +
-                " join Staff s" +
-                " on r.StaffID = s.StaffID" +
-                " join CuisineType c" +
-                " on r.CuisineTypeID = c.CuisineTypeID" +
-                " where r.RecipeID = " + RecipeID.ToString();
-            dtRecipe = SQLUtility.GetDataTable(sql);
+            Recipe.Load(RecipeID);
+
             if (RecipeID == 0)
             {
                 dtRecipe.Rows.Add();
