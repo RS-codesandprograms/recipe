@@ -20,6 +20,7 @@ namespace RecipeWinForms
         }
 
 
+
         public void ShowForm(int RecipeID)
         {
             string sql =
@@ -38,6 +39,8 @@ namespace RecipeWinForms
             }
             DataTable dtcuisines = SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
             DataTable dtusernames = SQLUtility.GetDataTable("select StaffID, UserName from Staff");
+            
+          
 
             WindowsFormUtility.SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
             WindowsFormUtility.SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
@@ -64,15 +67,14 @@ namespace RecipeWinForms
                $"StaffID = '{r["StaffID"]}',",
                $"CuisineTypeID = '{r["CuisineTypeID"]}',",
                $"Calories = '{r["Calories"]}',",
-               $"DraftDate = '{r["Draftdate"]}',",
-               $"PublishedDate = '{r["PublishedDate"]}',",
-               $"ArchivedDate = '{r["ArchivedDate"]}'",
+               $"DraftDate = '{r["Draftdate"]}'",
                $"where RecipeId = {r["RecipeId"]}");
             }
             else
             {
-                sql = "Insert Recipe(RecipeName, StaffID, CuisineTypeID, Calories, DraftDate, PublishedDate, ArchivedDate) ";
-                sql += $"select '{r["RecipeName"]}','{r["StaffID"]}', '{r["CuisineTypeID"]}', '{r["Calories"]}', '{r["Draftdate"]}','{r["PublishedDate"]}', '{r["ArchivedDate"]}'";
+                
+                sql = "Insert Recipe(RecipeName, StaffID, CuisineTypeID, Calories, DraftDate) ";
+                sql += $"select '{r["RecipeName"]}','{r["StaffID"]}', '{r["CuisineTypeID"]}', '{r["Calories"]}', '{r["Draftdate"]}'";
 
 
 
