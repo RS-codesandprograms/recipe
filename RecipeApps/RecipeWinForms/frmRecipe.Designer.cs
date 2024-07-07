@@ -352,7 +352,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(467, 494);
+            this.ClientSize = new System.Drawing.Size(467, 491);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.tblMain);
             this.Margin = new System.Windows.Forms.Padding(2);

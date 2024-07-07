@@ -52,7 +52,7 @@
             this.tblMain.RowCount = 2;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblMain.Size = new System.Drawing.Size(727, 514);
+            this.tblMain.Size = new System.Drawing.Size(727, 511);
             this.tblMain.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -131,14 +131,14 @@
             this.gRecipe.Name = "gRecipe";
             this.gRecipe.RowHeadersWidth = 72;
             this.gRecipe.RowTemplate.Height = 39;
-            this.gRecipe.Size = new System.Drawing.Size(721, 430);
+            this.gRecipe.Size = new System.Drawing.Size(721, 427);
             this.gRecipe.TabIndex = 1;
             // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 514);
+            this.ClientSize = new System.Drawing.Size(727, 511);
             this.Controls.Add(this.tblMain);
             this.Font = new System.Drawing.Font("Segoe UI", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
