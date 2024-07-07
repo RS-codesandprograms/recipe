@@ -51,6 +51,11 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, dtRecipe);
             WindowsFormUtility.SetControlBinding(lblRecipePicture, dtRecipe);
             this.Show();
+
+            if (txtDraftDate.Text == "")
+            {
+                txtDraftDate.Text = DateTime.Now.ToString();
+            }
         }
 
         private void Save()
