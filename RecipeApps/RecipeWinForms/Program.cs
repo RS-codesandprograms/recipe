@@ -18,8 +18,7 @@ namespace RecipeWinForms
 
 
             SQLUtility.ConnectionString =
-                "Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info = False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
+               
 
             Application.Run(new frmSearch());
         }
