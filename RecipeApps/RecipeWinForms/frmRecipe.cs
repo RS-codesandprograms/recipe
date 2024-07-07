@@ -20,16 +20,27 @@ namespace RecipeWinForms
         }
 
 
+
         public void ShowForm(int RecipeID)
         {
-            Recipe.Load(RecipeID);
-
+            string sql =
+                //"select r.RecipeID, r.RecipeName, s.StaffID, s.UserName, c.CuisineTypeID,  c.CuisineName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture" +
+                "Select r.*, s.UserName, c.CuisineName" +
+                " from Recipe r" +
+                " join Staff s" +
+                " on r.StaffID = s.StaffID" +
+                " join CuisineType c" +
+                " on r.CuisineTypeID = c.CuisineTypeID" +
+                " where r.RecipeID = " + RecipeID.ToString();
+            dtRecipe = SQLUtility.GetDataTable(sql);
             if (RecipeID == 0)
             {
                 dtRecipe.Rows.Add();
             }
             DataTable dtcuisines = SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
             DataTable dtusernames = SQLUtility.GetDataTable("select StaffID, UserName from Staff");
+            
+          
 
             WindowsFormUtility.SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
             WindowsFormUtility.SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
@@ -56,15 +67,14 @@ namespace RecipeWinForms
                $"StaffID = '{r["StaffID"]}',",
                $"CuisineTypeID = '{r["CuisineTypeID"]}',",
                $"Calories = '{r["Calories"]}',",
-               $"DraftDate = '{r["Draftdate"]}',",
-               $"PublishedDate = '{r["PublishedDate"]}',",
-               $"ArchivedDate = '{r["ArchivedDate"]}'",
+               $"DraftDate = '{r["Draftdate"]}'",
                $"where RecipeId = {r["RecipeId"]}");
             }
             else
             {
-                sql = "Insert Recipe(RecipeName, StaffID, CuisineTypeID, Calories, DraftDate, PublishedDate, ArchivedDate) ";
-                sql += $"select '{r["RecipeName"]}','{r["StaffID"]}', '{r["CuisineTypeID"]}', '{r["Calories"]}', '{r["Draftdate"]}','{r["PublishedDate"]}', '{r["ArchivedDate"]}'";
+                
+                sql = "Insert Recipe(RecipeName, StaffID, CuisineTypeID, Calories, DraftDate) ";
+                sql += $"select '{r["RecipeName"]}','{r["StaffID"]}', '{r["CuisineTypeID"]}', '{r["Calories"]}', '{r["Draftdate"]}'";
 
 
 
