@@ -33,9 +33,9 @@ namespace RecipeSystem
 
         public static DataTable GetList(string tablename, string columnname)
         {
-            //SQLUtility.GetDataTable("select CuisineTypeID, CuisineName from CuisineType");
-            return SQLUtility.GetDataTable("select StaffID, UserName from Staff");
-
+            string sql = "select " + tablename + "ID, " + columnname + " from " + tablename;
+             return SQLUtility.GetDataTable(sql);
+           
         }
 
     }
