@@ -9,7 +9,7 @@ namespace RecipeTest
         [SetUp]
         public void Setup()
         {
-            DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info = False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            DBManager.SetConnectionString("");
         }
 
         [Test]
@@ -39,8 +39,6 @@ namespace RecipeTest
             //int newid = SQLUtility.GetFirstColumnFirstRowValue("select * from recipe where recipeid = " + maxid);
             Assert.IsTrue(newid == maxid -1, "Recipe with id " + newid + " is not found in db");
             TestContext.WriteLine("Recipe with id " + newid + " is found in db with pk value = " + newid);
-
-
 
 
         }
