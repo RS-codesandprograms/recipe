@@ -9,7 +9,7 @@ namespace RecipeTest
         [SetUp]
         public void Setup()
         {
-            DBManager.SetConnectionString("");
+            DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         [Test]
@@ -27,6 +27,7 @@ namespace RecipeTest
             int maxid = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe");
             int newid = maxid++;
 
+// LB: The message below is incorrect. The current value of maxid is assigned to the variable newid. After that, the value of maxid is then incremented by 1. Please fix the message.
             TestContext.WriteLine("Insert recipe with id = " + newid);
 
             r["staffid"] = staffid;
@@ -37,6 +38,10 @@ namespace RecipeTest
             Recipe.Save(dt);
 
             //int newid = SQLUtility.GetFirstColumnFirstRowValue("select * from recipe where recipeid = " + maxid);
+
+ // LB: This test will always be true regardless of the new record that was just inserted. 
+ // Instead, base your test on checking that the ID that was just inserted equals newid. 
+ // (make sure to fix first the way you set newid.)
             Assert.IsTrue(newid == maxid -1, "Recipe with id " + newid + " is not found in db");
             TestContext.WriteLine("Recipe with id " + newid + " is found in db with pk value = " + newid);
 
