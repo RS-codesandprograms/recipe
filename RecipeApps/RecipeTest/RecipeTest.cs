@@ -24,11 +24,10 @@ namespace RecipeTest
             Assume.That(staffid > 0, "No staff records in DB, cannot run test");
             int cuisinetypeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 cuisinetypeid from cuisinetype");
             Assume.That(cuisinetypeid > 0, "No cuisinetype records in DB, cannot run test");
-            int maxid = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe");
-            int newid = maxid++;
+           int id = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe") +1;
 
 // LB: The message below is incorrect. The current value of maxid is assigned to the variable newid. After that, the value of maxid is then incremented by 1. Please fix the message.
-            TestContext.WriteLine("Insert recipe with id = " + newid);
+            TestContext.WriteLine("Insert recipe with id = " + id);
 
             r["staffid"] = staffid;
             r["cuisinetypeid"] = cuisinetypeid;
@@ -37,12 +36,13 @@ namespace RecipeTest
             r["DraftDate"] = DraftDate;
             Recipe.Save(dt);
 
-            //int newid = SQLUtility.GetFirstColumnFirstRowValue("select * from recipe where recipeid = " + maxid);
+            int newid = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe");
 
- // LB: This test will always be true regardless of the new record that was just inserted. 
- // Instead, base your test on checking that the ID that was just inserted equals newid. 
- // (make sure to fix first the way you set newid.)
-            Assert.IsTrue(newid == maxid -1, "Recipe with id " + newid + " is not found in db");
+            // LB: This test will always be true regardless of the new record that was just inserted. 
+            // Instead, base your test on checking that the ID that was just inserted equals newid. 
+            // (make sure to fix first the way you set newid.)
+            Assert.IsTrue(id == newid
+                , "Recipe with id " + newid + " is not found in db");
             TestContext.WriteLine("Recipe with id " + newid + " is found in db with pk value = " + newid);
 
 

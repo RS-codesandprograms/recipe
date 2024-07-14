@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace RecipeSystem
@@ -29,14 +24,14 @@ namespace RecipeSystem
                " join CuisineType c" +
                " on r.CuisineTypeID = c.CuisineTypeID" +
                " where r.RecipeID = " + RecipeID.ToString();
-           return SQLUtility.GetDataTable(sql);
+            return SQLUtility.GetDataTable(sql);
         }
 
         public static DataTable GetList(string tablename, string columnname)
         {
             string sql = "select " + tablename + "ID, " + columnname + " from " + tablename;
-             return SQLUtility.GetDataTable(sql);
-           
+            return SQLUtility.GetDataTable(sql);
+
         }
 
         public static void Save(DataTable dtRecipe)
