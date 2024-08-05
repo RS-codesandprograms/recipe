@@ -9,7 +9,9 @@ namespace RecipeTest
         [SetUp]
         public void Setup()
         {
-            DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            // DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+             DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
+
         }
 
         [Test]
@@ -124,7 +126,7 @@ namespace RecipeTest
             TestContext.WriteLine("Num of cuisinetypes in DB = " + cuisinetypecount);
             TestContext.WriteLine("Ensure that num of rows returned by app matches " + cuisinetypecount);
 
-            DataTable dt = Recipe.GetList("CuisineType", "CuisineName");
+            DataTable dt = Recipe.GetList("CuisineType");
 
             Assert.IsTrue(dt.Rows.Count == cuisinetypecount, "num rows returned by app (" + dt.Rows.Count + ") <> " + cuisinetypecount);
             TestContext.WriteLine("Num of rows in cuisinetype returned by app = " + dt.Rows.Count);
@@ -139,7 +141,7 @@ namespace RecipeTest
             TestContext.WriteLine("Num of staff in DB = " + staffcount);
             TestContext.WriteLine("Ensure that num of rows returned by app matches " + staffcount);
 
-            DataTable dt = Recipe.GetList("Staff", "UserName");
+            DataTable dt = Recipe.GetList("Staff");
 
             Assert.IsTrue(dt.Rows.Count == staffcount, "num rows returned by app (" + dt.Rows.Count + ") <> " + staffcount);
             TestContext.WriteLine("Num of rows in Staff returned by app = " + dt.Rows.Count);
