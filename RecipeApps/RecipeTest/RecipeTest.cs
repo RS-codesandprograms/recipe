@@ -26,10 +26,7 @@ namespace RecipeTest
             Assume.That(staffid > 0, "No staff records in DB, cannot run test");
             int cuisinetypeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 cuisinetypeid from cuisinetype");
             Assume.That(cuisinetypeid > 0, "No cuisinetype records in DB, cannot run test");
-           int id = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe") +1;
-
-// LB: The message below is incorrect. The current value of maxid is assigned to the variable newid. After that, the value of maxid is then incremented by 1. Please fix the message.
-  //RS: I refactored the code above. now there is no maxid and newid, so the code is less confusing.          
+            int id = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe") + 1;
             TestContext.WriteLine("Insert recipe with id = " + id);
 
             r["staffid"] = staffid;
@@ -40,10 +37,6 @@ namespace RecipeTest
             Recipe.Save(dt);
 
             int newid = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe");
-
-            // LB: This test will always be true regardless of the new record that was just inserted. 
-            // Instead, base your test on checking that the ID that was just inserted equals newid. 
-            // (make sure to fix first the way you set newid.)
             Assert.IsTrue(newid == id
                 , "Recipe with id " + newid + " is not found in db");
             TestContext.WriteLine("Recipe with id " + newid + " is found in db with pk value = " + newid);
@@ -77,7 +70,7 @@ namespace RecipeTest
             TestContext.WriteLine("Draftdate for recipe (" + recipeid + ") equals " + newdraftdate);
         }
 
-       
+
 
         [Test]
         public void DeleteRecipe()
