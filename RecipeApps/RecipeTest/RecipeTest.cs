@@ -9,8 +9,8 @@ namespace RecipeTest
         [SetUp]
         public void Setup()
         {
-             //DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-             DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
+            //DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
 
         }
 
@@ -46,8 +46,39 @@ namespace RecipeTest
 
 
 
+        [Test]
+        public void UpdateExistingRecipeDraftDateToInvalidDate()
+        {
+            int recipeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 r.recipeid from recipe r where r.publisheddate is null");
+            Assume.That(recipeid > 0, "No recipes in DB, cannot run tests.");
 
+            DateTime draftdate = GetFirstColumnFirstRowDateTimeValue(recipeid);
 
+            TestContext.WriteLine("Draftdate for recipeid " + recipeid + " is " + draftdate);
+            draftdate = DateTime.Now.AddDays(1);
+            TestContext.WriteLine("Update draftdate to " + draftdate);
+            DataTable dt = Recipe.Load(recipeid);
+
+            dt.Rows[0]["draftdate"] = draftdate;
+            Exception ex = Assert.Throws<Exception>(()=>Recipe.Save(dt));
+
+             TestContext.WriteLine(ex.Message);
+        }
+        [Test]
+        public void UpdateExistingRecipeToInvalidName()
+        {
+          
+           int recipeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 r.recipeid from recipe r where r.publisheddate is null");
+            Assume.That(recipeid > 0, "No recipes in DB, cannot run tests.");
+            string currentname = GetFirstColumnFirstRowValueAsString("select top 1 RecipeName from recipe where recipeid = " + recipeid);
+            string name = GetFirstColumnFirstRowValueAsString("select top 1 RecipeName from recipe where recipeid <> " + recipeid);
+            TestContext.WriteLine("Change recipeid " + recipeid + " name from " + currentname + " to " + name + " which belongs to a different recipe.");
+            DataTable dt = Recipe.Load(recipeid);
+            dt.Rows[0]["RecipeName"] = name;
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Save(dt));
+            TestContext.WriteLine(ex.Message);
+        
+        }
 
         [Test]
         public void UpdateExistingRecipeDraftDate()
@@ -70,7 +101,24 @@ namespace RecipeTest
             TestContext.WriteLine("Draftdate for recipe (" + recipeid + ") equals " + newdraftdate);
         }
 
-
+        [Test]
+        public void DeleteRecipeWithIngredient()
+        {
+            DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from recipe r" +
+                " left join RecipeIngredient i on r.recipeid = i.recipeid");
+            int recipeid = 0;
+            string recipename = "";
+            if (dt.Rows.Count > 0)
+            {
+                recipeid = (int)dt.Rows[0]["recipeid"];
+                recipename = dt.Rows[0]["recipename"].ToString();
+            }
+            Assume.That(recipeid > 0, "No recipes with ingredients in DB, cannot run tests.");
+            TestContext.WriteLine("Existing recipe with ingredients with id = " + recipeid + " " + recipename);
+            TestContext.WriteLine("Ensure that app cannot delete " + recipeid + " " + recipename);
+            Exception ex = Assert.Throws<Exception>(()=> Recipe.Delete(dt));
+              TestContext.WriteLine(ex.Message);
+        }
 
         [Test]
         public void DeleteRecipe()
@@ -154,5 +202,22 @@ namespace RecipeTest
         }
 
 
+
+        public static string GetFirstColumnFirstRowValueAsString(string sql)
+        {
+            string s = "";
+            DataTable dt = SQLUtility.GetDataTable(sql);
+            if (dt.Rows.Count > 0 && dt.Columns.Count > 0)
+            {
+                if (dt.Rows[0][0] != DBNull.Value)
+                {
+                    s = dt.Rows[0][0].ToString();
+                }
+            }
+            return s;
+        }
+
+       
     }
+
 }
