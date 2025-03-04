@@ -237,6 +237,9 @@ with x as (
         union select 'Betty Crocker Smores', 3, 'On top of the graham cracker half place one piece of chocolate, 1 marshmallow, 1 piece of chocolate and the other graham cracker half on top.'
         union select 'Betty Crocker Smores', 4, 'Wrap in parchment paper and place in Betty Crocker for about 5 minutes or until ready.'
 		union select 'Spiced Chicken', 1, 'Place chicken in 9x13 tin'
+		union select 'Spiced Chicken', 2, 'Drizzle olive oil over chicken.'
+		union select 'Spiced Chicken', 3, 'Mix Spices together to make a mix.'
+		union select 'Spiced Chicken', 4, 'Evenly pour spices over chicket.'
 		union select 'Tangy Chicken', 1, 'Place chicken in 9x13 tin'
 )
 Insert RecipeDirection (RecipeID, DirectionSequence, Instruction)

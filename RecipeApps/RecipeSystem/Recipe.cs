@@ -62,8 +62,9 @@
         public static void Delete(DataTable dtRecipe)
         {
             int id = (int)dtRecipe.Rows[0]["RecipeID"];
-            string sql = "delete Recipe where RecipeID = " + id;
-            SQLUtility.ExecuteSQL(sql);
+            SqlCommand cmd = SQLUtility.GetSQLCommand("RecipeDelete");
+            SQLUtility.SetParamValue(cmd, "@RecipeID", id);
+            SQLUtility.ExecuteSQL(cmd);
         }
 
     }
