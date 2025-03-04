@@ -112,7 +112,10 @@ with x as(
     Union select 'LGreen', 'American', 'Betty Crocker Smores', 71, '1/12/2023 10:34:45', null, null
     Union select 'AChavitz', 'American', 'Apple Pie', 212, '8/12/2021 10:37:45', null, null
     Union select 'TKelly', 'French', 'Wine Roasted Chicken', 98, '11/12/2021 23:34:45', null, null
-
+	Union Select 'LGreen', 'American', 'Spiced Chicken', 95, '04/17/2019 16:15', '05/22/2019 15:23', null 
+    Union Select 'AChavitz', 'American', 'Tangy Chicken', 45, '08/25/22 12:00', null, '11/22/22 11:00'
+    
+	
 )
 Insert Recipe (StaffID, CuisineTypeID, RecipeName, Calories, DraftDate, PublishedDate, ArchivedDate)
 Select s.StaffID, ct.CuisineTypeID, x.RecipeName, x.Calories, x.DraftDate, x.PublishedDate, x.ArchivedDate
@@ -177,6 +180,8 @@ with x as (
     Union Select 'Betty Crocker Smores', null, 'graham cracker(s)', 6, 1
     Union Select 'Betty Crocker Smores', null, 'super-sized marshmallow(s)', 6, 2
     Union Select 'Betty Crocker Smores', null, 'chocolate bar(s)', 1, 3
+	Union Select 'Spiced Chicken', null, 'chicken quarters', 4, 1
+	Union Select 'Tangy Chicken', null, 'chicken quarters', 4, 1
 )
 Insert RecipeIngredient (RecipeID, MeasurementTypeID, IngredientID, IngredientAmount, IngredientSequence)
 select r.RecipeID, m.MeasurementTypeID, i.IngredientID, x.IngredientAmount, x.IngredientSequence
@@ -231,6 +236,8 @@ with x as (
         union select 'Betty Crocker Smores', 2, 'Place each graham cracker half on a square of parchment paper.'
         union select 'Betty Crocker Smores', 3, 'On top of the graham cracker half place one piece of chocolate, 1 marshmallow, 1 piece of chocolate and the other graham cracker half on top.'
         union select 'Betty Crocker Smores', 4, 'Wrap in parchment paper and place in Betty Crocker for about 5 minutes or until ready.'
+		union select 'Spiced Chicken', 1, 'Place chicken in 9x13 tin'
+		union select 'Tangy Chicken', 1, 'Place chicken in 9x13 tin'
 )
 Insert RecipeDirection (RecipeID, DirectionSequence, Instruction)
 select r.RecipeID, x.DirectionSequence, x.Instruction
