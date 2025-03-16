@@ -16,3 +16,6 @@ exec RecipeDelete @RecipeID = @recipeID
 
 select count(*) from recipe r
 
+declare @recipeid int
+select @recipeid = recipeid from recipe where RecipeName = 'Cheese Bread'
+exec RecipeDelete @RecipeId = @recipeid
