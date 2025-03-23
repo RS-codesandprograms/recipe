@@ -6,7 +6,7 @@ as
 begin
 	declare @return int = 0
 
-	if exists(select * from recipe r  where r.CurrentStatus = 'Published' or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <= 30))
+	if exists(select * from recipe r  where r.RecipeID = @RecipeId and (r.CurrentStatus = 'Published' or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <= 30)))
 	begin
 		select @return = 1, @Message = 'Cannot delete recipe that is published or archived 30 or less days ago.'
 		goto finished

@@ -123,8 +123,13 @@ namespace RecipeTest
         [Test]
         public void DeleteRecipe()
         {
-            DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from recipe r" +
-                " left join RecipeIngredient i on r.recipeid = i.recipeid where i.recipeid is null");
+            string sql = @"
+select top 1 r.recipeid, r.recipename
+from recipe r
+ left join RecipeIngredient i on r.recipeid = i.recipeid
+where i.recipeid is null
+and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) > 30))";
+            DataTable dt = SQLUtility.GetDataTable(sql);
             int recipeid = 0;
             string recipename = "";
             if (dt.Rows.Count > 0)
