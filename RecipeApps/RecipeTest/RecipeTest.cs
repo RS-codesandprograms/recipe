@@ -100,6 +100,38 @@ namespace RecipeTest
             Assert.IsTrue(newdraftdate == draftdate, "draftdate for recipe (" + recipeid + ") equals " + newdraftdate);
             TestContext.WriteLine("Draftdate for recipe (" + recipeid + ") equals " + newdraftdate);
         }
+        [Test]
+        public void DeleteRecipewithStatusofPublishedorArchived30daysagoOrless()
+        {
+            string sql = @"
+select top 1 r.recipeid, r.recipename
+from recipe r
+join RecipeIngredient ri 
+on r.RecipeID = ri.RecipeID
+join RecipeDirection rd
+on r.RecipeID = rd.RecipeID
+left join MealCourseRecipe m 
+on r.RecipeID = m.RecipeID
+left join CookBookRecipe c
+on r.RecipeID = c.RecipeID
+where m.RecipeID is null and c.RecipeID is null
+and (
+r.CurrentStatus = 'Published' 
+or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <= 30))";
+            DataTable dt = SQLUtility.GetDataTable(sql);
+            int recipeid = 0;
+            string recipename = "";
+            if (dt.Rows.Count > 0)
+            {
+                recipeid = (int)dt.Rows[0]["recipeid"];
+                recipename = dt.Rows[0]["recipename"].ToString();
+            }
+            Assume.That(recipeid > 0, "No recipes in published status or archived 30 days ago or less in DB, cannot run tests.");
+            TestContext.WriteLine("Existing recipe in published status or archived 30 days ago or less = " + recipeid + " " + recipename);
+            TestContext.WriteLine("Ensure that app cannot delete and will exist in DB " + recipeid + " " + recipename);
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            TestContext.WriteLine(ex.Message);
+        }
 
         [Test]
         public void DeleteRecipeWithIngredient()
