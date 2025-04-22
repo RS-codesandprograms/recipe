@@ -112,8 +112,8 @@ with x as(
     Union select 'LGreen', 'American', 'Betty Crocker Smores', 71, '1/12/2023 10:34:45', null, null
     Union select 'AChavitz', 'American', 'Apple Pie', 212, '8/12/2021 10:37:45', null, null
     Union select 'TKelly', 'French', 'Wine Roasted Chicken', 98, '11/12/2021 23:34:45', null, null
-	Union Select 'LGreen', 'American', 'Spiced Chicken', 95, '04/17/2019 16:15', '05/22/2019 15:23', null 
-    Union Select 'AChavitz', 'American', 'Tangy Chicken', 45, '08/25/22 12:00', null, '11/22/22 11:00'
+	Union Select 'LGreen', 'American', 'Spiced Chicken', 95, '03/17/2025 16:15', '03/22/2025 15:23', '04/20/2025'
+    Union Select 'AChavitz', 'American', 'Tangy Chicken', 45, '04/01/2025', '04/10/2025', null
     
 	
 )
