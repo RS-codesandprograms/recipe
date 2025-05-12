@@ -250,6 +250,7 @@
             this.txtDraftDate.Location = new System.Drawing.Point(235, 130);
             this.txtDraftDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtDraftDate.Name = "txtDraftDate";
+            this.txtDraftDate.ReadOnly = true;
             this.txtDraftDate.Size = new System.Drawing.Size(230, 29);
             this.txtDraftDate.TabIndex = 4;
             // 

@@ -31,33 +31,19 @@
 
         public static void Save(DataTable dtRecipe)
         {
-           // SQLUtility.DebugPrintDataTable(dtRecipe);
+            if (dtRecipe.Rows.Count == 0)
+            {
+                throw new Exception("Cannot call RecipeSave method because there are no rows in table.");
+            }
             DataRow r = dtRecipe.Rows[0];
+            SQLUtility.SaveDataRow(r, "RecipeUpdate");
             int id = (int)r["RecipeID"];
-            string sql = "";
-            if (id > 0)
-            {
-                sql = string.Join(Environment.NewLine, $"update recipe set",
-               $"RecipeName = '{r["RecipeName"]}',",
-               $"StaffID = '{r["StaffID"]}',",
-               $"CuisineTypeID = '{r["CuisineTypeID"]}',",
-               $"Calories = '{r["Calories"]}',",
-               $"DraftDate = '{r["Draftdate"]}'",
-               $"where RecipeId = {r["RecipeId"]}");
-            }
-            else
-            {
 
-                sql = "Insert Recipe(RecipeName, StaffID, CuisineTypeID, Calories, DraftDate) ";
-                sql += $"select '{r["RecipeName"]}','{r["StaffID"]}', '{r["CuisineTypeID"]}', '{r["Calories"]}', '{r["Draftdate"]}'";
+           
 
-
-
-            }
-            //Debug.Print(sql);
-            //Debug.Print("---------------");
-            SQLUtility.ExecuteSQL(sql);
+         
         }
+
 
         public static void Delete(DataTable dtRecipe)
         {

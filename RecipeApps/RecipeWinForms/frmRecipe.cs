@@ -7,7 +7,8 @@ namespace RecipeWinForms
 
     public partial class frmRecipe : Form
     {
-        public DataTable dtRecipe;
+        public DataTable dtRecipe = new DataTable();
+        BindingSource bindsource = new BindingSource();
 
         public frmRecipe()
         {
@@ -22,6 +23,7 @@ namespace RecipeWinForms
         public void ShowForm(int RecipeID)
         {
             dtRecipe = Recipe.Load(RecipeID);
+            bindsource.DataSource = dtRecipe; 
             if (RecipeID == 0)
             {
                 dtRecipe.Rows.Add();
@@ -32,13 +34,13 @@ namespace RecipeWinForms
 
             WindowsFormUtility.SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
             WindowsFormUtility.SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
-            WindowsFormUtility.SetControlBinding(txtRecipeName, dtRecipe);
-            WindowsFormUtility.SetControlBinding(txtCalories, dtRecipe);
-            WindowsFormUtility.SetControlBinding(txtDraftDate, dtRecipe);
-            WindowsFormUtility.SetControlBinding(txtPublishedDate, dtRecipe);
-            WindowsFormUtility.SetControlBinding(txtArchivedDate, dtRecipe);
-            WindowsFormUtility.SetControlBinding(lblCurrentStatus, dtRecipe);
-            WindowsFormUtility.SetControlBinding(lblRecipePicture, dtRecipe);
+            WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
+            WindowsFormUtility.SetControlBinding(txtCalories, bindsource);
+            WindowsFormUtility.SetControlBinding(txtDraftDate, bindsource);
+            WindowsFormUtility.SetControlBinding(txtPublishedDate, bindsource);
+            WindowsFormUtility.SetControlBinding(txtArchivedDate, bindsource);
+            WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
+            WindowsFormUtility.SetControlBinding(lblRecipePicture, bindsource);
             this.Show();
 
             if (txtDraftDate.Text == "")
@@ -51,8 +53,9 @@ namespace RecipeWinForms
         {
             Application.UseWaitCursor = true;
             try
-            {
+            { 
                 Recipe.Save(dtRecipe);
+                bindsource.ResetBindings(false);
             }
             catch (Exception ex)
             {
