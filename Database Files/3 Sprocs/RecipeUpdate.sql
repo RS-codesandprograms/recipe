@@ -10,8 +10,6 @@ create or alter proc dbo.RecipeUpdate(
 	@CurrentStatus varchar (9),
 	@RecipePicture varchar (8000),
 	@Message varchar(500) = '' output
-
-
 ) 
 as
 begin
