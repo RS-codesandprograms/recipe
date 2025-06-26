@@ -1,6 +1,7 @@
 create or alter procedure dbo.RecipeDelete(
 	@RecipeId int,
 	@Message varchar(500) = '' output
+
 )
 as
 begin
