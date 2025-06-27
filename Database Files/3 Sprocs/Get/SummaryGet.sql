@@ -4,10 +4,12 @@ create or alter procedure dbo.SummaryGet(
 as
 begin
 	
-	select Type = 'Recipes', Number = count(r.RecipeID) from Recipe r
+	
+	select  Type = 'Recipes', Number = count(r.RecipeID) from Recipe r
 	union select 'Meals', count(m.MealID) from Meal m
 	union select 'Cookbooks', count(cb.CookbookID) from CookBook cb
 
+	
 
 end
 

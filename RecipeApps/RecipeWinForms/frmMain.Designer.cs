@@ -35,6 +35,7 @@
             btnRecipeList = new Button();
             btnMealList = new Button();
             btnCookbookList = new Button();
+            tsMain = new ToolStrip();
             mnuMain = new MenuStrip();
             mnuFile = new ToolStripMenuItem();
             mnuDashboard = new ToolStripMenuItem();
@@ -151,6 +152,14 @@
             btnCookbookList.Text = "Cookbook List";
             btnCookbookList.UseVisualStyleBackColor = true;
             // 
+            // tsMain
+            // 
+            tsMain.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tsMain.Location = new Point(0, 29);
+            tsMain.Name = "tsMain";
+            tsMain.Size = new Size(1029, 25);
+            tsMain.TabIndex = 7;
+            // 
             // mnuMain
             // 
             mnuMain.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -260,13 +269,13 @@
             // mnuWindowTile
             // 
             mnuWindowTile.Name = "mnuWindowTile";
-            mnuWindowTile.Size = new Size(180, 26);
+            mnuWindowTile.Size = new Size(137, 26);
             mnuWindowTile.Text = "Tile";
             // 
             // mnuWindowCascade
             // 
             mnuWindowCascade.Name = "mnuWindowCascade";
-            mnuWindowCascade.Size = new Size(180, 26);
+            mnuWindowCascade.Size = new Size(137, 26);
             mnuWindowCascade.Text = "Cascade";
             // 
             // frmMain
@@ -274,9 +283,11 @@
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
+            Controls.Add(tsMain);
             Controls.Add(mnuMain);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            IsMdiContainer = true;
             MainMenuStrip = mnuMain;
             Margin = new Padding(4);
             Name = "frmMain";
@@ -317,5 +328,6 @@
         private Button btnRecipeList;
         private Button btnMealList;
         private Button btnCookbookList;
+        private ToolStrip tsMain;
     }
 }
