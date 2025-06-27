@@ -20,14 +20,7 @@
             return dt;
         }
 
-        public static DataTable GetList(string tablename)
-        {
-            DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSQLCommand(tablename + "Get");
-            cmd.Parameters["@All"].Value = 1;
-            dt = SQLUtility.GetDataTable(cmd);
-            return dt;
-        }
+      
 
         public static void Save(DataTable dtRecipe)
         {

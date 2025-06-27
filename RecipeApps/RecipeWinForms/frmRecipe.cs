@@ -28,8 +28,8 @@ namespace RecipeWinForms
             {
                 dtRecipe.Rows.Add();
             }
-            DataTable dtcuisines = Recipe.GetList("CuisineType");
-            DataTable dtusernames = Recipe.GetList("Staff");
+            DataTable dtcuisines = ListManager.GetList("CuisineType");
+            DataTable dtusernames = ListManager.GetList("Staff");
 
 
             WindowsFormUtility.SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");

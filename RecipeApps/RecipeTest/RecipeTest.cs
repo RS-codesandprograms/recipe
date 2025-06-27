@@ -204,7 +204,7 @@ and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day
             TestContext.WriteLine("Num of cuisinetypes in DB = " + cuisinetypecount);
             TestContext.WriteLine("Ensure that num of rows returned by app matches " + cuisinetypecount);
 
-            DataTable dt = Recipe.GetList("CuisineType");
+            DataTable dt = ListManager.GetList("CuisineType");
 
             Assert.IsTrue(dt.Rows.Count == cuisinetypecount, "num rows returned by app (" + dt.Rows.Count + ") <> " + cuisinetypecount);
             TestContext.WriteLine("Num of rows in cuisinetype returned by app = " + dt.Rows.Count);
@@ -219,7 +219,7 @@ and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day
             TestContext.WriteLine("Num of staff in DB = " + staffcount);
             TestContext.WriteLine("Ensure that num of rows returned by app matches " + staffcount);
 
-            DataTable dt = Recipe.GetList("Staff");
+            DataTable dt = ListManager.GetList("Staff");
 
             Assert.IsTrue(dt.Rows.Count == staffcount, "num rows returned by app (" + dt.Rows.Count + ") <> " + staffcount);
             TestContext.WriteLine("Num of rows in Staff returned by app = " + dt.Rows.Count);
