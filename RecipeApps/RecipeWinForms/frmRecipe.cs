@@ -20,7 +20,7 @@ namespace RecipeWinForms
 
 
 
-        public void ShowForm(int RecipeID)
+        public void Loadform(int RecipeID)
         {
             dtRecipe = Recipe.Load(RecipeID);
             bindsource.DataSource = dtRecipe; 

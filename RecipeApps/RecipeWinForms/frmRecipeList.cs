@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace RecipeWinForms
 {
     public partial class frmRecipeList : Form
@@ -16,8 +15,10 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnNewRecipe.Click += BtnNewRecipe_Click;
+            gRecipeList.DoubleClick += GRecipeList_DoubleClick;
             this.Activated += FrmRecipeList_Activated;
         }
+
 
         private void FrmRecipeList_Activated(object? sender, EventArgs e)
         {
@@ -26,13 +27,35 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            gRecipeList.DataSource = ListManager.GetList("Recipe");
+            gRecipeList.DataSource = ListManager.GetList("RecipeSummary", false);
             WindowsFormUtility.FormatGridForSearchResults(gRecipeList, "Recipe");
         }
 
+        private void LoadSpecificRecord(int rowindex)
+        {
+            int id = 0;
+            if (rowindex > -1)
+
+            {
+                id = WindowsFormUtility.GetIdFromGrid(gRecipeList, rowindex, "RecipeId");
+
+            }
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
+            }
+        }
+           
+    
+
         private void BtnNewRecipe_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            LoadSpecificRecord(-1);
+        }
+
+        private void GRecipeList_DoubleClick(object? sender, EventArgs e)
+        {
+            LoadSpecificRecord(-1);
         }
     }
 }

@@ -48,7 +48,12 @@ namespace RecipeWinForms
                     frmRecipeList f = new();
                     newfrm = f; 
                 }
-                newfrm.MdiParent = this;
+                if(frmtype == typeof(frmDataMaintenance))
+                {
+                    frmDataMaintenance f = new();
+                    newfrm = f; 
+                }
+                //newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
                 newfrm.FormClosed += Newfrm_FormClosed; ;
                 newfrm.TextChanged += Newfrm_TextChanged; ;
@@ -94,7 +99,7 @@ namespace RecipeWinForms
 
         private void MnuEditData_Click(object? sender, EventArgs e)
         {
-            
+            OpenForm(typeof(frmDataMaintenance));
         }
 
         private void MnuCookbookAutoCreate_Click(object? sender, EventArgs e)
