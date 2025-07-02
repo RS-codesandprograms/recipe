@@ -9,7 +9,7 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             mnuDashboard.Click += MnuDashboard_Click;
-            mnuRecipeList.Click += RecipeList_Click;
+            mnuRecipeList.Click += MnuRecipeList_Click;
             mnuRecipeNew.Click += MnuRecipeNew_Click;
             mnuRecipeClone.Click += MnuRecipeClone_Click;
             mnuMealsList.Click += MnuMealsList_Click;
@@ -19,23 +19,12 @@ namespace RecipeWinForms
             mnuEditData.Click += MnuEditData_Click;
             mnuWindowTile.Click += MnuWindowTile_Click;
             mnuWindowCascade.Click += MnuWindowCascade_Click;
-            btnRecipeList.Click += RecipeList_Click;
-            btnMealList.Click += BtnMealList_Click;
-            btnCookbookList.Click += BtnCookbookList_Click;
-            this.Activated += FrmMain_Activated;
+          
+        
 
         }
 
-        private void FrmMain_Activated(object? sender, EventArgs e)
-        {
-            BindData();
-        }
-
-        private void BindData()
-        {
-            gSummary.DataSource = ListManager.GetList("Summary", false);
-            WindowsFormUtility.FormatGridForSearchResults(gSummary, "Summary");
-        }
+       
 
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
@@ -53,7 +42,7 @@ namespace RecipeWinForms
                     frmDataMaintenance f = new();
                     newfrm = f; 
                 }
-                //newfrm.MdiParent = this;
+                newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
                 newfrm.FormClosed += Newfrm_FormClosed; ;
                 newfrm.TextChanged += Newfrm_TextChanged; ;
@@ -72,20 +61,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetupNav(tsMain);
         }
 
-        private void BtnCookbookList_Click(object? sender, EventArgs e)
-        {
-            
-        }
-
-        private void BtnMealList_Click(object? sender, EventArgs e)
-        {
-            
-        }
-
-        private void BtnRecipeList_Click(object? sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void MnuWindowCascade_Click(object? sender, EventArgs e)
         {
@@ -132,7 +108,7 @@ namespace RecipeWinForms
             
         }
 
-        private void RecipeList_Click(object? sender, EventArgs e)
+        private void MnuRecipeList_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmRecipeList));
         }
