@@ -19,12 +19,15 @@ namespace RecipeWinForms
             mnuEditData.Click += MnuEditData_Click;
             mnuWindowTile.Click += MnuWindowTile_Click;
             mnuWindowCascade.Click += MnuWindowCascade_Click;
-          
+            this.Shown += FrmMain_Shown;
         
 
         }
 
-       
+        private void FrmMain_Shown(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmDashboard));
+        }
 
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
@@ -32,17 +35,26 @@ namespace RecipeWinForms
             if(b == false)
             {
                 Form? newfrm = null;
-                if(frmtype == typeof(frmRecipeList))
+                 if (frmtype == typeof(frmDashboard))
+                {
+                    frmDashboard f = new();
+                    newfrm = f;
+                }
+                else if (frmtype == typeof(frmRecipeList))
                 {
                     frmRecipeList f = new();
-                    newfrm = f; 
+                    newfrm = f;
                 }
-                if(frmtype == typeof(frmDataMaintenance))
+                
+                else if (frmtype == typeof(frmDataMaintenance))
                 {
                     frmDataMaintenance f = new();
-                    newfrm = f; 
+                    newfrm = f;
                 }
-                newfrm.MdiParent = this;
+              
+                
+
+                    newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
                 newfrm.FormClosed += Newfrm_FormClosed; ;
                 newfrm.TextChanged += Newfrm_TextChanged; ;
@@ -115,7 +127,7 @@ namespace RecipeWinForms
 
         private void MnuDashboard_Click(object? sender, EventArgs e)
         {
-            
+            OpenForm(typeof(frmDashboard));
         }
     }
 }
