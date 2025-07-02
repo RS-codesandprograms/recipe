@@ -44,6 +44,7 @@ insert CuisineType(CuisineName)
 select 'American'
 union select 'French'
 union select 'English'
+union select 'Chinese'
 
 insert MeasurementType(MeasurementName)
 select 'tbsp'
@@ -54,7 +55,8 @@ union select 'clove(s)'
 union select 'pinch'
 union select 'stick(s)'
 union select 'lb'
-union select 'cubes(s)'
+union select 'cube(s)'
+union select 'gram(s)'
 
 insert ingredient
 select 'oil'
@@ -98,6 +100,7 @@ union select 'chocolate bar(s)'
 union select 'strawberries'
 union select 'lemon juice'
 union select 'peaches'
+union select 'BBQ sauce'
 
 
 ;
@@ -255,13 +258,15 @@ Insert Course (CourseName,CourseSequence)
 select 'appetizer', 1
 union select 'main', 2
 union select 'dessert', 3
+union select 'palate refresher', 4
+
 
 
 
 ;
 with x as(
     select UserName = 'RGreenwich', MealName = 'Breakfast Bash', IsActive = 1, MealCreationDate = '11/10/2020'
-    union select 'LGreen', 'Super Supper', 0, '04/25/2019'
+    union select 'TKelly', 'Super Supper', 0, '04/25/2019'
     union select 'AChavitz', 'Dairy Lunch', 1, '05/15/2021'
     union select 'LGreen', 'Super Delight', 1, '3/12/2022'
 )
@@ -275,6 +280,7 @@ on x.UserName = s.UserName
 with x as (
     select MealName = 'Breakfast Bash', CourseName = 'appetizer'
     union select 'Breakfast Bash', 'main'
+	union select 'Super Supper', 'appetizer'
     union select 'Super Supper', 'main'
     union select 'Super Supper', 'dessert'
     union select 'Dairy Lunch', 'appetizer'
@@ -298,7 +304,7 @@ with x as (
     select MealName = 'Breakfast Bash', CourseName = 'appetizer', RecipeName = 'Apple Yogurt Smoothie', IsMain = 0
     union select 'Breakfast Bash', 'main', 'Cheese Bread', 1
     union select 'Breakfast Bash', 'main', 'Butter Muffins', 0
-    union select 'Super Supper', 'main', 'Sweet Chicken', 1
+    union select 'Super Supper', 'main', 'Wine Roasted Chicken', 1
     union select 'Super Supper', 'main', 'Smoky Spicy Potatoes' , 0
     union select 'Super Supper', 'main', 'Sesame Green Beans', 0
     union select 'Super Supper', 'dessert', 'Chocolate Chip Cookies', 0
@@ -349,7 +355,7 @@ with x as (
     Union Select 'Treats For Two', 'Butter Muffins', 4
     Union Select 'Today''s Food', 'Cheese Bread', 1
     Union Select 'Today''s Food', 'Apple Yogurt Smoothie', 2
-    Union Select 'Today''s Food', 'Sweet Chicken', 3
+    Union Select 'Today''s Food', 'Wine Roasted Chicken', 3
     Union Select 'Today''s Food', 'Smoky Spicy Potatoes' , 4
     Union Select 'Today''s Food', 'Sesame Green Beans', 5
     Union Select 'English Cooking', 'Cheese Bread', 1
