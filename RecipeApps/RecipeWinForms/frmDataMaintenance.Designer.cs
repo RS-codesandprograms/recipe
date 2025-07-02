@@ -45,8 +45,8 @@
             // tblMain
             // 
             tblMain.ColumnCount = 2;
-            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
-            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 83F));
+            tblMain.ColumnStyles.Add(new ColumnStyle());
+            tblMain.ColumnStyles.Add(new ColumnStyle());
             tblMain.Controls.Add(pnlOptionButton, 0, 0);
             tblMain.Controls.Add(gData, 1, 0);
             tblMain.Controls.Add(btnSave, 1, 1);
@@ -148,10 +148,10 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSave.Location = new Point(977, 577);
+            btnSave.Location = new Point(952, 577);
             btnSave.Margin = new Padding(10);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(113, 43);
+            btnSave.Size = new Size(138, 43);
             btnSave.TabIndex = 2;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             ClientSize = new Size(1100, 630);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmDataMaintenance";
             Text = "DataMaintenance";
             tblMain.ResumeLayout(false);
