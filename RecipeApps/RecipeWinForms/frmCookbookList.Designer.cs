@@ -28,12 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmCookbookList";
+            tblCookBookList = new TableLayoutPanel();
+            btnSave = new Button();
+            gCookbookList = new DataGridView();
+            tblCookBookList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gCookbookList).BeginInit();
+            SuspendLayout();
+            // 
+            // tblCookBookList
+            // 
+            tblCookBookList.ColumnCount = 2;
+            tblCookBookList.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.90909F));
+            tblCookBookList.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.09091F));
+            tblCookBookList.Controls.Add(btnSave, 0, 0);
+            tblCookBookList.Controls.Add(gCookbookList, 0, 1);
+            tblCookBookList.Dock = DockStyle.Fill;
+            tblCookBookList.Location = new Point(0, 0);
+            tblCookBookList.Margin = new Padding(4, 4, 4, 4);
+            tblCookBookList.Name = "tblCookBookList";
+            tblCookBookList.RowCount = 1;
+            tblCookBookList.RowStyles.Add(new RowStyle(SizeType.Percent, 11.90476F));
+            tblCookBookList.RowStyles.Add(new RowStyle(SizeType.Percent, 88.09524F));
+            tblCookBookList.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblCookBookList.Size = new Size(1100, 630);
+            tblCookBookList.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            btnSave.Dock = DockStyle.Fill;
+            btnSave.Location = new Point(10, 10);
+            btnSave.Margin = new Padding(10);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(177, 54);
+            btnSave.TabIndex = 0;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            // 
+            // gCookbookList
+            // 
+            gCookbookList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tblCookBookList.SetColumnSpan(gCookbookList, 2);
+            gCookbookList.Dock = DockStyle.Fill;
+            gCookbookList.Location = new Point(3, 77);
+            gCookbookList.Name = "gCookbookList";
+            gCookbookList.RowHeadersWidth = 51;
+            gCookbookList.RowTemplate.Height = 29;
+            gCookbookList.Size = new Size(1094, 550);
+            gCookbookList.TabIndex = 1;
+            // 
+            // frmCookbookList
+            // 
+            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1100, 630);
+            Controls.Add(tblCookBookList);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "frmCookbookList";
+            Text = "frmCookbookList";
+            tblCookBookList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)gCookbookList).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private TableLayoutPanel tblCookBookList;
+        private Button btnSave;
+        private DataGridView gCookbookList;
     }
 }

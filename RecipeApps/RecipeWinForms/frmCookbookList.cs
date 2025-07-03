@@ -15,6 +15,19 @@ namespace RecipeWinForms
         public frmCookbookList()
         {
             InitializeComponent();
+            this.Activated += FrmCookbookList_Activated;
         }
+
+        private void FrmCookbookList_Activated(object? sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        private void BindData()
+        {
+            gCookbookList.DataSource = ListManager.GetList("CookbookSummary", false);
+            WindowsFormUtility.FormatGridForSearchResults(gCookbookList, "Cookbook");
+        }
+
     }
 }

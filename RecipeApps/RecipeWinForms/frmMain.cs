@@ -56,6 +56,11 @@ namespace RecipeWinForms
                     frmMealList f = new();
                     newfrm = f; 
                 }
+                else if (frmtype == typeof(frmCookbookList))
+                {
+                    frmCookbookList f = new();
+                    newfrm = f; 
+                }
 
                 else if (frmtype == typeof(frmDataMaintenance))
                 {
@@ -113,7 +118,7 @@ namespace RecipeWinForms
 
         private void MnuCookbooksList_Click(object? sender, EventArgs e)
         {
-            
+            OpenForm(typeof(frmCookbookList));
         }
 
         private void MnuMealsList_Click(object? sender, EventArgs e)
