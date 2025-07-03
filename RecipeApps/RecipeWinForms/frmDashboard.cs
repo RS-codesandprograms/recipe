@@ -38,17 +38,17 @@ namespace RecipeWinForms
 
         private void BtnCookbookList_Click(object? sender, EventArgs e)
         {
-
+           // OpenForm(typeof(frmCookbookList));
         }
 
         private void BtnMealList_Click(object? sender, EventArgs e)
         {
-
+           // OpenForm(typeof(frmMealList));
         }
 
         private void BtnRecipeList_Click(object? sender, EventArgs e)
         {
-
+          //  OpenForm(typeof(frmRecipeList));
         }
 
 

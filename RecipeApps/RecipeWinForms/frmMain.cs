@@ -29,7 +29,7 @@ namespace RecipeWinForms
             OpenForm(typeof(frmDashboard));
         }
 
-        public void OpenForm(Type frmtype, int pkvalue = 0)
+        public  void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype, pkvalue);
             if(b == false)
@@ -65,7 +65,7 @@ namespace RecipeWinForms
               
                 
 
-                    newfrm.MdiParent = this;
+                newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
                 newfrm.FormClosed += Newfrm_FormClosed; ;
                 newfrm.TextChanged += Newfrm_TextChanged; ;
