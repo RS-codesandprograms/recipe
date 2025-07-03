@@ -55,7 +55,7 @@ namespace RecipeWinForms
 
         private void GRecipeList_DoubleClick(object? sender, EventArgs e)
         {
-            LoadSpecificRecord(-1);
+          //LoadForm(e.Sender); 
         }
     }
 }

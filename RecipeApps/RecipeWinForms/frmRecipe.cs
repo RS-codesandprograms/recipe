@@ -14,13 +14,13 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
-            btnDelete.Click += BtnDelete_Click;
+            btnDelete.Click += BtnDelete_Click;;
 
         }
 
 
 
-        public void Loadform(int RecipeID)
+        public void LoadForm(int RecipeID)
         {
             dtRecipe = Recipe.Load(RecipeID);
             bindsource.DataSource = dtRecipe; 
