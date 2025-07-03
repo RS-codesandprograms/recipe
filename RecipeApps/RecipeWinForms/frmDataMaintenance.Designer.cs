@@ -54,8 +54,8 @@
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 2;
-            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tblMain.RowStyles.Add(new RowStyle());
+            tblMain.RowStyles.Add(new RowStyle());
             tblMain.Size = new Size(1100, 630);
             tblMain.TabIndex = 0;
             // 
