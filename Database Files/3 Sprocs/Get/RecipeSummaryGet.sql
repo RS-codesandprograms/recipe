@@ -7,7 +7,7 @@ begin
 	
 	select
 		r.RecipeID, 
-		r.RecipeName,
+		'Recipe Name' = r.RecipeName,
 		'Status' = r.CurrentStatus,
 		'User' = concat(s.FirstName, ' ',  s.LastName),
 		r.Calories,

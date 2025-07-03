@@ -4,7 +4,7 @@ create or alter procedure dbo.MealGet(
 	@IncludeBlank bit = 0,
 	@Message varchar(500) = ''  output
 )
-as+
+as
 begin
 
 	declare @return int = 0
