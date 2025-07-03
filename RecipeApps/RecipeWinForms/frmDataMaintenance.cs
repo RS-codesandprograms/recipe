@@ -62,12 +62,36 @@ namespace RecipeWinForms
 
         private void Delete(int rowindex)
         {
+            string name = " ";
+            foreach (RadioButton o in pnlOptionButton.Controls)
+            {
+                if (o is RadioButton && o.Checked == true && o.Text != null)
+                {
+                    if (o.Text.EndsWith('s'))
+                    {
+                        name = o.Text.ToString().Substring(0, o.Text.Length -1);
+                    }
+                    else { name = o.Text.ToString(); }
+                }
+            }
+            string deletemessage = $"Are you sure you want to delete this {name}?";
+            if (currenttabletype == TableTypeEnum.Staff)
+            {
+                deletemessage = "Are you sure you want to delete this user and all related recipes, meals, and cookbooks?";
+            }
+
             int id = WindowsFormUtility.GetIdFromGrid(gData, rowindex, currenttabletype.ToString() + "Id");
+            var response = MessageBox.Show(deletemessage, Application.ProductName, MessageBoxButtons.YesNoCancel);
+            if (response == DialogResult.No || response == DialogResult.Cancel)
+            {
+                return;
+            }
+
             if (id != 0)
             {
                 try
                 {
-                   
+                    Application.UseWaitCursor = true;
                     ListManager.DeleteRow(currenttabletype.ToString(), id);
                     BindData(currenttabletype);
                 }
@@ -75,12 +99,18 @@ namespace RecipeWinForms
                 {
                     MessageBox.Show(ex.Message, Application.ProductName);
                 }
+                finally
+                {
+                    Application.UseWaitCursor = false;
+                }
             }
             else if (id == 0 && rowindex < gData.Rows.Count)
             {
                 gData.Rows.Remove(gData.Rows[rowindex]);
             }
+
         }
+
 
         private bool Save()
         {
