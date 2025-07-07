@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             tblCookBookList = new TableLayoutPanel();
-            btnSave = new Button();
+            btnNewCookbook = new Button();
             gCookbookList = new DataGridView();
             tblCookBookList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gCookbookList).BeginInit();
@@ -40,11 +40,11 @@
             tblCookBookList.ColumnCount = 2;
             tblCookBookList.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.90909F));
             tblCookBookList.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.09091F));
-            tblCookBookList.Controls.Add(btnSave, 0, 0);
+            tblCookBookList.Controls.Add(btnNewCookbook, 0, 0);
             tblCookBookList.Controls.Add(gCookbookList, 0, 1);
             tblCookBookList.Dock = DockStyle.Fill;
             tblCookBookList.Location = new Point(0, 0);
-            tblCookBookList.Margin = new Padding(4, 4, 4, 4);
+            tblCookBookList.Margin = new Padding(4);
             tblCookBookList.Name = "tblCookBookList";
             tblCookBookList.RowCount = 1;
             tblCookBookList.RowStyles.Add(new RowStyle(SizeType.Percent, 11.90476F));
@@ -53,16 +53,16 @@
             tblCookBookList.Size = new Size(1100, 630);
             tblCookBookList.TabIndex = 0;
             // 
-            // btnSave
+            // btnNewCookbook
             // 
-            btnSave.Dock = DockStyle.Fill;
-            btnSave.Location = new Point(10, 10);
-            btnSave.Margin = new Padding(10);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(177, 54);
-            btnSave.TabIndex = 0;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
+            btnNewCookbook.Dock = DockStyle.Fill;
+            btnNewCookbook.Location = new Point(10, 10);
+            btnNewCookbook.Margin = new Padding(10);
+            btnNewCookbook.Name = "btnNewCookbook";
+            btnNewCookbook.Size = new Size(177, 54);
+            btnNewCookbook.TabIndex = 0;
+            btnNewCookbook.Text = "New Cookbook";
+            btnNewCookbook.UseVisualStyleBackColor = true;
             // 
             // gCookbookList
             // 
@@ -83,7 +83,7 @@
             ClientSize = new Size(1100, 630);
             Controls.Add(tblCookBookList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmCookbookList";
             Text = "frmCookbookList";
             tblCookBookList.ResumeLayout(false);
@@ -94,7 +94,7 @@
         #endregion
 
         private TableLayoutPanel tblCookBookList;
-        private Button btnSave;
+        private Button btnNewCookbook;
         private DataGridView gCookbookList;
     }
 }

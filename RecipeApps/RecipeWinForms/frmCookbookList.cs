@@ -15,8 +15,11 @@ namespace RecipeWinForms
         public frmCookbookList()
         {
             InitializeComponent();
+            btnNewCookbook.Click += BtnNewCookbook_Click;
             this.Activated += FrmCookbookList_Activated;
         }
+
+     
 
         private void FrmCookbookList_Activated(object? sender, EventArgs e)
         {
@@ -29,5 +32,24 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForSearchResults(gCookbookList, "Cookbook");
         }
 
+        private void LoadSpecificRecord(int rowindex)
+        {
+            int id = 0;
+            if (rowindex > -1)
+
+            {
+                id = WindowsFormUtility.GetIdFromGrid(gCookbookList, rowindex, "CookbookId");
+
+            }
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), id);
+            }
+        }
+
+        private void BtnNewCookbook_Click(object? sender, EventArgs e)
+        {
+            LoadSpecificRecord(-1); 
+        }
     }
 }

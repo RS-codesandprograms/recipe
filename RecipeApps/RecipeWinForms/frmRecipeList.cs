@@ -31,6 +31,7 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForSearchResults(gRecipeList, "Recipe");
         }
 
+
         private void LoadSpecificRecord(int rowindex)
         {
             int id = 0;

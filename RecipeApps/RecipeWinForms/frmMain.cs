@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.DirectoryServices.ActiveDirectory;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmMain : Form
     {
@@ -20,7 +17,7 @@ namespace RecipeWinForms
             mnuWindowTile.Click += MnuWindowTile_Click;
             mnuWindowCascade.Click += MnuWindowCascade_Click;
             this.Shown += FrmMain_Shown;
-        
+
 
         }
 
@@ -29,13 +26,13 @@ namespace RecipeWinForms
             OpenForm(typeof(frmDashboard));
         }
 
-        public  void OpenForm(Type frmtype, int pkvalue = 0)
+        public void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype, pkvalue);
-            if(b == false)
+            if (b == false)
             {
                 Form? newfrm = null;
-                 if (frmtype == typeof(frmDashboard))
+                if (frmtype == typeof(frmDashboard))
                 {
                     frmDashboard f = new();
                     newfrm = f;
@@ -54,21 +51,25 @@ namespace RecipeWinForms
                 else if (frmtype == typeof(frmMealList))
                 {
                     frmMealList f = new();
-                    newfrm = f; 
+                    newfrm = f;
                 }
                 else if (frmtype == typeof(frmCookbookList))
                 {
                     frmCookbookList f = new();
-                    newfrm = f; 
+                    newfrm = f;
                 }
-
+                else if (frmtype == typeof(frmCookbook))
+                {
+                    frmCookbook f = new();
+                    newfrm = f;
+                }
                 else if (frmtype == typeof(frmDataMaintenance))
                 {
                     frmDataMaintenance f = new();
                     newfrm = f;
                 }
-              
-                
+
+
 
                 newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
@@ -76,7 +77,7 @@ namespace RecipeWinForms
                 newfrm.TextChanged += Newfrm_TextChanged; ;
                 newfrm.Show();
             }
-           WindowsFormUtility.SetupNav(tsMain);
+            WindowsFormUtility.SetupNav(tsMain);
         }
 
         private void Newfrm_TextChanged(object? sender, EventArgs e)
@@ -89,7 +90,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetupNav(tsMain);
         }
 
-        
+
 
         private void MnuWindowCascade_Click(object? sender, EventArgs e)
         {
@@ -108,12 +109,12 @@ namespace RecipeWinForms
 
         private void MnuCookbookAutoCreate_Click(object? sender, EventArgs e)
         {
-            
+
         }
 
         private void MnuCookbookNew_Click(object? sender, EventArgs e)
         {
-            
+
         }
 
         private void MnuCookbooksList_Click(object? sender, EventArgs e)
@@ -128,12 +129,12 @@ namespace RecipeWinForms
 
         private void MnuRecipeClone_Click(object? sender, EventArgs e)
         {
-            
+
         }
 
         private void MnuRecipeNew_Click(object? sender, EventArgs e)
         {
-            
+
         }
 
         private void MnuRecipeList_Click(object? sender, EventArgs e)
