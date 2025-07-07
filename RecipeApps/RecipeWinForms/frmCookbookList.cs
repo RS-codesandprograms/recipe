@@ -16,10 +16,11 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnNewCookbook.Click += BtnNewCookbook_Click;
+            gCookbookList.CellDoubleClick += GCookbookList_CellDoubleClick;
             this.Activated += FrmCookbookList_Activated;
         }
 
-     
+       
 
         private void FrmCookbookList_Activated(object? sender, EventArgs e)
         {
@@ -32,7 +33,7 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForSearchResults(gCookbookList, "Cookbook");
         }
 
-        private void LoadSpecificRecord(int rowindex)
+        private void LoadCookbook(int rowindex)
         {
             int id = 0;
             if (rowindex > -1)
@@ -49,7 +50,12 @@ namespace RecipeWinForms
 
         private void BtnNewCookbook_Click(object? sender, EventArgs e)
         {
-            LoadSpecificRecord(-1); 
+            LoadCookbook(-1); 
+        }
+
+        private void GCookbookList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            LoadCookbook(e.RowIndex);
         }
     }
 }

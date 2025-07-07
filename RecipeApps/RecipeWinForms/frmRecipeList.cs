@@ -15,10 +15,11 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnNewRecipe.Click += BtnNewRecipe_Click;
-            gRecipeList.DoubleClick += GRecipeList_DoubleClick;
+            gRecipeList.CellDoubleClick += GRecipeList_CellDoubleClick;
             this.Activated += FrmRecipeList_Activated;
         }
 
+    
 
         private void FrmRecipeList_Activated(object? sender, EventArgs e)
         {
@@ -32,7 +33,7 @@ namespace RecipeWinForms
         }
 
 
-        private void LoadSpecificRecord(int rowindex)
+        private void LoadRecipe(int rowindex)
         {
             int id = 0;
             if (rowindex > -1)
@@ -51,12 +52,13 @@ namespace RecipeWinForms
 
         private void BtnNewRecipe_Click(object? sender, EventArgs e)
         {
-            LoadSpecificRecord(-1);
+            LoadRecipe(-1);
         }
 
-        private void GRecipeList_DoubleClick(object? sender, EventArgs e)
+        private void GRecipeList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-          //LoadForm(e.Sender); 
+            LoadRecipe(e.RowIndex);
         }
+       
     }
 }

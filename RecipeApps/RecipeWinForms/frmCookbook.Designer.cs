@@ -41,9 +41,9 @@
             txtPrice = new TextBox();
             ckbActive = new CheckBox();
             txtCookbookName = new TextBox();
-            lstUser = new ComboBox();
+            lstUserName = new ComboBox();
             tblRecipe = new TableLayoutPanel();
-            btnSaveRecipe = new Button();
+            btnRecipeSave = new Button();
             gCookbookRecipe = new DataGridView();
             tblCookbook.SuspendLayout();
             tblDetails.SuspendLayout();
@@ -85,7 +85,7 @@
             tblDetails.Controls.Add(txtPrice, 1, 4);
             tblDetails.Controls.Add(ckbActive, 1, 5);
             tblDetails.Controls.Add(txtCookbookName, 1, 1);
-            tblDetails.Controls.Add(lstUser, 1, 2);
+            tblDetails.Controls.Add(lstUserName, 1, 2);
             tblDetails.Dock = DockStyle.Fill;
             tblDetails.Location = new Point(3, 3);
             tblDetails.Name = "tblDetails";
@@ -208,22 +208,22 @@
             txtCookbookName.Size = new Size(390, 34);
             txtCookbookName.TabIndex = 10;
             // 
-            // lstUser
+            // lstUserName
             // 
-            tblDetails.SetColumnSpan(lstUser, 2);
-            lstUser.Dock = DockStyle.Fill;
-            lstUser.FormattingEnabled = true;
-            lstUser.Location = new Point(201, 105);
-            lstUser.Name = "lstUser";
-            lstUser.Size = new Size(390, 36);
-            lstUser.TabIndex = 11;
+            tblDetails.SetColumnSpan(lstUserName, 2);
+            lstUserName.Dock = DockStyle.Fill;
+            lstUserName.FormattingEnabled = true;
+            lstUserName.Location = new Point(201, 105);
+            lstUserName.Name = "lstUserName";
+            lstUserName.Size = new Size(390, 36);
+            lstUserName.TabIndex = 11;
             // 
             // tblRecipe
             // 
             tblRecipe.ColumnCount = 2;
             tblRecipe.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.14863F));
             tblRecipe.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 67.85137F));
-            tblRecipe.Controls.Add(btnSaveRecipe, 0, 0);
+            tblRecipe.Controls.Add(btnRecipeSave, 0, 0);
             tblRecipe.Controls.Add(gCookbookRecipe, 0, 1);
             tblRecipe.Dock = DockStyle.Fill;
             tblRecipe.Location = new Point(3, 318);
@@ -234,14 +234,14 @@
             tblRecipe.Size = new Size(619, 309);
             tblRecipe.TabIndex = 1;
             // 
-            // btnSaveRecipe
+            // btnRecipeSave
             // 
-            btnSaveRecipe.Location = new Point(3, 3);
-            btnSaveRecipe.Name = "btnSaveRecipe";
-            btnSaveRecipe.Size = new Size(192, 45);
-            btnSaveRecipe.TabIndex = 0;
-            btnSaveRecipe.Text = "Save";
-            btnSaveRecipe.UseVisualStyleBackColor = true;
+            btnRecipeSave.Location = new Point(3, 3);
+            btnRecipeSave.Name = "btnRecipeSave";
+            btnRecipeSave.Size = new Size(192, 45);
+            btnRecipeSave.TabIndex = 0;
+            btnRecipeSave.Text = "Save";
+            btnRecipeSave.UseVisualStyleBackColor = true;
             // 
             // gCookbookRecipe
             // 
@@ -289,8 +289,8 @@
         private TextBox txtPrice;
         private CheckBox ckbActive;
         private TextBox txtCookbookName;
-        private ComboBox lstUser;
-        private Button btnSaveRecipe;
+        private ComboBox lstUserName;
+        private Button btnRecipeSave;
         private DataGridView gCookbookRecipe;
     }
 }
