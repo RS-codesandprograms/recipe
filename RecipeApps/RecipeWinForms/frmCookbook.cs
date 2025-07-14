@@ -43,13 +43,14 @@ namespace RecipeWinForms
 
             WindowsFormUtility.SetControlBinding(txtCookbookName, bindsource);
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
-            WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
-            WindowsFormUtility.SetControlBinding(ckbActive, bindsource);
-           
-            //this.Text = ();
+            WindowsFormUtility.SetControlBinding(lblCookbookCreationDate, bindsource);
+            //WindowsFormUtility.SetControlBinding(ckbActive, bindsource);
+
+            //this.Text = 
 
             //LoadPresidentMedals();
             //SetButtonsEnabledBasedOnNewRecord();
+            this.Show();
 
         }
         /*

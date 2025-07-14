@@ -1,5 +1,7 @@
 ﻿
+using CPUFramework;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace RecipeWinForms
 {
@@ -41,12 +43,19 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
             WindowsFormUtility.SetControlBinding(lblRecipePicture, bindsource);
-            this.Show();
+           
 
             if (txtDraftDate.Text == "")
             {
                 txtDraftDate.Text = DateTime.Now.ToString();
             }
+         //  string title = '';
+           //SqlCommand cmd =  SQLUtility.GetSQLCommand("RecipeDesc");
+           //this.Text =  SQLUtility.ExecuteSQL(cmd);
+
+
+            this.Show();
+
         }
 
         private void Save()

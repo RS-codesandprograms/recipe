@@ -37,7 +37,7 @@
             lblPrice = new Label();
             lblActive = new Label();
             lblDateCreated = new Label();
-            lblCreationDate = new Label();
+            lblCookbookCreationDate = new Label();
             txtPrice = new TextBox();
             ckbActive = new CheckBox();
             txtCookbookName = new TextBox();
@@ -81,7 +81,7 @@
             tblDetails.Controls.Add(lblPrice, 0, 4);
             tblDetails.Controls.Add(lblActive, 0, 5);
             tblDetails.Controls.Add(lblDateCreated, 2, 3);
-            tblDetails.Controls.Add(lblCreationDate, 2, 4);
+            tblDetails.Controls.Add(lblCookbookCreationDate, 2, 4);
             tblDetails.Controls.Add(txtPrice, 1, 4);
             tblDetails.Controls.Add(ckbActive, 1, 5);
             tblDetails.Controls.Add(txtCookbookName, 1, 1);
@@ -170,16 +170,16 @@
             lblDateCreated.Text = "Date Created";
             lblDateCreated.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblCreationDate
+            // lblCookbookCreationDate
             // 
-            lblCreationDate.AutoSize = true;
-            lblCreationDate.BackColor = SystemColors.ControlDark;
-            lblCreationDate.Dock = DockStyle.Fill;
-            lblCreationDate.Location = new Point(399, 207);
-            lblCreationDate.Margin = new Padding(3);
-            lblCreationDate.Name = "lblCreationDate";
-            lblCreationDate.Size = new Size(192, 45);
-            lblCreationDate.TabIndex = 7;
+            lblCookbookCreationDate.AutoSize = true;
+            lblCookbookCreationDate.BackColor = SystemColors.ControlDark;
+            lblCookbookCreationDate.Dock = DockStyle.Fill;
+            lblCookbookCreationDate.Location = new Point(399, 207);
+            lblCookbookCreationDate.Margin = new Padding(3);
+            lblCookbookCreationDate.Name = "lblCookbookCreationDate";
+            lblCookbookCreationDate.Size = new Size(192, 45);
+            lblCookbookCreationDate.TabIndex = 7;
             // 
             // txtPrice
             // 
@@ -285,7 +285,7 @@
         private Label lblPrice;
         private Label lblActive;
         private Label lblDateCreated;
-        private Label lblCreationDate;
+        private Label lblCookbookCreationDate;
         private TextBox txtPrice;
         private CheckBox ckbActive;
         private TextBox txtCookbookName;

@@ -34,21 +34,27 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForSearchResults(gSummary, "Summary");
         }
 
-       
+       private void OpenMdiChildFormFromButton(Type form)
+        {
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(form);
+            }
+        }
 
         private void BtnCookbookList_Click(object? sender, EventArgs e)
         {
-           // OpenForm(typeof(frmCookbookList));
+            OpenMdiChildFormFromButton(typeof(frmCookbookList));
         }
 
         private void BtnMealList_Click(object? sender, EventArgs e)
         {
-           // OpenForm(typeof(frmMealList));
+            OpenMdiChildFormFromButton(typeof(frmMealList));
         }
 
         private void BtnRecipeList_Click(object? sender, EventArgs e)
         {
-          //  OpenForm(typeof(frmRecipeList));
+            OpenMdiChildFormFromButton(typeof(frmRecipeList));
         }
 
 

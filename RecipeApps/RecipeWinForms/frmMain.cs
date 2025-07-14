@@ -62,6 +62,7 @@
                 {
                     frmCookbook f = new();
                     newfrm = f;
+                    f.LoadCookbookForm(pkvalue);
                 }
                 else if (frmtype == typeof(frmDataMaintenance))
                 {
@@ -73,8 +74,8 @@
 
                 newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
-                newfrm.FormClosed += Newfrm_FormClosed; ;
-                newfrm.TextChanged += Newfrm_TextChanged; ;
+                newfrm.FormClosed += Newfrm_FormClosed; 
+                newfrm.TextChanged += Newfrm_TextChanged;
                 newfrm.Show();
             }
             WindowsFormUtility.SetupNav(tsMain);
