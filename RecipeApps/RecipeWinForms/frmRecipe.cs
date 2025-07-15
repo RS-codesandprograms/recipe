@@ -16,17 +16,18 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
-            btnDelete.Click += BtnDelete_Click;;
+            btnDelete.Click += BtnDelete_Click; ;
 
         }
 
 
 
-        public void LoadRecipeForm(int RecipeID)
+        public void LoadRecipeForm(int RecipeId)
         {
-            dtRecipe = Recipe.Load(RecipeID);
-            bindsource.DataSource = dtRecipe; 
-            if (RecipeID == 0)
+            this.Tag = RecipeId;
+            dtRecipe = Recipe.Load(RecipeId);
+            bindsource.DataSource = dtRecipe;
+            if (RecipeId == 0)
             {
                 dtRecipe.Rows.Add();
             }
@@ -43,26 +44,35 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
             WindowsFormUtility.SetControlBinding(lblRecipePicture, bindsource);
-           
+
 
             if (txtDraftDate.Text == "")
             {
                 txtDraftDate.Text = DateTime.Now.ToString();
             }
-         //  string title = '';
-           //SqlCommand cmd =  SQLUtility.GetSQLCommand("RecipeDesc");
-           //this.Text =  SQLUtility.ExecuteSQL(cmd);
 
 
-            this.Show();
+            this.Text = GetRecipeDesc();
+           
 
+        }
+
+        private string GetRecipeDesc()
+        {
+            string value = "New Recipe";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+            if (pkvalue > 0)
+            {
+                value = SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+            }
+            return value;
         }
 
         private void Save()
         {
             Application.UseWaitCursor = true;
             try
-            { 
+            {
                 Recipe.Save(dtRecipe);
                 bindsource.ResetBindings(false);
             }
@@ -74,7 +84,7 @@ namespace RecipeWinForms
             {
                 Application.UseWaitCursor = false;
             }
-           
+
         }
 
 
@@ -97,7 +107,7 @@ namespace RecipeWinForms
             }
             finally
             {
-                Application.UseWaitCursor = false; 
+                Application.UseWaitCursor = false;
             }
         }
 
@@ -112,6 +122,6 @@ namespace RecipeWinForms
             Save();
         }
 
-
+       
     }
 }

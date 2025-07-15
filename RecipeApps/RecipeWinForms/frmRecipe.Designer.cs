@@ -83,7 +83,7 @@
             tblMain.Location = new Point(0, 69);
             tblMain.Margin = new Padding(2, 3, 2, 3);
             tblMain.Name = "tblMain";
-            tblMain.RowCount = 9;
+            tblMain.RowCount = 10;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.11111F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.11111F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.11111F));
@@ -93,19 +93,20 @@
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.11111F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.11111F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.11111F));
-            tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 13F));
-            tblMain.Size = new Size(534, 385);
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tblMain.Size = new Size(534, 585);
             tblMain.TabIndex = 0;
             // 
             // lblRecipePicture
             // 
             lblRecipePicture.AutoSize = true;
-            lblRecipePicture.BackColor = SystemColors.Window;
+            lblRecipePicture.BackColor = Color.White;
             lblRecipePicture.BorderStyle = BorderStyle.Fixed3D;
             lblRecipePicture.Dock = DockStyle.Fill;
-            lblRecipePicture.Location = new Point(270, 336);
+            lblRecipePicture.Location = new Point(270, 492);
+            lblRecipePicture.Margin = new Padding(3, 4, 3, 4);
             lblRecipePicture.Name = "lblRecipePicture";
-            lblRecipePicture.Size = new Size(261, 49);
+            lblRecipePicture.Size = new Size(261, 53);
             lblRecipePicture.TabIndex = 8;
             lblRecipePicture.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -113,9 +114,9 @@
             // 
             lblCaptionCuisineName.Anchor = AnchorStyles.Left;
             lblCaptionCuisineName.AutoSize = true;
-            lblCaptionCuisineName.BackColor = SystemColors.Window;
+            lblCaptionCuisineName.BackColor = SystemColors.Control;
             lblCaptionCuisineName.ForeColor = SystemColors.WindowText;
-            lblCaptionCuisineName.Location = new Point(2, 91);
+            lblCaptionCuisineName.Location = new Point(2, 138);
             lblCaptionCuisineName.Margin = new Padding(2, 0, 2, 0);
             lblCaptionCuisineName.Name = "lblCaptionCuisineName";
             lblCaptionCuisineName.Size = new Size(131, 28);
@@ -126,9 +127,9 @@
             // 
             lblCaptionUserName.Anchor = AnchorStyles.Left;
             lblCaptionUserName.AutoSize = true;
-            lblCaptionUserName.BackColor = SystemColors.Window;
+            lblCaptionUserName.BackColor = SystemColors.Control;
             lblCaptionUserName.ForeColor = SystemColors.WindowText;
-            lblCaptionUserName.Location = new Point(2, 49);
+            lblCaptionUserName.Location = new Point(2, 77);
             lblCaptionUserName.Margin = new Padding(2, 0, 2, 0);
             lblCaptionUserName.Name = "lblCaptionUserName";
             lblCaptionUserName.Size = new Size(108, 28);
@@ -137,7 +138,7 @@
             // 
             // txtRecipeName
             // 
-            txtRecipeName.BackColor = SystemColors.Window;
+            txtRecipeName.BackColor = Color.White;
             txtRecipeName.Dock = DockStyle.Fill;
             txtRecipeName.Location = new Point(269, 3);
             txtRecipeName.Margin = new Padding(2, 3, 2, 3);
@@ -149,9 +150,9 @@
             // 
             lblCaptionRecipePicture.Anchor = AnchorStyles.Left;
             lblCaptionRecipePicture.AutoSize = true;
-            lblCaptionRecipePicture.BackColor = SystemColors.Window;
+            lblCaptionRecipePicture.BackColor = SystemColors.Control;
             lblCaptionRecipePicture.ForeColor = SystemColors.WindowText;
-            lblCaptionRecipePicture.Location = new Point(2, 346);
+            lblCaptionRecipePicture.Location = new Point(2, 504);
             lblCaptionRecipePicture.Margin = new Padding(2, 0, 2, 0);
             lblCaptionRecipePicture.Name = "lblCaptionRecipePicture";
             lblCaptionRecipePicture.Size = new Size(72, 28);
@@ -162,9 +163,9 @@
             // 
             lblCaptionCurrentStatus.Anchor = AnchorStyles.Left;
             lblCaptionCurrentStatus.AutoSize = true;
-            lblCaptionCurrentStatus.BackColor = SystemColors.Window;
+            lblCaptionCurrentStatus.BackColor = SystemColors.Control;
             lblCaptionCurrentStatus.ForeColor = SystemColors.WindowText;
-            lblCaptionCurrentStatus.Location = new Point(2, 301);
+            lblCaptionCurrentStatus.Location = new Point(2, 443);
             lblCaptionCurrentStatus.Margin = new Padding(2, 0, 2, 0);
             lblCaptionCurrentStatus.Name = "lblCaptionCurrentStatus";
             lblCaptionCurrentStatus.Size = new Size(135, 28);
@@ -175,9 +176,9 @@
             // 
             lblCaptionArchivedDate.Anchor = AnchorStyles.Left;
             lblCaptionArchivedDate.AutoSize = true;
-            lblCaptionArchivedDate.BackColor = SystemColors.Window;
+            lblCaptionArchivedDate.BackColor = SystemColors.Control;
             lblCaptionArchivedDate.ForeColor = SystemColors.WindowText;
-            lblCaptionArchivedDate.Location = new Point(2, 259);
+            lblCaptionArchivedDate.Location = new Point(2, 382);
             lblCaptionArchivedDate.Margin = new Padding(2, 0, 2, 0);
             lblCaptionArchivedDate.Name = "lblCaptionArchivedDate";
             lblCaptionArchivedDate.Size = new Size(135, 28);
@@ -188,9 +189,9 @@
             // 
             lblCaptionPublishedDate.Anchor = AnchorStyles.Left;
             lblCaptionPublishedDate.AutoSize = true;
-            lblCaptionPublishedDate.BackColor = SystemColors.Window;
+            lblCaptionPublishedDate.BackColor = SystemColors.Control;
             lblCaptionPublishedDate.ForeColor = SystemColors.WindowText;
-            lblCaptionPublishedDate.Location = new Point(2, 217);
+            lblCaptionPublishedDate.Location = new Point(2, 321);
             lblCaptionPublishedDate.Margin = new Padding(2, 0, 2, 0);
             lblCaptionPublishedDate.Name = "lblCaptionPublishedDate";
             lblCaptionPublishedDate.Size = new Size(143, 28);
@@ -201,9 +202,9 @@
             // 
             lblCaptionDraftDate.Anchor = AnchorStyles.Left;
             lblCaptionDraftDate.AutoSize = true;
-            lblCaptionDraftDate.BackColor = SystemColors.Window;
+            lblCaptionDraftDate.BackColor = SystemColors.Control;
             lblCaptionDraftDate.ForeColor = SystemColors.WindowText;
-            lblCaptionDraftDate.Location = new Point(2, 175);
+            lblCaptionDraftDate.Location = new Point(2, 260);
             lblCaptionDraftDate.Margin = new Padding(2, 0, 2, 0);
             lblCaptionDraftDate.Name = "lblCaptionDraftDate";
             lblCaptionDraftDate.Size = new Size(102, 28);
@@ -214,9 +215,9 @@
             // 
             lblCaptionCalories.Anchor = AnchorStyles.Left;
             lblCaptionCalories.AutoSize = true;
-            lblCaptionCalories.BackColor = SystemColors.Window;
+            lblCaptionCalories.BackColor = SystemColors.Control;
             lblCaptionCalories.ForeColor = SystemColors.WindowText;
-            lblCaptionCalories.Location = new Point(2, 133);
+            lblCaptionCalories.Location = new Point(2, 199);
             lblCaptionCalories.Margin = new Padding(2, 0, 2, 0);
             lblCaptionCalories.Name = "lblCaptionCalories";
             lblCaptionCalories.Size = new Size(81, 28);
@@ -225,9 +226,9 @@
             // 
             // txtArchivedDate
             // 
-            txtArchivedDate.BackColor = SystemColors.Window;
+            txtArchivedDate.BackColor = Color.White;
             txtArchivedDate.Dock = DockStyle.Fill;
-            txtArchivedDate.Location = new Point(269, 255);
+            txtArchivedDate.Location = new Point(269, 369);
             txtArchivedDate.Margin = new Padding(2, 3, 2, 3);
             txtArchivedDate.Name = "txtArchivedDate";
             txtArchivedDate.Size = new Size(263, 34);
@@ -235,9 +236,9 @@
             // 
             // txtPublishedDate
             // 
-            txtPublishedDate.BackColor = SystemColors.Window;
+            txtPublishedDate.BackColor = Color.White;
             txtPublishedDate.Dock = DockStyle.Fill;
-            txtPublishedDate.Location = new Point(269, 213);
+            txtPublishedDate.Location = new Point(269, 308);
             txtPublishedDate.Margin = new Padding(2, 3, 2, 3);
             txtPublishedDate.Name = "txtPublishedDate";
             txtPublishedDate.Size = new Size(263, 34);
@@ -245,9 +246,9 @@
             // 
             // txtDraftDate
             // 
-            txtDraftDate.BackColor = SystemColors.Window;
+            txtDraftDate.BackColor = Color.White;
             txtDraftDate.Dock = DockStyle.Fill;
-            txtDraftDate.Location = new Point(269, 171);
+            txtDraftDate.Location = new Point(269, 247);
             txtDraftDate.Margin = new Padding(2, 3, 2, 3);
             txtDraftDate.Name = "txtDraftDate";
             txtDraftDate.ReadOnly = true;
@@ -256,9 +257,9 @@
             // 
             // txtCalories
             // 
-            txtCalories.BackColor = SystemColors.Window;
+            txtCalories.BackColor = Color.White;
             txtCalories.Dock = DockStyle.Fill;
-            txtCalories.Location = new Point(269, 129);
+            txtCalories.Location = new Point(269, 186);
             txtCalories.Margin = new Padding(2, 3, 2, 3);
             txtCalories.Name = "txtCalories";
             txtCalories.Size = new Size(263, 34);
@@ -267,19 +268,21 @@
             // lblCurrentStatus
             // 
             lblCurrentStatus.AutoSize = true;
-            lblCurrentStatus.BackColor = SystemColors.Window;
+            lblCurrentStatus.BackColor = Color.White;
             lblCurrentStatus.BorderStyle = BorderStyle.Fixed3D;
             lblCurrentStatus.Dock = DockStyle.Fill;
-            lblCurrentStatus.Location = new Point(270, 294);
+            lblCurrentStatus.Location = new Point(270, 431);
+            lblCurrentStatus.Margin = new Padding(3, 4, 3, 4);
             lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(261, 42);
+            lblCurrentStatus.Size = new Size(261, 53);
             lblCurrentStatus.TabIndex = 7;
             lblCurrentStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lstCuisineName
             // 
+            lstCuisineName.BackColor = Color.White;
             lstCuisineName.FormattingEnabled = true;
-            lstCuisineName.Location = new Point(270, 88);
+            lstCuisineName.Location = new Point(270, 126);
             lstCuisineName.Margin = new Padding(3, 4, 3, 4);
             lstCuisineName.Name = "lstCuisineName";
             lstCuisineName.Size = new Size(138, 36);
@@ -287,8 +290,9 @@
             // 
             // lstUserName
             // 
+            lstUserName.BackColor = Color.White;
             lstUserName.FormattingEnabled = true;
-            lstUserName.Location = new Point(269, 45);
+            lstUserName.Location = new Point(269, 64);
             lstUserName.Margin = new Padding(2, 3, 2, 3);
             lstUserName.Name = "lstUserName";
             lstUserName.Size = new Size(142, 36);
@@ -298,9 +302,9 @@
             // 
             lblCaptionRecipeName.Anchor = AnchorStyles.Left;
             lblCaptionRecipeName.AutoSize = true;
-            lblCaptionRecipeName.BackColor = SystemColors.Window;
+            lblCaptionRecipeName.BackColor = SystemColors.Control;
             lblCaptionRecipeName.ForeColor = SystemColors.WindowText;
-            lblCaptionRecipeName.Location = new Point(2, 7);
+            lblCaptionRecipeName.Location = new Point(2, 16);
             lblCaptionRecipeName.Margin = new Padding(2, 0, 2, 0);
             lblCaptionRecipeName.Name = "lblCaptionRecipeName";
             lblCaptionRecipeName.Size = new Size(126, 28);
@@ -349,7 +353,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Window;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(534, 655);
             Controls.Add(tsMain);
             Controls.Add(tblMain);
