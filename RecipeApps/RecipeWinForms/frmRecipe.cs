@@ -39,21 +39,20 @@ namespace RecipeWinForms
             WindowsFormUtility.SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
             WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormUtility.SetControlBinding(txtCalories, bindsource);
-            WindowsFormUtility.SetControlBinding(txtDraftDate, bindsource);
-            WindowsFormUtility.SetControlBinding(txtPublishedDate, bindsource);
-            WindowsFormUtility.SetControlBinding(txtArchivedDate, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDraftDate, bindsource);
+            WindowsFormUtility.SetControlBinding(lblPublishedDate, bindsource);
+            WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
-            WindowsFormUtility.SetControlBinding(lblRecipePicture, bindsource);
+            
 
-
-            if (txtDraftDate.Text == "")
+            if (lblDraftDate.Text == "")
             {
-                txtDraftDate.Text = DateTime.Now.ToString();
+                lblDraftDate.Text = DateTime.Now.ToString();
             }
 
 
             this.Text = GetRecipeDesc();
-           
+
 
         }
 
@@ -122,6 +121,6 @@ namespace RecipeWinForms
             Save();
         }
 
-       
+
     }
 }
