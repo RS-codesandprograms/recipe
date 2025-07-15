@@ -29,7 +29,7 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            gCookbookList.DataSource = ListManager.GetList("CookbookSummary", false);
+            gCookbookList.DataSource = ListManager.GetList("CookbookSummary", false, false);
             WindowsFormUtility.FormatGridForSearchResults(gCookbookList, "Cookbook");
         }
 

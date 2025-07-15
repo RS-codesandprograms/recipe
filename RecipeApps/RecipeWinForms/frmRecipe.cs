@@ -9,22 +9,27 @@ namespace RecipeWinForms
 
     public partial class frmRecipe : Form
     {
-        public DataTable dtRecipe = new DataTable();
+        DataTable dtRecipe = new DataTable();
+        DataTable dtRecipeIngredient = new DataTable();
+        DataTable dtRecipeDirection = new DataTable();
+        int recipeid = 0;
         BindingSource bindsource = new BindingSource();
+        string deletecolname = "deletecol";
 
         public frmRecipe()
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click; ;
-
+            
         }
 
-
+       
 
         public void LoadRecipeForm(int RecipeId)
         {
-            this.Tag = RecipeId;
+            recipeid = RecipeId; 
+            this.Tag = recipeid;
             dtRecipe = Recipe.Load(RecipeId);
             bindsource.DataSource = dtRecipe;
             if (RecipeId == 0)
@@ -50,12 +55,42 @@ namespace RecipeWinForms
                 lblDraftDate.Text = DateTime.Now.ToString();
             }
 
-
             this.Text = GetRecipeDesc();
-
+            this.Shown += FrmRecipe_Shown;
 
         }
 
+        private void FrmRecipe_Shown(object? sender, EventArgs e)
+        {
+            LoadRecipeIngredients();
+            
+        }
+
+        private void LoadRecipeIngredients()
+        {
+            dtRecipeIngredient = FormRecordManager.GetChildRecords("RecipeIngredient", "Recipe", recipeid);
+            gIngredients.Columns.Clear();
+            gIngredients.DataSource = dtRecipeIngredient;
+             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
+             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType"), "MeasurementType", "MeasurementName");
+            WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
+            //handel grid column header names
+            WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
+
+
+        }
+/*
+ * 
+        private void LoadPresidentMedals()
+        {
+            dtpresidentmedal = PresidentMedal.LoadByPresidentId(presidentid);
+            gMedal.Columns.Clear();
+            gMedal.DataSource = dtpresidentmedal;
+            WindowsFormUtility.AddComboBoxToGrid(gMedal, DataMaintenance.GetDataList("Medal"), "Medal", "MedalName");
+            WindowsFormUtility.AddDeleteButtonToGrid(gMedal, deletecolname);
+            WindowsFormUtility.FormatGridForEdit(gMedal, "PresidentMedal");
+        }
+        */
         private string GetRecipeDesc()
         {
             string value = "New Recipe";

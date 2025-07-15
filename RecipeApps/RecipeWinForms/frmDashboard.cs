@@ -30,7 +30,7 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            gSummary.DataSource = ListManager.GetList("Summary", false);
+            gSummary.DataSource = ListManager.GetList("Summary", false, false);
             WindowsFormUtility.FormatGridForSearchResults(gSummary, "Summary");
         }
 

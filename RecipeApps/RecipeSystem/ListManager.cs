@@ -3,7 +3,7 @@ namespace RecipeSystem
 {
     public class ListManager
     {
-        public static DataTable GetList(string tablename, bool all = true, bool includeblank = false)
+        public static DataTable GetList(string tablename, bool includeblank = false, bool all = true)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand(tablename + "Get");
             if (all) { SQLUtility.SetParamValue(cmd, "@All", 1); }

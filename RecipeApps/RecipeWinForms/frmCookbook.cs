@@ -38,7 +38,7 @@ namespace RecipeWinForms
             bindsource.DataSource = dtcookbook;
             if (cookbookid == 0)
             { dtcookbook.Rows.Add(); }
-            DataTable dtstaff = ListManager.GetList("Staff",true, true);
+            DataTable dtstaff = ListManager.GetList("Staff",true);
             WindowsFormUtility.SetListBinding(lstUserName, dtstaff, dtcookbook, "Staff");
 
             WindowsFormUtility.SetControlBinding(txtCookbookName, bindsource);

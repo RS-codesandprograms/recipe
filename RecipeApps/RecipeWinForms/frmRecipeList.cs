@@ -28,7 +28,7 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            gRecipeList.DataSource = ListManager.GetList("RecipeSummary", false);
+            gRecipeList.DataSource = ListManager.GetList("RecipeSummary", false, false);
             WindowsFormUtility.FormatGridForSearchResults(gRecipeList, "Recipe");
         }
 
