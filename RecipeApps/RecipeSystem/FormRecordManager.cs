@@ -18,13 +18,13 @@ namespace RecipeSystem
         }
 
 
-        public static void SaveTable(DataTable dt, string tablename, int pkvalue)
+        public static void SaveTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
         {
             foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
             {
-                r[$"{tablename}Id"] = pkvalue;
+                r[$"{parenttablename}Id"] = pkvalue;
             }
-            SQLUtility.SaveDataTable(dt, tablename + "Update");
+            SQLUtility.SaveDataTable(dt, childtablename + "Update");
         }
         /*
         public static void SaveTable(DataTable dt, string tablename, int presidentid)
@@ -35,12 +35,13 @@ namespace RecipeSystem
             }
             SQLUtility.SaveDataTable(dt, tablename + "Update");
         }
+         PresidentMedal.SaveTable(dtpresidentmedal, "PresidentMedal", presidentid);
 
         */
-        public static void Delete(int presidentmedalid)
+        public static void Delete( string childtablename, int childtableid)
         {
-            SqlCommand cmd = SQLUtility.GetSQLCommand("PresidentMedalDelete");
-            cmd.Parameters["@PresidentMedalId"].Value = presidentmedalid;
+            SqlCommand cmd = SQLUtility.GetSQLCommand($"{childtablename}Delete");
+            cmd.Parameters[$"@{childtablename}Id"].Value = childtableid;
             SQLUtility.ExecuteSQL(cmd);
         }
 

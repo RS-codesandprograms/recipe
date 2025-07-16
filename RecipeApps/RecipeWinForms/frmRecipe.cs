@@ -1,7 +1,6 @@
 ﻿
 using CPUFramework;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace RecipeWinForms
 {
@@ -26,39 +25,12 @@ namespace RecipeWinForms
             btnSaveSteps.Click += BtnSaveSteps_Click;
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
-            
-        }
 
-        private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
-        {
-            throw new NotImplementedException();
         }
-
-        private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnSaveSteps_Click(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnSaveIngredients_Click(object? sender, EventArgs e)
-        {
-          //  FormRecordManager.SaveTable(dtRecipeIngredient, "Recipe", recipeid);
-        }
-        //PresidentMedal.SaveTable(dtpresidentmedal, "PresidentMedal", presidentid);
-      
 
         public void LoadRecipeForm(int RecipeId)
         {
-            recipeid = RecipeId; 
+            recipeid = RecipeId;
             this.Tag = recipeid;
             dtRecipe = Recipe.Load(RecipeId);
             bindsource.DataSource = dtRecipe;
@@ -94,8 +66,14 @@ namespace RecipeWinForms
         {
             LoadRecipeIngredients();
             LoadRecipeDirections();
-            
+
         }
+
+        private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
 
         private void LoadRecipeDirections()
         {
@@ -111,16 +89,68 @@ namespace RecipeWinForms
             dtRecipeIngredient = FormRecordManager.GetChildRecords("RecipeIngredient", "Recipe", recipeid);
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
-             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
-             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
-           // dtRecipeIngredient.Columns["MeasurementTypeId"].AllowDBNull = true;
+            WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
+            WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
+            // dtRecipeIngredient.Columns["MeasurementTypeId"].AllowDBNull = true;
             WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
             //handel grid column header names
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
 
 
         }
-       
+
+        //Fix: 
+        private void SaveRecipeIngredients()
+        {
+
+            try
+            {
+                FormRecordManager.SaveTable(dtRecipeIngredient, "Recipe", "RecipeIngredient", recipeid);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
+
+        private void SaveRecipeDirections()
+        {
+            try
+            {
+
+                FormRecordManager.SaveTable(dtRecipeDirection, "Recipe", "RecipeDirection", recipeid);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
+
+        private void DeleteRecipeIngredients(int rowindex)
+        {
+            int id = WindowsFormUtility.GetIdFromGrid(gIngredients, rowindex, "RecipeIngredientId");
+            if (id > 0)
+            {
+                try {
+                    FormRecordManager.Delete("RecipeIngredient", id);
+                    LoadRecipeIngredients();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+            }
+            else if (id < gIngredients.Rows.Count)
+            {
+                gIngredients.Rows.RemoveAt(rowindex);
+            }
+        }
+
+        private void DeleteRecipeDirections()
+        {
+
+        }
+
         private string GetRecipeDesc()
         {
             string value = "New Recipe";
@@ -137,8 +167,8 @@ namespace RecipeWinForms
             bool b = recipeid == 0 ? false : true;
             btnDelete.Enabled = b;
             btnSaveIngredients.Enabled = b;
-            btnSaveSteps.Enabled = b; 
-            
+            btnSaveSteps.Enabled = b;
+
         }
         private void Save()
         {
@@ -193,7 +223,24 @@ namespace RecipeWinForms
         {
             Save();
         }
+        private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
+        private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            DeleteRecipeIngredients(e.RowIndex);
+        }
 
+        private void BtnSaveSteps_Click(object? sender, EventArgs e)
+        {
+            SaveRecipeDirections();
+        }
+
+        private void BtnSaveIngredients_Click(object? sender, EventArgs e)
+        {
+            SaveRecipeIngredients();
+        }
     }
 }
