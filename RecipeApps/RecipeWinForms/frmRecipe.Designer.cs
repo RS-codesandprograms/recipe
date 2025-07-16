@@ -54,7 +54,7 @@
             gIngredients = new DataGridView();
             tbSteps = new TabPage();
             tblSteps = new TableLayoutPanel();
-            tblSaveSteps = new Button();
+            btnSaveSteps = new Button();
             gSteps = new DataGridView();
             tsMain = new ToolStrip();
             btnSave = new ToolStripButton();
@@ -418,7 +418,7 @@
             // 
             tblSteps.ColumnCount = 1;
             tblSteps.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblSteps.Controls.Add(tblSaveSteps, 0, 0);
+            tblSteps.Controls.Add(btnSaveSteps, 0, 0);
             tblSteps.Controls.Add(gSteps, 0, 1);
             tblSteps.Dock = DockStyle.Fill;
             tblSteps.Location = new Point(3, 3);
@@ -429,14 +429,14 @@
             tblSteps.Size = new Size(515, 291);
             tblSteps.TabIndex = 0;
             // 
-            // tblSaveSteps
+            // btnSaveSteps
             // 
-            tblSaveSteps.Location = new Point(3, 3);
-            tblSaveSteps.Name = "tblSaveSteps";
-            tblSaveSteps.Size = new Size(106, 39);
-            tblSaveSteps.TabIndex = 0;
-            tblSaveSteps.Text = "Save";
-            tblSaveSteps.UseVisualStyleBackColor = true;
+            btnSaveSteps.Location = new Point(3, 3);
+            btnSaveSteps.Name = "btnSaveSteps";
+            btnSaveSteps.Size = new Size(106, 39);
+            btnSaveSteps.TabIndex = 0;
+            btnSaveSteps.Text = "Save";
+            btnSaveSteps.UseVisualStyleBackColor = true;
             // 
             // gSteps
             // 
@@ -558,7 +558,7 @@
         private Button btnSaveIngredients;
         private DataGridView gIngredients;
         private TableLayoutPanel tblSteps;
-        private Button tblSaveSteps;
+        private Button btnSaveSteps;
         private DataGridView gSteps;
     }
 }

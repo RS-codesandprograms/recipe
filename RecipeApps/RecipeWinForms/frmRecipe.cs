@@ -20,11 +20,41 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
-            btnDelete.Click += BtnDelete_Click; ;
+            btnDelete.Click += BtnDelete_Click;
+            this.FormClosing += FrmRecipe_FormClosing;
+            btnSaveIngredients.Click += BtnSaveIngredients_Click;
+            btnSaveSteps.Click += BtnSaveSteps_Click;
+            gIngredients.CellContentClick += GIngredients_CellContentClick;
+            gSteps.CellContentClick += GSteps_CellContentClick;
             
         }
 
-       
+        private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnSaveSteps_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnSaveIngredients_Click(object? sender, EventArgs e)
+        {
+          //  FormRecordManager.SaveTable(dtRecipeIngredient, "Recipe", recipeid);
+        }
+        //PresidentMedal.SaveTable(dtpresidentmedal, "PresidentMedal", presidentid);
+      
 
         public void LoadRecipeForm(int RecipeId)
         {
@@ -48,14 +78,14 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblPublishedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
-            
 
+            //Should if statement be if recipe id is -- 0? make sure shows on form 
             if (lblDraftDate.Text == "")
             {
                 lblDraftDate.Text = DateTime.Now.ToString();
             }
-
             this.Text = GetRecipeDesc();
+            SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmRecipe_Shown;
 
         }
@@ -63,7 +93,17 @@ namespace RecipeWinForms
         private void FrmRecipe_Shown(object? sender, EventArgs e)
         {
             LoadRecipeIngredients();
+            LoadRecipeDirections();
             
+        }
+
+        private void LoadRecipeDirections()
+        {
+            dtRecipeDirection = FormRecordManager.GetChildRecords("RecipeDirection", "Recipe", recipeid);
+            gSteps.Columns.Clear();
+            gSteps.DataSource = dtRecipeDirection;
+            WindowsFormUtility.AddDeleteButtonToGrid(gSteps, deletecolname);
+            WindowsFormUtility.FormatGridForEdit(gSteps, "RecipeDirection");
         }
 
         private void LoadRecipeIngredients()
@@ -72,25 +112,15 @@ namespace RecipeWinForms
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
              WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
-             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType"), "MeasurementType", "MeasurementName");
+             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
+           // dtRecipeIngredient.Columns["MeasurementTypeId"].AllowDBNull = true;
             WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
             //handel grid column header names
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
 
 
         }
-/*
- * 
-        private void LoadPresidentMedals()
-        {
-            dtpresidentmedal = PresidentMedal.LoadByPresidentId(presidentid);
-            gMedal.Columns.Clear();
-            gMedal.DataSource = dtpresidentmedal;
-            WindowsFormUtility.AddComboBoxToGrid(gMedal, DataMaintenance.GetDataList("Medal"), "Medal", "MedalName");
-            WindowsFormUtility.AddDeleteButtonToGrid(gMedal, deletecolname);
-            WindowsFormUtility.FormatGridForEdit(gMedal, "PresidentMedal");
-        }
-        */
+       
         private string GetRecipeDesc()
         {
             string value = "New Recipe";
@@ -102,6 +132,14 @@ namespace RecipeWinForms
             return value;
         }
 
+        private void SetButtonsEnabledBasedOnNewRecord()
+        {
+            bool b = recipeid == 0 ? false : true;
+            btnDelete.Enabled = b;
+            btnSaveIngredients.Enabled = b;
+            btnSaveSteps.Enabled = b; 
+            
+        }
         private void Save()
         {
             Application.UseWaitCursor = true;
