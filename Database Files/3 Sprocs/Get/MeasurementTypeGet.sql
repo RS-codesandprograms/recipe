@@ -15,7 +15,7 @@ begin
 	from MeasurementType m
 	where m.MeasurementTypeId = @MeasurementTypeId
 	or @All = 1
-	union select 0, ''
+	union select 0, ' '
 	where @IncludeBlank = 1
 	order by m.MeasurementTypeID
 
