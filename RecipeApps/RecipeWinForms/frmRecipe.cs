@@ -51,12 +51,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
 
-            //Should if statement be if recipe id is -- 0? make sure shows on form 
-           // if (lblDraftDate.Text == "")
-           if (recipeid == 0)
-            {
-                lblDraftDate.Text = DateTime.Now.ToString();
-            }
+           
             this.Text = GetRecipeDesc();
             SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmRecipe_Shown;
@@ -65,6 +60,11 @@ namespace RecipeWinForms
 
         private void FrmRecipe_Shown(object? sender, EventArgs e)
         {
+            if (lblDraftDate.Text == "")
+           
+            {
+                lblDraftDate.Text = DateTime.Now.ToString();
+            }
             LoadRecipeIngredients();
             LoadRecipeDirections();
 
