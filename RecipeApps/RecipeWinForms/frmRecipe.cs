@@ -52,7 +52,8 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
 
             //Should if statement be if recipe id is -- 0? make sure shows on form 
-            if (lblDraftDate.Text == "")
+           // if (lblDraftDate.Text == "")
+           if (recipeid == 0)
             {
                 lblDraftDate.Text = DateTime.Now.ToString();
             }
