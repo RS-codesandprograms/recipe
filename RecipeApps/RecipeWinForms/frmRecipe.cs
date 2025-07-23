@@ -20,6 +20,7 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
+            btnChangeStatus.Click += BtnChangeStatus_Click;
             this.FormClosing += FrmRecipe_FormClosing;
             btnSaveIngredients.Click += BtnSaveIngredients_Click;
             btnSaveSteps.Click += BtnSaveSteps_Click;
@@ -27,6 +28,8 @@ namespace RecipeWinForms
             gSteps.CellContentClick += GSteps_CellContentClick;
 
         }
+
+       
 
         public void LoadRecipeForm(int RecipeId)
         {
@@ -163,7 +166,7 @@ namespace RecipeWinForms
                 gIngredients.Rows.RemoveAt(rowindex);
             }
         }
-
+        
         private void DeleteRecipeDirections()
         {
 
@@ -239,6 +242,17 @@ namespace RecipeWinForms
             }
         }
 
+        public void LoadChangeStatus()
+        {
+            if (recipeid > -1)
+            {
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmChangeStatus), recipeid);
+                }
+            }
+
+        }
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
             Delete();
@@ -249,6 +263,14 @@ namespace RecipeWinForms
         {
             Save();
         }
+
+        private void BtnChangeStatus_Click(object? sender, EventArgs e)
+        {
+            LoadChangeStatus();
+        }
+
+
+       
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             throw new NotImplementedException();

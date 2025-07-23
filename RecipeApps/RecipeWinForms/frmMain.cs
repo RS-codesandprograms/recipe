@@ -47,6 +47,12 @@
                     frmRecipe f = new();
                     newfrm = f;
                     f.LoadRecipeForm(pkvalue);
+                    
+                }
+                else if (frmtype == typeof(frmChangeStatus))
+                {
+                    frmChangeStatus f = new();
+                    newfrm = f;
                 }
                 else if (frmtype == typeof(frmMealList))
                 {
