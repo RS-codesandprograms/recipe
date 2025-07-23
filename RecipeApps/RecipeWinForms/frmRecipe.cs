@@ -72,9 +72,28 @@ namespace RecipeWinForms
 
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            throw new NotImplementedException();
+            bindsource.EndEdit();
+            if(SQLUtility.DoesTableHasChanges(dtRecipe))
+            {
+                var response = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
+                switch (response) 
+                
+               {
+                    case DialogResult.Yes:
+                        bool b = Save();
+                        if (b == false)
+                        { e.Cancel = true;
+                            this.Activate();
+                        }
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        this.Activate();
+                        break; 
+                }
+            }
         }
-
+      
 
         private void LoadRecipeDirections()
         {
@@ -92,15 +111,13 @@ namespace RecipeWinForms
             gIngredients.DataSource = dtRecipeIngredient;
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
-            // dtRecipeIngredient.Columns["MeasurementTypeId"].AllowDBNull = true;
             WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
-            //handel grid column header names
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
 
 
         }
 
-        //Fix: 
+ 
         private void SaveRecipeIngredients()
         {
 
@@ -171,13 +188,19 @@ namespace RecipeWinForms
             btnSaveSteps.Enabled = b;
 
         }
-        private void Save()
+        private bool Save()
         {
+            bool b = false;
             Application.UseWaitCursor = true;
             try
             {
                 Recipe.Save(dtRecipe);
                 bindsource.ResetBindings(false);
+                recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+                this.Tag = recipeid;
+                this.Text = GetRecipeDesc();
+                SetButtonsEnabledBasedOnNewRecord();
+                
             }
             catch (Exception ex)
             {
@@ -186,9 +209,11 @@ namespace RecipeWinForms
             finally
             {
                 Application.UseWaitCursor = false;
+                
             }
-
+            return b;
         }
+
 
 
         private void Delete()

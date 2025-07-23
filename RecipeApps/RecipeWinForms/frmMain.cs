@@ -135,7 +135,7 @@
 
         private void MnuRecipeNew_Click(object? sender, EventArgs e)
         {
-
+            OpenForm(typeof(frmRecipe));
         }
 
         private void MnuRecipeList_Click(object? sender, EventArgs e)

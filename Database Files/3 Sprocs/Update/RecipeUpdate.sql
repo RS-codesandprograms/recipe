@@ -4,7 +4,7 @@ create or alter proc dbo.RecipeUpdate(
 	@CuisineTypeID int,
 	@RecipeName varchar (50),
 	@Calories int,
-	@DraftDate datetime,
+	@DraftDate datetime output,
 	@PublishedDate datetime,
 	@ArchivedDate datetime,
 	@CurrentStatus varchar (9),

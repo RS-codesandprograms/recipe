@@ -10,7 +10,7 @@ begin
 	select  @RecipeDirectionId = isnull(@RecipeDirectionId,0), @RecipeId = isnull(@RecipeId,0)
 	
 	
-	select ri.Instruction, ri.DirectionSequence
+	select ri.RecipeID, ri.Instruction, ri.DirectionSequence
 	from RecipeDirection ri 
 	where ri.RecipeID = @RecipeId
 	order by ri.DirectionSequence
