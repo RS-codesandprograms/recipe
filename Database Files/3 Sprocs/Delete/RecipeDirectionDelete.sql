@@ -1,14 +1,14 @@
-create or alter procedure dbo.RecipeIngredientDelete(
-	@RecipeIngredientId int = 0,
+create or alter procedure dbo.RecipeDirectionDelete(
+	@RecipeDirectionId int = 0,
 	@Message varchar(500) = ''  output
 )
 as
 begin
 	declare @return int = 0
 
-	select @RecipeIngredientId = isnull(@RecipeIngredientId,0)
+	select @RecipeDirectionId = isnull(@RecipeDirectionId,0)
 
-	delete RecipeIngredient where RecipeIngredientId = @RecipeIngredientId
+	delete RecipeDirection where RecipeDirectionId = @RecipeDirectionId
 
 	return @return
 end

@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             tblChangeStatus = new TableLayoutPanel();
+            lblCurrentStatus = new Label();
             tblControls = new TableLayoutPanel();
             btnDraft = new Button();
             btnPublish = new Button();
             btnArchive = new Button();
             lblTitle = new Label();
-            lblCurrentStatus = new Label();
+            lblCurrentStatusText = new Label();
             lblDrafted = new Label();
             lblPublished = new Label();
             lblArchived = new Label();
@@ -54,9 +55,10 @@
             tblChangeStatus.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tblChangeStatus.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tblChangeStatus.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tblChangeStatus.Controls.Add(lblCurrentStatus, 2, 1);
             tblChangeStatus.Controls.Add(tblControls, 0, 4);
             tblChangeStatus.Controls.Add(lblTitle, 0, 0);
-            tblChangeStatus.Controls.Add(lblCurrentStatus, 0, 1);
+            tblChangeStatus.Controls.Add(lblCurrentStatusText, 0, 1);
             tblChangeStatus.Controls.Add(lblDrafted, 1, 2);
             tblChangeStatus.Controls.Add(lblPublished, 2, 2);
             tblChangeStatus.Controls.Add(lblArchived, 3, 2);
@@ -76,6 +78,18 @@
             tblChangeStatus.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tblChangeStatus.Size = new Size(674, 321);
             tblChangeStatus.TabIndex = 0;
+            // 
+            // lblCurrentStatus
+            // 
+            lblCurrentStatus.AutoSize = true;
+            tblChangeStatus.SetColumnSpan(lblCurrentStatus, 2);
+            lblCurrentStatus.Dock = DockStyle.Fill;
+            lblCurrentStatus.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCurrentStatus.Location = new Point(271, 53);
+            lblCurrentStatus.Name = "lblCurrentStatus";
+            lblCurrentStatus.Size = new Size(262, 53);
+            lblCurrentStatus.TabIndex = 10;
+            lblCurrentStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tblControls
             // 
@@ -154,18 +168,18 @@
             lblTitle.Text = "Recipe Name";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblCurrentStatus
+            // lblCurrentStatusText
             // 
-            lblCurrentStatus.AutoSize = true;
-            tblChangeStatus.SetColumnSpan(lblCurrentStatus, 5);
-            lblCurrentStatus.Dock = DockStyle.Fill;
-            lblCurrentStatus.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCurrentStatus.Location = new Point(3, 53);
-            lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(668, 53);
-            lblCurrentStatus.TabIndex = 2;
-            lblCurrentStatus.Text = "Current Status: ";
-            lblCurrentStatus.TextAlign = ContentAlignment.MiddleCenter;
+            lblCurrentStatusText.AutoSize = true;
+            tblChangeStatus.SetColumnSpan(lblCurrentStatusText, 2);
+            lblCurrentStatusText.Dock = DockStyle.Fill;
+            lblCurrentStatusText.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCurrentStatusText.Location = new Point(3, 53);
+            lblCurrentStatusText.Name = "lblCurrentStatusText";
+            lblCurrentStatusText.Size = new Size(262, 53);
+            lblCurrentStatusText.TabIndex = 2;
+            lblCurrentStatusText.Text = "Current Status:";
+            lblCurrentStatusText.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblDrafted
             // 
@@ -271,7 +285,7 @@
         private TableLayoutPanel tblChangeStatus;
         private TableLayoutPanel tblControls;
         private Label lblTitle;
-        private Label lblCurrentStatus;
+        private Label lblCurrentStatusText;
         private Label lblDrafted;
         private Label lblPublished;
         private Label lblArchived;
@@ -282,5 +296,6 @@
         private Button btnDraft;
         private Button btnPublish;
         private Button btnArchive;
+        private Label lblCurrentStatus;
     }
 }

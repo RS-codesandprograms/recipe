@@ -53,6 +53,7 @@
                 {
                     frmChangeStatus f = new();
                     newfrm = f;
+                    f.LoadChangeStatusForm(pkvalue);
                 }
                 else if (frmtype == typeof(frmMealList))
                 {

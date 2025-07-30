@@ -15,7 +15,7 @@ begin
 	from recipe r
 	join Staff s 
 	on r.StaffID = s.StaffID
-	join RecipeIngredient ri
+	left join RecipeIngredient ri
 	on r.RecipeID = ri.RecipeID
 	group by r.RecipeID, r.RecipeName, r.CurrentStatus, s.FirstName, s.LastName, r.Calories
 	order by r.CurrentStatus desc

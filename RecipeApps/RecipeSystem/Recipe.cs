@@ -31,10 +31,6 @@
             DataRow r = dtRecipe.Rows[0];
             SQLUtility.SaveDataRow(r, "RecipeUpdate");
             int id = (int)r["RecipeID"];
-
-           
-
-         
         }
 
 
