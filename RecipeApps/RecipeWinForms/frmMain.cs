@@ -71,6 +71,11 @@
                     newfrm = f;
                     f.LoadCookbookForm(pkvalue);
                 }
+                else if (frmtype == typeof(frmCookbookAutoCreate))
+                {
+                    frmCookbookAutoCreate f = new();
+                    newfrm = f; 
+                }
                 else if (frmtype == typeof(frmDataMaintenance))
                 {
                     frmDataMaintenance f = new();
@@ -117,7 +122,7 @@
 
         private void MnuCookbookAutoCreate_Click(object? sender, EventArgs e)
         {
-
+            OpenForm(typeof(frmCookbookAutoCreate));
         }
 
         private void MnuCookbookNew_Click(object? sender, EventArgs e)
