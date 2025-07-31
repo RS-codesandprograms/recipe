@@ -66,7 +66,6 @@ namespace RecipeWinForms
 
             {
                 lblDraftDate.Text = DateTime.Now.ToString();
-                lblCurrentStatus.Text = "Draft";
 
             }
 

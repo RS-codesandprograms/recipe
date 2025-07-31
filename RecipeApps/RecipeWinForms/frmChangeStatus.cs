@@ -46,6 +46,7 @@ namespace RecipeWinForms
         }
         private void UpdateRecipeStatus(string buttonname)
         {
+
             switch(buttonname)
             {
                 case "btnDraft":
@@ -59,8 +60,29 @@ namespace RecipeWinForms
                     lblArchivedDate.Text = DateTime.Now.ToString();
                     break;
                 }
-            
+        }
+
+
+        /* 
+           private void DeleteChildRecord(DataGridView grid,  int rowindex, string tablename)
+        {
+            int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{tablename}Id");
+            if (id > 0)
+            {
+                try {
+                    FormRecordManager.Delete(tablename, id);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
             }
+            else if (id < grid.Rows.Count)
+            {
+                grid.Rows.RemoveAt(rowindex);
+            }
+        }
+          */
 
         private void Save()
         {
@@ -77,7 +99,6 @@ namespace RecipeWinForms
             }
             finally
             {
-                bindsource.DataSource = dtRecipe;
                 bindsource.ResetBindings(false);
                 SetButtonsEnabled();
                 Application.UseWaitCursor = false;
@@ -108,6 +129,8 @@ namespace RecipeWinForms
             Button btn = (Button)sender;
             UpdateRecipeStatus(btn.Name);
             Save();
+            
+            
         }
 
         

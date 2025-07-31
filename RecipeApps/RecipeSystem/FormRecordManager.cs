@@ -26,18 +26,7 @@ namespace RecipeSystem
             }
             SQLUtility.SaveDataTable(dt, childtablename + "Update");
         }
-        /*
-        public static void SaveTable(DataTable dt, string tablename, int presidentid)
-        {
-            foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
-            {
-                r["PresidentId"] = presidentid;
-            }
-            SQLUtility.SaveDataTable(dt, tablename + "Update");
-        }
-         PresidentMedal.SaveTable(dtpresidentmedal, "PresidentMedal", presidentid);
 
-        */
         public static void Delete( string childtablename, int childtableid)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{childtablename}Delete");

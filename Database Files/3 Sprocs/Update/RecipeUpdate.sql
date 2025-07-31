@@ -4,9 +4,9 @@ create or alter proc dbo.RecipeUpdate(
 	@CuisineTypeID int,
 	@RecipeName varchar (50),
 	@Calories int,
-	@DraftDate datetime output,
-	@PublishedDate datetime output,
-	@ArchivedDate datetime output,
+	@DraftDate datetime,
+	@PublishedDate datetime,
+	@ArchivedDate datetime,
 	@CurrentStatus varchar (9) output,
 	@RecipePicture varchar (8000),
 	@Message varchar(500) = '' output
@@ -38,6 +38,11 @@ begin
 			ArchivedDate = @ArchivedDate
 		where RecipeID = @RecipeID
 	end
+
+	select @CurrentStatus = CurrentStatus
+	from Recipe
+	where RecipeID = @RecipeID;
+
 
 	finished:
 	return @return
