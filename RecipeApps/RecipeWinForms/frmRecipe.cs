@@ -40,12 +40,12 @@ namespace RecipeWinForms
             {
                 dtRecipe.Rows.Add();
             }
-            DataTable dtcuisines = ListManager.GetList("CuisineType");
-            DataTable dtusernames = ListManager.GetList("Staff");
+           
+            
 
 
-            WindowsFormUtility.SetListBinding(lstCuisineName, dtcuisines, dtRecipe, "CuisineType");
-            WindowsFormUtility.SetListBinding(lstUserName, dtusernames, dtRecipe, "Staff");
+            WindowsFormUtility.SetListBinding(lstCuisineName, ListManager.GetList("CuisineType"), dtRecipe, "CuisineType");
+            WindowsFormUtility.SetListBinding(lstUserName, ListManager.GetList("Staff"), dtRecipe, "Staff");
             WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormUtility.SetControlBinding(txtCalories, bindsource);
             WindowsFormUtility.SetControlBinding(lblDraftDate, bindsource);
