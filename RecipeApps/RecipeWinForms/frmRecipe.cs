@@ -1,8 +1,4 @@
-﻿
-using CPUFramework;
-using System.Data;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
 
 
@@ -148,24 +144,7 @@ namespace RecipeWinForms
             }
         }
 
-        private void DeleteChildRecord(DataGridView grid,  int rowindex, string tablename)
-        {
-            int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{tablename}Id");
-            if (id > 0)
-            {
-                try {
-                    FormRecordManager.Delete(tablename, id);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Application.ProductName);
-                }
-            }
-            else if (id < grid.Rows.Count)
-            {
-                grid.Rows.RemoveAt(rowindex);
-            }
-        }
+       
         
      
 
@@ -220,7 +199,7 @@ namespace RecipeWinForms
 
         private void Delete()
         {
-            var response = MessageBox.Show("Are you sure you want to delete this recipe?", "HeartyHearth", MessageBoxButtons.YesNo);
+            var response = MessageBox.Show("Are you sure you want to delete this recipe?", Application.ProductName, MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
                 return;
@@ -272,13 +251,13 @@ namespace RecipeWinForms
        
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteChildRecord(gSteps, e.RowIndex, "RecipeDirection");
+            //DeleteChildRecord(gSteps, e.RowIndex, "RecipeDirection");
             LoadRecipeDirections();
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteChildRecord(gIngredients, e.RowIndex, "RecipeIngredient");
+            //DeleteChildRecord(gIngredients, e.RowIndex, "RecipeIngredient");
             LoadRecipeIngredients();
         }
 

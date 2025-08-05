@@ -28,7 +28,7 @@ begin
 	and r.CurrentStatus in ('Archived', 'Published')
 	group by s.StaffID, concat('Recipes by ', s.Firstname, ' ', s.Lastname)
 
-	select @CookbookId = SCOPE_IDENTITY() 
+	select @CookbookId = SCOPE_IDENTITY();
 
 	Insert CookbookRecipe(CookbookID, RecipeID, BookRecipeSequence)
 	select cb.CookbookID, r.RecipeID, Row_Number() over (order by r.RecipeName)

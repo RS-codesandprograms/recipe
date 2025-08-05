@@ -31,19 +31,28 @@ namespace RecipeWinForms
         {
             {
                 Cursor = Cursors.WaitCursor;
-                int recipeid = WindowsFormUtility.GetIdFromComboBox(lstRecipeName);
+                int baserecipeid = WindowsFormUtility.GetIdFromComboBox(lstRecipeName);
                 try
                 {
+                    
 
                     SqlCommand cmd = SQLUtility.GetSQLCommand("RecipeClone");
-                    SQLUtility.SetParamValue(cmd, "@baserecipeid", recipeid);
+                    SQLUtility.SetParamValue(cmd, "@baserecipeid", baserecipeid);
+   
+                    
+
                     SQLUtility.ExecuteSQL(cmd);
 
-                    if (this.MdiParent != null && this.MdiParent is frmMain)
-                    {
-                        ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe));
-                        this.Close();
+                   bool b =  int.TryParse(cmd.Parameters["@Recipeid"].Value.ToString(), out int pkvalue);
+                   if (b)
+                   {
+                        if (this.MdiParent != null && this.MdiParent is frmMain)
+                        {
+                            ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), pkvalue);
+                            this.Close();
+                        }
                     }
+                   
                 }
                 catch (Exception ex)
                 {

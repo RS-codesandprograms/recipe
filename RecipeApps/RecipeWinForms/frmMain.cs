@@ -132,7 +132,7 @@
 
         private void MnuCookbookNew_Click(object? sender, EventArgs e)
         {
-
+            OpenForm(typeof(frmCookbook));
         }
 
         private void MnuCookbooksList_Click(object? sender, EventArgs e)
