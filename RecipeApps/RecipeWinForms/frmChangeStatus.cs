@@ -63,26 +63,7 @@ namespace RecipeWinForms
         }
 
 
-        /* 
-           private void DeleteChildRecord(DataGridView grid,  int rowindex, string tablename)
-        {
-            int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{tablename}Id");
-            if (id > 0)
-            {
-                try {
-                    FormRecordManager.Delete(tablename, id);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Application.ProductName);
-                }
-            }
-            else if (id < grid.Rows.Count)
-            {
-                grid.Rows.RemoveAt(rowindex);
-            }
-        }
-          */
+       
 
         private void Save()
         {

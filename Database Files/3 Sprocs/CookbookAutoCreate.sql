@@ -1,36 +1,24 @@
 create or alter proc dbo.CookbookAutoCreate(
 	@CookbookId int output,
 	@StaffId int,
-	@Message varchar(500) = ''
+	@Message varchar(500) = '' output
 )
 as
 begin
 
-	declare @return int = 0
-	select @CookbookId = isnull(@CookbookId,0), @StaffId = isnull(@StaffId,0)
+	declare @return int = 0, @createallowed varchar(72) = ''
+	select  @createallowed = isnull(dbo.IsCookbookCreateAllowed(@StaffId), ''),
+	@CookbookId = isnull(@CookbookId,0), @StaffId = isnull(@StaffId,0)
 
-
-	create or alter procedure dbo.PresidentDelete(
-	@PresidentId int,
-	@Message varchar(500) = ''  output
-)
-as
-begin
-	declare @return int = 0, @deleteallowed varchar(60) = ''
-
-	select @deleteallowed = isnull(dbo.IsPresidentDeleteAllowed(@PresidentId), '')
-	if @deleteallowed <> ''
+	if @createallowed <> ''
 	begin
-		select @return = 1, @Message = @deleteallowed
+		select @return = 1, @Message = @createallowed
 		goto finished
 	end
 
 	begin try
 		begin tran
-		
-
-
-
+	
 	Insert Cookbook(StaffID, CookBookName, Price, IsActive)
 	Select s.StaffID, concat('Recipes by ', s.Firstname, ' ', s.Lastname), count(r.RecipeID) * 1.33, 1
 	from Staff s
@@ -51,6 +39,7 @@ begin
 	on r.StaffID = s.StaffID  
 	where cb.Cookbookid = @CookbookId
 	and r.CurrentStatus in ('Archived', 'Published')
+	order by r.RecipeName
 
 	commit
 	end try

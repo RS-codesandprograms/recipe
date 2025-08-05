@@ -7,6 +7,8 @@ begin
 	if exists(
 	Select s.StaffID, concat('Recipes by ', s.Firstname, ' ', s.Lastname)
 	from Staff s
+	join Cookbook cb
+	on s.StaffID = cb.StaffID
 	where s.StaffId = @StaffId
 	)
 	begin
