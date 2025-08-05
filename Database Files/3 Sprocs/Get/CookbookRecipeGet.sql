@@ -9,11 +9,14 @@ begin
 
 	select  @CookbookRecipeId = isnull(@CookbookRecipeId,0), @CookbookId = isnull(@CookbookId,0)
 	
-	
-	select  ri.CookbookRecipeID, ri.RecipeID, ri.IngredientID, ri.MeasurementTypeID, ri.IngredientAmount, ri.IngredientSequence
-	from CookbookRecipe ri 
-	where ri.RecipeID = @CookbookId
-	order by ri.IngredientSequence
+	select cb.CookbookID, cbr.CookBookRecipieID, cbr.RecipeID, r.RecipeName, cbr.BookRecipeSequence
+	from Cookbook cb 
+	join CookBookRecipe cbr 
+	on cb.CookbookID = cbr.CookbookID
+	join Recipe r 
+	on cbr.RecipeID = r.RecipeID
+	where cbr.CookbookID = @CookbookId
+	order by cbr.BookRecipeSequence
 
 	return @return
 end
