@@ -247,17 +247,17 @@
             LoadChangeStatus();
         }
 
-
        
+
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            //DeleteChildRecord(gSteps, e.RowIndex, "RecipeDirection");
+            FormRecordManager.DeleteChildRecord(gSteps, e.RowIndex, "RecipeDirection");
             LoadRecipeDirections();
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            //DeleteChildRecord(gIngredients, e.RowIndex, "RecipeIngredient");
+            FormRecordManager.DeleteChildRecord(gIngredients, e.RowIndex, "RecipeIngredient");
             LoadRecipeIngredients();
         }
 

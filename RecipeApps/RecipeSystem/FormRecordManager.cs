@@ -11,7 +11,28 @@
 
         }
 
-        /*
+        
+    
+        
+        public static void SaveTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
+        {
+            foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
+            {
+                r[$"{parenttablename}Id"] = pkvalue;
+            }
+            SQLUtility.SaveDataTable(dt, childtablename + "Update");
+        }
+
+        public static void Delete( string childtablename, int childtableid)
+        {
+            SqlCommand cmd = SQLUtility.GetSQLCommand($"{childtablename}Delete");
+            cmd.Parameters[$"@{childtablename}Id"].Value = childtableid;
+            SQLUtility.ExecuteSQL(cmd);
+        }
+
+
+
+
         public static void DeleteChildRecord(DataGridView grid, int rowindex, string tablename)
         {
             int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{tablename}Id");
@@ -30,22 +51,6 @@
             {
                 grid.Rows.RemoveAt(rowindex);
             }
-        }
-        */
-        public static void SaveTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
-        {
-            foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
-            {
-                r[$"{parenttablename}Id"] = pkvalue;
-            }
-            SQLUtility.SaveDataTable(dt, childtablename + "Update");
-        }
-
-        public static void Delete( string childtablename, int childtableid)
-        {
-            SqlCommand cmd = SQLUtility.GetSQLCommand($"{childtablename}Delete");
-            cmd.Parameters[$"@{childtablename}Id"].Value = childtableid;
-            SQLUtility.ExecuteSQL(cmd);
         }
 
 
