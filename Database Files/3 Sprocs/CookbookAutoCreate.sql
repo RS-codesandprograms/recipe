@@ -6,15 +6,8 @@ create or alter proc dbo.CookbookAutoCreate(
 as
 begin
 
-	declare @return int = 0, @createallowed varchar(72) = ''
-	select  @createallowed = isnull(dbo.IsCookbookCreateAllowed(@StaffId), ''),
-	@CookbookId = isnull(@CookbookId,0), @StaffId = isnull(@StaffId,0)
-
-	if @createallowed <> ''
-	begin
-		select @return = 1, @Message = @createallowed
-		goto finished
-	end
+	declare @return int = 0
+	select @CookbookId = isnull(@CookbookId,0), @StaffId = isnull(@StaffId,0)
 
 	begin try
 		begin tran
