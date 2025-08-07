@@ -9,7 +9,7 @@ begin
 
 	select  @CookbookRecipeId = isnull(@CookbookRecipeId,0), @CookbookId = isnull(@CookbookId,0)
 	
-	select cb.CookbookID, cbr.CookBookRecipieID, cbr.RecipeID, r.RecipeName, cbr.BookRecipeSequence
+	select cb.CookbookID, cbr.CookBookRecipieID, cbr.RecipeID, cbr.BookRecipeSequence
 	from Cookbook cb 
 	join CookBookRecipe cbr 
 	on cb.CookbookID = cbr.CookbookID
