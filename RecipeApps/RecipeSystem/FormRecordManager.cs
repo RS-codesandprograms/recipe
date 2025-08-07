@@ -13,9 +13,6 @@ namespace RecipeSystem
              return SQLUtility.GetDataTable(cmd);
 
         }
-
-        
-    
         
         public static void SaveTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
         {
@@ -32,8 +29,6 @@ namespace RecipeSystem
             cmd.Parameters[$"@{childtablename}Id"].Value = childtableid;
             SQLUtility.ExecuteSQL(cmd);
         }
-
-
 
 
         public static void DeleteChildRecord(DataGridView grid, int rowindex, string tablename)
@@ -56,6 +51,15 @@ namespace RecipeSystem
             }
         }
 
+
+        public static DataTable LoadRecord(string tablename, int recordid)
+        {
+            DataTable dt = new();
+            SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Get");
+            cmd.Parameters[$"@{tablename}Id"].Value = recordid;
+            dt = SQLUtility.GetDataTable(cmd);
+            return dt;
+        }
 
     }
 }

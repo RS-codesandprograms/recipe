@@ -23,7 +23,7 @@ namespace RecipeWinForms
         {
             recipeid = Recipeid;
             this.Tag = recipeid;
-            dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = FormRecordManager.LoadRecord("recipe", recipeid);
             bindsource.DataSource = dtRecipe;
             recipename = SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
             WindowsFormUtility.SetControlBinding(lblDraftDate, bindsource);

@@ -251,7 +251,6 @@
             gCookbookRecipe.Location = new Point(3, 58);
             gCookbookRecipe.Name = "gCookbookRecipe";
             gCookbookRecipe.RowHeadersWidth = 51;
-            gCookbookRecipe.RowTemplate.Height = 29;
             gCookbookRecipe.Size = new Size(613, 248);
             gCookbookRecipe.TabIndex = 1;
             // 
@@ -261,7 +260,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(625, 630);
             Controls.Add(tblCookbook);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "frmCookbook";
             Text = "Cookbook";

@@ -11,15 +11,7 @@
             return dt;
         }
 
-        public static DataTable Load(int RecipeID)
-        {
-            DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSQLCommand("RecipeGet");
-            cmd.Parameters["@RecipeId"].Value = RecipeID;
-            dt = SQLUtility.GetDataTable(cmd);
-            return dt;
-        }
-
+    
       
 
         public static void Save(DataTable dtRecipe)

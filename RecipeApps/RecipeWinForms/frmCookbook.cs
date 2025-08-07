@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,13 +32,15 @@ namespace RecipeWinForms
         }
 
       
-
+        
         public void LoadCookbookForm(int cookbookidval)
         {
             cookbookid = cookbookidval;
             this.Tag = cookbookid;
-            dtcookbook = ListManager.GetList ("Cookbook");
-            bindsource.DataSource = dtcookbook;
+            dtcookbook = FormRecordManager.LoadRecord("cookbook", cookbookid);
+               
+   
+        bindsource.DataSource = dtcookbook;
             if (cookbookid == 0)
             { dtcookbook.Rows.Add(); }
             DataTable dtstaff = ListManager.GetList("Staff",true);
@@ -48,7 +51,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblCookbookCreationDate, bindsource);
             //WindowsFormUtility.SetControlBinding(ckbActive, bindsource);
 
-            this.Text = GetCookbookDesc();
+            //this.Text = GetCookbookDesc();
             SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmCookbook_Shown;
 

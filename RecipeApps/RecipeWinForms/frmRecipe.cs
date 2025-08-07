@@ -30,7 +30,7 @@
         {
             recipeid = RecipeId;
             this.Tag = recipeid;
-            dtRecipe = Recipe.Load(RecipeId);
+            dtRecipe = FormRecordManager.LoadRecord("recipe", recipeid);
             bindsource.DataSource = dtRecipe;
             if (RecipeId == 0)
             {
