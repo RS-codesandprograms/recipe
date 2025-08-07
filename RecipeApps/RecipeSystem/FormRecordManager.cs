@@ -1,4 +1,7 @@
-﻿namespace RecipeSystem
+﻿using CPUWindowsFormsFramework;
+using System.Windows.Forms;
+
+namespace RecipeSystem
 {
     public class FormRecordManager
     {
