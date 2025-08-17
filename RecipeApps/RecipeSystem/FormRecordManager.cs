@@ -2,15 +2,26 @@
 {
     public class FormRecordManager
     {
-
-        public static DataTable GetChildRecords(string tablename, string parent, int pkvalue)
+        //Use for parent records or records with no children. 
+        public static DataTable LoadRecord(string tablename, int recordid)
         {
-            SqlCommand cmd = SQLUtility.GetSQLCommand(tablename + "Get");
-            SQLUtility.SetParamValue(cmd, $"@{parent}id", pkvalue ); 
+            DataTable dt = new();
+            SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Get");
+            cmd.Parameters[$"@{tablename}Id"].Value = recordid;
+            dt = SQLUtility.GetDataTable(cmd);
+            return dt;
+        }
+
+        //Use for child record. 
+        public static DataTable LoadChildRecords(string childtablename, string parenttablename, int pkvalue)
+        {
+            SqlCommand cmd = SQLUtility.GetSQLCommand(childtablename + "Get");
+            SQLUtility.SetParamValue(cmd, $"@{parenttablename}id", pkvalue ); 
              return SQLUtility.GetDataTable(cmd);
 
         }
-        
+        // Used for both parent and child records. 
+        //When saving a parent table, use the parent tablename for the childtablename as well. 
         public static void SaveTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
         {
             if(dt.Rows.Count == 0)
@@ -24,14 +35,15 @@
             SQLUtility.SaveDataTable(dt, childtablename + "Update");
         }
 
-        public static void Delete( string childtablename, int childtableid)
+        //Tablename/id is table where record is being deleted from (parent or child). 
+        public static void Delete( string tablename, int tableid)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{childtablename}Delete");
-            cmd.Parameters[$"@{childtablename}Id"].Value = childtableid;
+            cmd.Parameters[$"@{childtablename}Id"].Value = tableid;
             SQLUtility.ExecuteSQL(cmd);
         }
 
-
+        //Tablename is childtablename.
         public static void DeleteChildRecord(DataGridView grid, int rowindex, string tablename)
         {
             int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{tablename}Id");
@@ -52,14 +64,7 @@
             }
         }
 
-        public static DataTable LoadRecord(string tablename, int recordid)
-        {
-            DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Get");
-            cmd.Parameters[$"@{tablename}Id"].Value = recordid;
-            dt = SQLUtility.GetDataTable(cmd);
-            return dt;
-        }
+   
 
     }
 }
