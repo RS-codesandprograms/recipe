@@ -13,8 +13,9 @@ begin
 	
 	select cb.CookbookID, cb.CookbookName, cb.StaffID, cb.Price, cb.CookbookCreationDate, cb.IsActive
 	from Cookbook cb
-	where cb.IsActive = 1
-	and (cb.CookbookId = @CookbookId
+	where --cb.IsActive = 1
+	--and
+	(cb.CookbookId = @CookbookId
 	or @All = 1) 
 	union select 0, ' ', 0, 0, null, 0
 	where @IncludeBlank = 1

@@ -10,7 +10,7 @@ begin
 	on cb.StaffID = s.StaffID
 	join CookBookRecipe cbr
 	on cb.CookbookID = cbr.CookbookID
-	where cb.IsActive = 1
+	--where cb.IsActive = 1
 	group by cb.CookbookID, cb.CookbookName, s.StaffID, s.UserName, cb.Price
 	order by cb.CookbookName
 
