@@ -5,14 +5,14 @@ namespace RecipeSystem
     {
         public static DataTable GetList(string tablename, bool includeblank = false, bool all = true)
         {
-            SqlCommand cmd = SQLUtility.GetSQLCommand(tablename + "Get");
+            SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Get");
             if (all) { SQLUtility.SetParamValue(cmd, "@All", 1); }
             if (includeblank) { SQLUtility.SetParamValue(cmd, "@IncludeBlank", true); }
             return SQLUtility.GetDataTable(cmd);
 
         }
 
-        public static void DeleteRow(string tablename, int id)
+        public static void DeleteListRow(string tablename, int id)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand(tablename + "Delete");
             SQLUtility.SetParamValue(cmd, $"@{tablename}Id", id);

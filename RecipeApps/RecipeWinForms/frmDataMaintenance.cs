@@ -92,7 +92,7 @@ namespace RecipeWinForms
                 try
                 {
                     Application.UseWaitCursor = true;
-                    ListManager.DeleteRow(currenttabletype.ToString(), id);
+                    ListManager.DeleteListRow(currenttabletype.ToString(), id);
                     BindData(currenttabletype);
                 }
                 catch (Exception ex)

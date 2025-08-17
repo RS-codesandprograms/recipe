@@ -1,17 +1,4 @@
-﻿using CPUFramework;
-using RecipeSystem;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmCookbook : Form
     {
@@ -132,6 +119,7 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
+                //FormRecordManager.SaveTable(dtcookbook, "Cookbook", "Cookbook", cookbookid);
                 SQLUtility.SaveDataTable(dtcookbook, "CookbookUpdate");
                 bindsource.DataSource = dtcookbook;
                 bindsource.ResetBindings(false);
