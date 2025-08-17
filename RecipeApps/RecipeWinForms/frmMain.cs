@@ -86,9 +86,6 @@
                     frmDataMaintenance f = new();
                     newfrm = f;
                 }
-
-
-
                 newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
                 newfrm.FormClosed += Newfrm_FormClosed; 

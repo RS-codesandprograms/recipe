@@ -49,9 +49,9 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtCookbookName, bindsource);
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
             WindowsFormUtility.SetControlBinding(lblCookbookCreationDate, bindsource);
-            //WindowsFormUtility.SetControlBinding(ckbActive, bindsource);
+            WindowsFormUtility.SetControlBinding(ckbIsActive, bindsource);
 
-            //this.Text = GetCookbookDesc();
+            this.Text = GetCookbookDesc();
             SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmCookbook_Shown;
 

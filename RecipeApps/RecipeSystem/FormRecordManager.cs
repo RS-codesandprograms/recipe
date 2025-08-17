@@ -1,7 +1,4 @@
-﻿using CPUWindowsFormsFramework;
-using System.Windows.Forms;
-
-namespace RecipeSystem
+﻿namespace RecipeSystem
 {
     public class FormRecordManager
     {
@@ -16,6 +13,10 @@ namespace RecipeSystem
         
         public static void SaveTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
         {
+            if(dt.Rows.Count == 0)
+            {
+                throw new Exception($"Cannot save {dt} table because there are no rows in the table.");
+            }
             foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
             {
                 r[$"{parenttablename}Id"] = pkvalue;
@@ -50,7 +51,6 @@ namespace RecipeSystem
                 grid.Rows.RemoveAt(rowindex);
             }
         }
-
 
         public static DataTable LoadRecord(string tablename, int recordid)
         {

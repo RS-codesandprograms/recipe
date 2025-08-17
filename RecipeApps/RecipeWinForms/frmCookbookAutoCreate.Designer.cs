@@ -78,7 +78,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1050, 271);
             Controls.Add(tblAutoCreateCkbk);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "frmCookbookAutoCreate";
             Text = "Auto-Create a Cookbook";

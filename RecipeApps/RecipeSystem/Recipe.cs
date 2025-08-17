@@ -11,9 +11,6 @@
             return dt;
         }
 
-    
-      
-
         public static void Save(DataTable dtRecipe)
         {
             if (dtRecipe.Rows.Count == 0)
@@ -25,7 +22,6 @@
             int id = (int)r["RecipeID"];
         }
 
-
         public static void Delete(DataTable dtRecipe)
         {
             int id = (int)dtRecipe.Rows[0]["RecipeID"];
@@ -33,6 +29,5 @@
             SQLUtility.SetParamValue(cmd, "@RecipeID", id);
             SQLUtility.ExecuteSQL(cmd);
         }
-
     }
 }

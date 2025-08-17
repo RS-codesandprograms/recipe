@@ -40,10 +40,12 @@ namespace RecipeWinForms
             SQLUtility.SetParamValue(cmd, "@StaffId", staffid);
             SQLUtility.ExecuteSQL(cmd);
 
-            if (this.MdiParent != null && this.MdiParent is frmMain)
+                bool b = int.TryParse(cmd.Parameters["@cookbookid"].Value.ToString(), out cookbookid);
+                if (b == true && this.MdiParent != null && this.MdiParent is frmMain)
                 {
-                    ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), cookbookid);
-                    this.Close();
+                        ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), cookbookid);
+                        this.Close();
+                    
                 }
             }
             catch (Exception ex)
