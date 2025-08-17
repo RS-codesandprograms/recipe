@@ -18,19 +18,19 @@
 
         }
 
-      
-        
+
+
         public void LoadCookbookForm(int cookbookidval)
         {
             cookbookid = cookbookidval;
             this.Tag = cookbookid;
             dtcookbook = FormRecordManager.LoadRecord("cookbook", cookbookid);
-               
-   
-        bindsource.DataSource = dtcookbook;
+
+
+            bindsource.DataSource = dtcookbook;
             if (cookbookid == 0)
             { dtcookbook.Rows.Add(); }
-            DataTable dtstaff = ListManager.GetList("Staff",true);
+            DataTable dtstaff = ListManager.GetList("Staff", true);
             WindowsFormUtility.SetListBinding(lstUserName, dtstaff, dtcookbook, "Staff");
 
             WindowsFormUtility.SetControlBinding(txtCookbookName, bindsource);
@@ -54,7 +54,7 @@
 
         private string GetCookbookDesc()
         {
-        
+
             string value = "New Cookbook";
             int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtcookbook, "CookbookId");
             if (pkvalue > 0)
@@ -72,7 +72,7 @@
 
         private void LoadCookbookRecipe()
         {
-            dtcookbookrecipes = FormRecordManager.GetChildRecords("CookbookRecipe", "Cookbook", cookbookid);
+            dtcookbookrecipes = FormRecordManager.LoadChildRecords("CookbookRecipe", "Cookbook", cookbookid);
             gCookbookRecipe.Columns.Clear();
             gCookbookRecipe.DataSource = dtcookbookrecipes;
             WindowsFormUtility.AddComboBoxToGrid(gCookbookRecipe, ListManager.GetList("Recipe"), "Recipe", "RecipeName");
@@ -119,8 +119,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                //FormRecordManager.SaveTable(dtcookbook, "Cookbook", "Cookbook", cookbookid);
-                SQLUtility.SaveDataTable(dtcookbook, "CookbookUpdate");
+                FormRecordManager.Save(dtcookbook, "Cookbook");
                 bindsource.DataSource = dtcookbook;
                 bindsource.ResetBindings(false);
                 cookbookid = SQLUtility.GetValueFromFirstRowAsInt(dtcookbook, "cookbookid");
@@ -182,7 +181,7 @@
             try
             {
 
-                FormRecordManager.SaveTable(dtcookbookrecipes, "Cookbook", "CookbookRecipe", cookbookid);
+                FormRecordManager.SaveChildTable(dtcookbookrecipes, "Cookbook", "CookbookRecipe", cookbookid);
             }
             catch (Exception ex)
             {
@@ -191,7 +190,7 @@
         }
         private void GCookbookRecipe_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
     }

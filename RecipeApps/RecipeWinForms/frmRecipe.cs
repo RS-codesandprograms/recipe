@@ -88,7 +88,7 @@
         }
         private void LoadRecipeIngredients()
         {
-            dtRecipeIngredient = FormRecordManager.GetChildRecords("RecipeIngredient", "Recipe", recipeid);
+            dtRecipeIngredient = FormRecordManager.LoadChildRecords("RecipeIngredient", "Recipe", recipeid);
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
@@ -100,7 +100,7 @@
 
         private void LoadRecipeDirections()
         {
-            dtRecipeDirection = FormRecordManager.GetChildRecords("RecipeDirection", "Recipe", recipeid);
+            dtRecipeDirection = FormRecordManager.LoadChildRecords("RecipeDirection", "Recipe", recipeid);
             gSteps.Columns.Clear();
             gSteps.DataSource = dtRecipeDirection;
             WindowsFormUtility.AddDeleteButtonToGrid(gSteps, deletecolname);
@@ -111,7 +111,7 @@
         {
             try
             {
-                FormRecordManager.SaveTable(dtRecipeIngredient, "Recipe", "RecipeIngredient", recipeid);
+                FormRecordManager.SaveChildTable(dtRecipeIngredient, "Recipe", "RecipeIngredient", recipeid);
             }
             catch (Exception ex)
             {
@@ -124,7 +124,7 @@
             try
             {
 
-                FormRecordManager.SaveTable(dtRecipeDirection, "Recipe", "RecipeDirection", recipeid);
+                FormRecordManager.SaveChildTable(dtRecipeDirection, "Recipe", "RecipeDirection", recipeid);
             }
             catch (Exception ex)
             {
@@ -158,7 +158,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                Recipe.Save(dtRecipe);
+               FormRecordManager.Save(dtRecipe, "Recipe");
                 bindsource.DataSource = dtRecipe;
                 bindsource.ResetBindings(false);
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
