@@ -188,7 +188,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                Recipe.Delete(dtRecipe);
+                FormRecordManager.Delete("Recipe", recipeid);
                 this.Close();
             }
             catch (Exception ex)

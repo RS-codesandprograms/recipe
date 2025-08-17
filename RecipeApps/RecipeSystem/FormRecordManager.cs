@@ -46,10 +46,10 @@
         }
 
         //Tablename/id is table where record is being deleted from (parent or child). 
-        public static void Delete( string tablename, int tableid)
+        public static void Delete( string tablename, int pkvalue)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Delete");
-            cmd.Parameters[$"@{tablename}Id"].Value = tableid;
+            SQLUtility.SetParamValue(cmd, $"@{tablename}Id", pkvalue);
             SQLUtility.ExecuteSQL(cmd);
         }
 
