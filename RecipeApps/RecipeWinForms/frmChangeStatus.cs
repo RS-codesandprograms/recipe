@@ -70,7 +70,7 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
-                Recipe.Save(dtRecipe);
+                FormRecordManager.Save(dtRecipe, "Recipe");
 
 
             }
