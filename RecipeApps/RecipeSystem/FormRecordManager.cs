@@ -16,12 +16,12 @@
         public static DataTable LoadChildRecords(string childtablename, string parenttablename, int pkvalue)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand(childtablename + "Get");
-            SQLUtility.SetParamValue(cmd, $"@{parenttablename}Id", pkvalue ); 
-             return SQLUtility.GetDataTable(cmd);
+            SQLUtility.SetParamValue(cmd, $"@{parenttablename}Id", pkvalue);
+            return SQLUtility.GetDataTable(cmd);
 
         }
-      
-     public static void Save(DataTable dt, string tablename)
+
+        public static void Save(DataTable dt, string tablename)
         {
             if (dt.Rows.Count == 0)
             {
@@ -34,7 +34,7 @@
 
         public static void SaveChildTable(DataTable dt, string parenttablename, string childtablename, int pkvalue)
         {
-            if(dt.Rows.Count == 0)
+            if (dt.Rows.Count == 0)
             {
                 throw new Exception($"Cannot save {dt} table because there are no rows in the table.");
             }
@@ -46,7 +46,7 @@
         }
 
         //Tablename/id is table where record is being deleted from (parent or child). 
-        public static void Delete( string tablename, int pkvalue)
+        public static void Delete(string tablename, int pkvalue)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Delete");
             SQLUtility.SetParamValue(cmd, $"@{tablename}Id", pkvalue);
@@ -74,7 +74,7 @@
             }
         }
 
-   
+
 
     }
 }

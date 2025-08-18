@@ -1,21 +1,10 @@
-﻿using CPUFramework;
-using RecipeSystem;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data.SqlClient;
 
 namespace RecipeWinForms
 {
     public partial class frmCookbookAutoCreate : Form
     {
-        int cookbookid = 0; 
+        int cookbookid = 0;
         public frmCookbookAutoCreate()
         {
             InitializeComponent();
@@ -35,17 +24,17 @@ namespace RecipeWinForms
             try
             {
 
-            SqlCommand cmd = SQLUtility.GetSQLCommand("CookbookAutoCreate");
-            SQLUtility.SetParamValue(cmd, "@cookbookid", cookbookid);
-            SQLUtility.SetParamValue(cmd, "@StaffId", staffid);
-            SQLUtility.ExecuteSQL(cmd);
+                SqlCommand cmd = SQLUtility.GetSQLCommand("CookbookAutoCreate");
+                SQLUtility.SetParamValue(cmd, "@cookbookid", cookbookid);
+                SQLUtility.SetParamValue(cmd, "@StaffId", staffid);
+                SQLUtility.ExecuteSQL(cmd);
 
                 bool b = int.TryParse(cmd.Parameters["@cookbookid"].Value.ToString(), out cookbookid);
                 if (b == true && this.MdiParent != null && this.MdiParent is frmMain)
                 {
-                        ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), cookbookid);
-                        this.Close();
-                    
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), cookbookid);
+                    this.Close();
+
                 }
             }
             catch (Exception ex)

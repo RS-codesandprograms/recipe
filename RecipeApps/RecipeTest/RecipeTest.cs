@@ -1,5 +1,4 @@
 using NUnit.Framework.Internal;
-using RecipeSystem;
 using System.Data;
 
 namespace RecipeTest
@@ -10,7 +9,7 @@ namespace RecipeTest
         public void Setup()
         {
             //DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-          DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
+            DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
 
         }
 
@@ -60,15 +59,15 @@ namespace RecipeTest
             DataTable dt = Recipe.Load(recipeid);
 
             dt.Rows[0]["draftdate"] = draftdate;
-            Exception ex = Assert.Throws<Exception>(()=>Recipe.Save(dt));
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Save(dt));
 
-             TestContext.WriteLine(ex.Message);
+            TestContext.WriteLine(ex.Message);
         }
         [Test]
         public void UpdateExistingRecipeToInvalidName()
         {
-          
-           int recipeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 r.recipeid from recipe r where r.publisheddate is null");
+
+            int recipeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 r.recipeid from recipe r where r.publisheddate is null");
             Assume.That(recipeid > 0, "No recipes in DB, cannot run tests.");
             string currentname = GetFirstColumnFirstRowValueAsString("select top 1 RecipeName from recipe where recipeid = " + recipeid);
             string name = GetFirstColumnFirstRowValueAsString("select top 1 RecipeName from recipe where recipeid <> " + recipeid);
@@ -77,7 +76,7 @@ namespace RecipeTest
             dt.Rows[0]["RecipeName"] = name;
             Exception ex = Assert.Throws<Exception>(() => Recipe.Save(dt));
             TestContext.WriteLine(ex.Message);
-        
+
         }
 
         [Test]
@@ -148,8 +147,8 @@ or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <=
             Assume.That(recipeid > 0, "No recipes with ingredients in DB, cannot run tests.");
             TestContext.WriteLine("Existing recipe with ingredients with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app cannot delete " + recipeid + " " + recipename);
-            Exception ex = Assert.Throws<Exception>(()=> Recipe.Delete(dt));
-              TestContext.WriteLine(ex.Message);
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            TestContext.WriteLine(ex.Message);
         }
 
         [Test]
@@ -254,7 +253,7 @@ and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day
             return s;
         }
 
-       
+
     }
 
 }

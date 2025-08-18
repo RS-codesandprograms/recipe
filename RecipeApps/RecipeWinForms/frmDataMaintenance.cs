@@ -1,7 +1,4 @@
-﻿using CPUFramework;
-using System.Data;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmDataMaintenance : Form
     {
@@ -69,7 +66,7 @@ namespace RecipeWinForms
                 {
                     if (o.Text.EndsWith('s'))
                     {
-                        name = o.Text.ToString().Substring(0, o.Text.Length -1);
+                        name = o.Text.ToString().Substring(0, o.Text.Length - 1);
                     }
                     else { name = o.Text.ToString(); }
                 }

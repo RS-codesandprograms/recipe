@@ -66,7 +66,7 @@
             WindowsFormUtility.SetControlBinding(lblPublishedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
-           
+
 
 
             this.Text = GetRecipeDesc();
@@ -158,7 +158,8 @@
             Application.UseWaitCursor = true;
             try
             {
-               FormRecordManager.Save(dtRecipe, "Recipe");
+                FormRecordManager.Save(dtRecipe, "Recipe");
+                b = true;
                 bindsource.DataSource = dtRecipe;
                 bindsource.ResetBindings(false);
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");

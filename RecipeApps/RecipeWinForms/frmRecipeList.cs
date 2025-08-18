@@ -10,7 +10,7 @@
             this.Activated += FrmRecipeList_Activated;
         }
 
-    
+
 
         private void FrmRecipeList_Activated(object? sender, EventArgs e)
         {
@@ -38,8 +38,8 @@
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
             }
         }
-           
-    
+
+
 
         private void BtnNewRecipe_Click(object? sender, EventArgs e)
         {
@@ -50,6 +50,6 @@
         {
             LoadRecipe(e.RowIndex);
         }
-       
+
     }
 }

@@ -47,7 +47,7 @@
                     frmRecipe f = new();
                     newfrm = f;
                     f.LoadRecipeForm(pkvalue);
-                    
+
                 }
                 else if (frmtype == typeof(frmChangeStatus))
                 {
@@ -58,7 +58,7 @@
                 else if (frmtype == typeof(frmRecipeClone))
                 {
                     frmRecipeClone f = new();
-                    newfrm = f; 
+                    newfrm = f;
                 }
                 else if (frmtype == typeof(frmMealList))
                 {
@@ -88,7 +88,7 @@
                 }
                 newfrm.MdiParent = this;
                 newfrm.WindowState = FormWindowState.Maximized;
-                newfrm.FormClosed += Newfrm_FormClosed; 
+                newfrm.FormClosed += Newfrm_FormClosed;
                 newfrm.TextChanged += Newfrm_TextChanged;
                 newfrm.Show();
             }

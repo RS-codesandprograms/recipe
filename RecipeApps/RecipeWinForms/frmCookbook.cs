@@ -120,6 +120,7 @@
             try
             {
                 FormRecordManager.Save(dtcookbook, "Cookbook");
+                b = true;
                 bindsource.DataSource = dtcookbook;
                 bindsource.ResetBindings(false);
                 cookbookid = SQLUtility.GetValueFromFirstRowAsInt(dtcookbook, "cookbookid");

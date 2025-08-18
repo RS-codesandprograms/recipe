@@ -1,14 +1,4 @@
-﻿using CPUFramework;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data.SqlClient;
 
 namespace RecipeWinForms
 {
@@ -34,25 +24,25 @@ namespace RecipeWinForms
                 int baserecipeid = WindowsFormUtility.GetIdFromComboBox(lstRecipeName);
                 try
                 {
-                    
+
 
                     SqlCommand cmd = SQLUtility.GetSQLCommand("RecipeClone");
                     SQLUtility.SetParamValue(cmd, "@baserecipeid", baserecipeid);
-   
-                    
+
+
 
                     SQLUtility.ExecuteSQL(cmd);
 
-                   bool b =  int.TryParse(cmd.Parameters["@Recipeid"].Value.ToString(), out int pkvalue);
-                   if (b)
-                   {
+                    bool b = int.TryParse(cmd.Parameters["@Recipeid"].Value.ToString(), out int pkvalue);
+                    if (b)
+                    {
                         if (this.MdiParent != null && this.MdiParent is frmMain)
                         {
                             ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), pkvalue);
                             this.Close();
                         }
                     }
-                   
+
                 }
                 catch (Exception ex)
                 {

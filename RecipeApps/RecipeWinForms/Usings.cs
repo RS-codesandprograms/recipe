@@ -1,5 +1,5 @@
-﻿global using CPUWindowsFormsFramework;
+﻿global using CPUFramework;
+global using CPUWindowsFormsFramework;
 global using RecipeSystem;
-global using CPUFramework;
 global using System.Data;
-global using System.Windows.Forms; 
+global using System.Windows.Forms;

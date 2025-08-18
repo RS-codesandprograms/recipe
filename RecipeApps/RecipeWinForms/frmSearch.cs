@@ -1,8 +1,4 @@
-﻿
-using System.Data;
-
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmSearch : Form
     {

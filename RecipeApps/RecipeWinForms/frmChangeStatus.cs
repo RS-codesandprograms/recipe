@@ -1,13 +1,10 @@
-﻿using CPUFramework;
-using System.Data;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmChangeStatus : Form
     {
         DataTable dtRecipe = new DataTable();
         int recipeid;
-        string recipename = ""; 
+        string recipename = "";
         BindingSource bindsource = new BindingSource();
 
 
@@ -17,7 +14,7 @@ namespace RecipeWinForms
             InitializeComponent();
             btnDraft.Click += Btn_Click;
             btnPublish.Click += Btn_Click;
-            btnArchive.Click += Btn_Click; 
+            btnArchive.Click += Btn_Click;
         }
         public void LoadChangeStatusForm(int Recipeid)
         {
@@ -42,12 +39,12 @@ namespace RecipeWinForms
 
         private void FrmChangeStatus_Shown(object? sender, EventArgs e)
         {
-            SetButtonsEnabled(); 
+            SetButtonsEnabled();
         }
         private void UpdateRecipeStatus(string buttonname)
         {
 
-            switch(buttonname)
+            switch (buttonname)
             {
                 case "btnDraft":
                     lblDraftDate.Text = DateTime.Now.ToString();
@@ -59,11 +56,11 @@ namespace RecipeWinForms
                 case "btnArchive":
                     lblArchivedDate.Text = DateTime.Now.ToString();
                     break;
-                }
+            }
         }
 
 
-       
+
 
         private void Save()
         {
@@ -84,13 +81,13 @@ namespace RecipeWinForms
                 SetButtonsEnabled();
                 Application.UseWaitCursor = false;
             }
-         
+
 
         }
 
         private void SetButtonsEnabled()
         {
-            tblControls.Enabled = true; 
+            tblControls.Enabled = true;
             switch (lblCurrentStatus.Text)
             {
                 case "Draft":
@@ -101,7 +98,7 @@ namespace RecipeWinForms
                     break;
                 case "Archived":
                     btnArchive.Enabled = false;
-                    break; 
+                    break;
             }
         }
 
@@ -110,10 +107,10 @@ namespace RecipeWinForms
             Button btn = (Button)sender;
             UpdateRecipeStatus(btn.Name);
             Save();
-            
-            
+
+
         }
 
-        
+
     }
 }

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmCookbookList : Form
     {
@@ -20,7 +10,7 @@ namespace RecipeWinForms
             this.Activated += FrmCookbookList_Activated;
         }
 
-       
+
 
         private void FrmCookbookList_Activated(object? sender, EventArgs e)
         {
@@ -50,7 +40,7 @@ namespace RecipeWinForms
 
         private void BtnNewCookbook_Click(object? sender, EventArgs e)
         {
-            LoadCookbook(-1); 
+            LoadCookbook(-1);
         }
 
         private void GCookbookList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)

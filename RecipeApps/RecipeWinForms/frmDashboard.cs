@@ -23,7 +23,7 @@
             WindowsFormUtility.FormatGridForSearchResults(gSummary, "Summary");
         }
 
-       private void OpenMdiChildFormFromButton(Type form)
+        private void OpenMdiChildFormFromButton(Type form)
         {
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
