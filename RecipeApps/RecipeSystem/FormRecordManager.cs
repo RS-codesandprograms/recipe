@@ -2,17 +2,15 @@
 {
     public class FormRecordManager
     {
-        //Use for parent records or records with no children. 
-        public static DataTable LoadRecord(string tablename, int recordid)
+        public static DataTable LoadRecord(string tablename, int pkvalue)
         {
-            DataTable dt = new();
+            
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Get");
-            cmd.Parameters[$"@{tablename}Id"].Value = recordid;
-            dt = SQLUtility.GetDataTable(cmd);
-            return dt;
+            SQLUtility.SetParamValue(cmd, $"@{tablename}Id", pkvalue);
+            return SQLUtility.GetDataTable(cmd);
+         
         }
 
-        //Use for child record. 
         public static DataTable LoadChildRecords(string childtablename, string parenttablename, int pkvalue)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand(childtablename + "Get");
@@ -42,7 +40,7 @@
             {
                 r[$"{parenttablename}Id"] = pkvalue;
             }
-            SQLUtility.SaveDataTable(dt, childtablename + "Update");
+            SQLUtility.SaveDataTable(dt, $"{childtablename}Update");
         }
 
         
@@ -53,20 +51,13 @@
             SQLUtility.ExecuteSQL(cmd);
         }
 
-        //Tablename is childtablename.
-        public static void DeleteChildRecord(DataGridView grid, int rowindex, string tablename)
+        public static void DeleteChildRecord(DataGridView grid, int rowindex, string childtablename)
         {
-            int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{tablename}Id");
+            int id = WindowsFormUtility.GetIdFromGrid(grid, rowindex, $"{childtablename}Id");
             if (id > 0)
             {
-                try
-                {
-                    FormRecordManager.DeleteRecord(tablename, id);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Application.ProductName);
-                }
+              
+                    FormRecordManager.DeleteRecord(childtablename, id);
             }
             else if (id < grid.Rows.Count)
             {

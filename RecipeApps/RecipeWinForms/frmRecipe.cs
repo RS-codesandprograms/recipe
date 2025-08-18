@@ -107,11 +107,11 @@
             WindowsFormUtility.FormatGridForEdit(gSteps, "RecipeDirection");
         }
 
-        private void SaveRecipeIngredients()
+        private void SaveRecipeChildren(DataTable dt,  string childtablename)
         {
             try
             {
-                FormRecordManager.SaveChildTable(dtRecipeIngredient, "Recipe", "RecipeIngredient", recipeid);
+                FormRecordManager.SaveChildTable(dt, "Recipe", childtablename, recipeid);
             }
             catch (Exception ex)
             {
@@ -119,12 +119,11 @@
             }
         }
 
-        private void SaveRecipeDirections()
+        private void DeleteRecipeChild(DataGridView grid, int rowindex, string childtablename)
         {
             try
             {
-
-                FormRecordManager.SaveChildTable(dtRecipeDirection, "Recipe", "RecipeDirection", recipeid);
+                FormRecordManager.DeleteChildRecord(grid, rowindex, childtablename);
             }
             catch (Exception ex)
             {
@@ -230,25 +229,25 @@
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            FormRecordManager.DeleteChildRecord(gSteps, e.RowIndex, "RecipeDirection");
+            DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
             LoadRecipeDirections();
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            FormRecordManager.DeleteChildRecord(gIngredients, e.RowIndex, "RecipeIngredient");
+            DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
             LoadRecipeIngredients();
         }
 
 
         private void BtnSaveSteps_Click(object? sender, EventArgs e)
         {
-            SaveRecipeDirections();
+            SaveRecipeChildren(dtRecipeDirection, "RecipeDirection");
         }
 
         private void BtnSaveIngredients_Click(object? sender, EventArgs e)
         {
-            SaveRecipeIngredients();
+            SaveRecipeChildren(dtRecipeIngredient,  "RecipeIngredient");
         }
     }
 }

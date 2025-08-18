@@ -1,5 +1,6 @@
 using NUnit.Framework.Internal;
 using System.Data;
+using RecipeSystem; 
 
 namespace RecipeTest
 {
@@ -33,7 +34,7 @@ namespace RecipeTest
             r["RecipeName"] = RecipeName + DateTime.Now.ToString();
             r["Calories"] = Calories;
             r["DraftDate"] = DraftDate;
-            Recipe.Save(dt);
+            FormRecordManager.SaveTable(dt);
 
             int newid = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe");
             Assert.IsTrue(newid == id
@@ -59,7 +60,7 @@ namespace RecipeTest
             DataTable dt = Recipe.Load(recipeid);
 
             dt.Rows[0]["draftdate"] = draftdate;
-            Exception ex = Assert.Throws<Exception>(() => Recipe.Save(dt));
+            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.SaveTable(dt));
 
             TestContext.WriteLine(ex.Message);
         }
@@ -74,7 +75,7 @@ namespace RecipeTest
             TestContext.WriteLine("Change recipeid " + recipeid + " name from " + currentname + " to " + name + " which belongs to a different recipe.");
             DataTable dt = Recipe.Load(recipeid);
             dt.Rows[0]["RecipeName"] = name;
-            Exception ex = Assert.Throws<Exception>(() => Recipe.Save(dt));
+            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.SaveTable(dt));
             TestContext.WriteLine(ex.Message);
 
         }
@@ -93,7 +94,7 @@ namespace RecipeTest
             DataTable dt = Recipe.Load(recipeid);
 
             dt.Rows[0]["draftdate"] = draftdate;
-            Recipe.Save(dt);
+            FormRecordManager.SaveTable(dt);
 
             DateTime newdraftdate = GetFirstColumnFirstRowDateTimeValue(recipeid);
             Assert.IsTrue(newdraftdate == draftdate, "draftdate for recipe (" + recipeid + ") equals " + newdraftdate);
