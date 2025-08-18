@@ -7,7 +7,7 @@ create or alter proc dbo.RecipeDirectionUpdate(
 )
 as 
 begin
-	declare @return int = 0;
+	declare @return int = 0
 
 	select @RecipeDirectionId = isnull(@RecipeDirectionId, 0), @RecipeId = isnull(@RecipeId, 0)
 
