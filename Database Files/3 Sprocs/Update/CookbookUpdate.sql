@@ -5,7 +5,6 @@ create or alter proc dbo.CookbookUpdate(
 	@Price decimal,
 	@IsActive bit,
 	@CookbookCreationDate date,
-	@BookPicture varchar (8000),
 	@Message varchar(500) = '' output
 )
 as 
