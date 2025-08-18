@@ -67,7 +67,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                FormRecordManager.Save(dtRecipe, "Recipe");
+                FormRecordManager.SaveTable(dtRecipe, "Recipe");
 
 
             }

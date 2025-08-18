@@ -119,7 +119,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                FormRecordManager.Save(dtcookbook, "Cookbook");
+                FormRecordManager.SaveTable(dtcookbook, "Cookbook");
                 b = true;
                 bindsource.DataSource = dtcookbook;
                 bindsource.ResetBindings(false);
@@ -153,7 +153,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                FormRecordManager.Delete("Cookbook", cookbookid);
+                FormRecordManager.DeleteRecord("Cookbook", cookbookid);
                 this.Close();
             }
             catch (Exception ex)

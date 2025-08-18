@@ -21,7 +21,7 @@
 
         }
 
-        public static void Save(DataTable dt, string tablename)
+        public static void SaveTable(DataTable dt, string tablename)
         {
             if (dt.Rows.Count == 0)
             {
@@ -45,8 +45,8 @@
             SQLUtility.SaveDataTable(dt, childtablename + "Update");
         }
 
-        //Tablename/id is table where record is being deleted from (parent or child). 
-        public static void Delete(string tablename, int pkvalue)
+        
+        public static void DeleteRecord(string tablename, int pkvalue)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Delete");
             SQLUtility.SetParamValue(cmd, $"@{tablename}Id", pkvalue);
@@ -61,7 +61,7 @@
             {
                 try
                 {
-                    FormRecordManager.Delete(tablename, id);
+                    FormRecordManager.DeleteRecord(tablename, id);
                 }
                 catch (Exception ex)
                 {
