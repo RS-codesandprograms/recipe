@@ -30,6 +30,7 @@ begin
 	begin
 		update Recipe 
 		set 
+			StaffID = @StaffID,
 			CuisineTypeID = @CuisineTypeID, 
 			RecipeName = @RecipeName, 
 			Calories = @Calories, 
