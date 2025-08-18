@@ -42,11 +42,13 @@
             ckbIsActive = new CheckBox();
             txtCookbookName = new TextBox();
             lstUserName = new ComboBox();
+            pRecipe = new Panel();
             tblRecipe = new TableLayoutPanel();
-            gCookbookRecipe = new DataGridView();
             btnRecipeSave = new Button();
+            gCookbookRecipe = new DataGridView();
             tblCookbook.SuspendLayout();
             tblDetails.SuspendLayout();
+            pRecipe.SuspendLayout();
             tblRecipe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gCookbookRecipe).BeginInit();
             SuspendLayout();
@@ -56,7 +58,7 @@
             tblCookbook.ColumnCount = 1;
             tblCookbook.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblCookbook.Controls.Add(tblDetails, 0, 0);
-            tblCookbook.Controls.Add(tblRecipe, 0, 1);
+            tblCookbook.Controls.Add(pRecipe, 0, 1);
             tblCookbook.Dock = DockStyle.Fill;
             tblCookbook.Location = new Point(0, 0);
             tblCookbook.Margin = new Padding(4);
@@ -219,6 +221,16 @@
             lstUserName.Size = new Size(390, 29);
             lstUserName.TabIndex = 11;
             // 
+            // pRecipe
+            // 
+            pRecipe.BorderStyle = BorderStyle.FixedSingle;
+            pRecipe.Controls.Add(tblRecipe);
+            pRecipe.Dock = DockStyle.Fill;
+            pRecipe.Location = new Point(3, 318);
+            pRecipe.Name = "pRecipe";
+            pRecipe.Size = new Size(619, 309);
+            pRecipe.TabIndex = 1;
+            // 
             // tblRecipe
             // 
             tblRecipe.ColumnCount = 2;
@@ -227,24 +239,13 @@
             tblRecipe.Controls.Add(btnRecipeSave, 0, 0);
             tblRecipe.Controls.Add(gCookbookRecipe, 0, 1);
             tblRecipe.Dock = DockStyle.Fill;
-            tblRecipe.Location = new Point(3, 318);
+            tblRecipe.Location = new Point(0, 0);
             tblRecipe.Name = "tblRecipe";
             tblRecipe.RowCount = 2;
             tblRecipe.RowStyles.Add(new RowStyle(SizeType.Percent, 17.7993526F));
             tblRecipe.RowStyles.Add(new RowStyle(SizeType.Percent, 82.2006454F));
-            tblRecipe.Size = new Size(619, 309);
-            tblRecipe.TabIndex = 1;
-            // 
-            // gCookbookRecipe
-            // 
-            gCookbookRecipe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tblRecipe.SetColumnSpan(gCookbookRecipe, 2);
-            gCookbookRecipe.Dock = DockStyle.Fill;
-            gCookbookRecipe.Location = new Point(3, 58);
-            gCookbookRecipe.Name = "gCookbookRecipe";
-            gCookbookRecipe.RowHeadersWidth = 51;
-            gCookbookRecipe.Size = new Size(613, 248);
-            gCookbookRecipe.TabIndex = 1;
+            tblRecipe.Size = new Size(617, 307);
+            tblRecipe.TabIndex = 2;
             // 
             // btnRecipeSave
             // 
@@ -254,6 +255,17 @@
             btnRecipeSave.TabIndex = 0;
             btnRecipeSave.Text = "Save";
             btnRecipeSave.UseVisualStyleBackColor = true;
+            // 
+            // gCookbookRecipe
+            // 
+            gCookbookRecipe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tblRecipe.SetColumnSpan(gCookbookRecipe, 2);
+            gCookbookRecipe.Dock = DockStyle.Fill;
+            gCookbookRecipe.Location = new Point(3, 57);
+            gCookbookRecipe.Name = "gCookbookRecipe";
+            gCookbookRecipe.RowHeadersWidth = 51;
+            gCookbookRecipe.Size = new Size(611, 247);
+            gCookbookRecipe.TabIndex = 1;
             // 
             // frmCookbook
             // 
@@ -268,6 +280,7 @@
             tblCookbook.ResumeLayout(false);
             tblDetails.ResumeLayout(false);
             tblDetails.PerformLayout();
+            pRecipe.ResumeLayout(false);
             tblRecipe.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gCookbookRecipe).EndInit();
             ResumeLayout(false);
@@ -290,6 +303,7 @@
         private TextBox txtCookbookName;
         private ComboBox lstUserName;
         private CheckBox ckbIsActive;
+        private Panel pRecipe;
         private TableLayoutPanel tblRecipe;
         private Button btnRecipeSave;
         private DataGridView gCookbookRecipe;
