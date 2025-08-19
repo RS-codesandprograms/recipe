@@ -78,9 +78,15 @@ Create table dbo.Recipe(
         constraint ck_Recipe_archived_date_cannot_be_future_date check (ArchivedDate <= getdate()), 
     CurrentStatus as 
         case
-            when PublishedDate is null and ArchivedDate is null then 'Draft'
+            /* when PublishedDate is null and ArchivedDate is null then 'Draft'
             when ArchivedDate is null then 'Published'
-            else 'Archived' 
+            else 'Archived'  */
+			when PublishedDate is null and ArchivedDate is null then 'Draft'
+			when DraftDate > PublishedDate and DraftDate > ArchivedDate then 'Draft'
+			when PublishedDate > DraftDate and PublishedDate > ArchivedDate then 'Published'
+			when PublishedDate > DraftDate and ArchivedDate is null then 'Published'
+			when ArchivedDate > DraftDate and ArchivedDate > PublishedDate then 'Archived'
+			when ArchivedDate > DraftDate and PublishedDate is null then 'Archived'
         end persisted,
         RecipePicture as concat('Recipe-', replace(RecipeName,' ', '-'), '.jpg'),
     Constraint ck_Recipe_published_date_must_be_between_draft_date_and_archived_date check(DraftDate < PublishedDate and PublishedDate < ArchivedDate)
