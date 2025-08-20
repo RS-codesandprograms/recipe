@@ -88,6 +88,7 @@
         }
         private void LoadRecipeIngredients()
         {
+
             dtRecipeIngredient = FormRecordManager.LoadChildRecords("RecipeIngredient", "Recipe", recipeid);
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
@@ -95,6 +96,19 @@
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
             WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
+            int colcount = gIngredients.Columns.Count;
+            gIngredients.Columns["IngredientId"].DisplayIndex = colcount - 5;
+            gIngredients.Columns["MeasurementType"].DisplayIndex = colcount - 4;
+            gIngredients.Columns["IngredientAmount"].DisplayIndex = colcount - 3;
+            gIngredients.Columns["IngredientSequence"].DisplayIndex = colcount - 2;
+            gIngredients.Columns["deletecol"].DisplayIndex = colcount - 1;
+            gIngredients.Columns["MeasurementType"].HeaderText = "Measurement";
+            gIngredients.Columns["IngredientAmount"].HeaderText = "Quantity";
+            gIngredients.Columns["IngredientSequence"].HeaderText = "Sequence";
+
+
+
+
         }
 
 
@@ -105,6 +119,16 @@
             gSteps.DataSource = dtRecipeDirection;
             WindowsFormUtility.AddDeleteButtonToGrid(gSteps, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gSteps, "RecipeDirection");
+        }
+        public string GetRecipeDesc()
+        {
+            string value = "New Recipe";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+            if (pkvalue > 0)
+            {
+                value = SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+            }
+            return value;
         }
 
         private void SaveRecipeChildren(DataTable dt,  string childtablename)
@@ -131,16 +155,7 @@
             }
         }
 
-        public string GetRecipeDesc()
-        {
-            string value = "New Recipe";
-            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
-            if (pkvalue > 0)
-            {
-                value = SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
-            }
-            return value;
-        }
+       
 
         private void SetButtonsEnabledBasedOnNewRecord()
         {
