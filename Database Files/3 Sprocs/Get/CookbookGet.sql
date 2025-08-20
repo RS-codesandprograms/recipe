@@ -19,7 +19,7 @@ begin
 	or @All = 1) 
 	union select 0, ' ', 0, 0, null, 0
 	where @IncludeBlank = 1
-	order by cb.CookbookID
+	order by cb.CookbookName
 
 	return @return
 
