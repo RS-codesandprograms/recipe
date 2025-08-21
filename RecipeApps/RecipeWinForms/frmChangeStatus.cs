@@ -5,17 +5,17 @@
         DataTable dtRecipe = new DataTable();
         int recipeid;
         string recipename = "";
+        List<Button> lstbuttons;
         BindingSource bindsource = new BindingSource();
-
-
 
         public frmChangeStatus()
         {
             InitializeComponent();
-            btnDraft.Click += Btn_Click;
-            btnPublish.Click += Btn_Click;
-            btnArchive.Click += Btn_Click;
+            lstbuttons = new() { btnDraft, btnPublish, btnArchive };
+            lstbuttons.ForEach(b => b.Click += Btn_Click);
         }
+
+   
         public void LoadChangeStatusForm(int Recipeid)
         {
             recipeid = Recipeid;
@@ -27,11 +27,7 @@
             WindowsFormUtility.SetControlBinding(lblPublishedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
-
-
-
-
-            this.Text = $"{this.Text} {recipename}";
+            this.Text = $"{recipename} - {this.Text}";
             lblTitle.Text = recipename;
             this.Shown += FrmChangeStatus_Shown;
 
@@ -41,27 +37,33 @@
         {
             SetButtonsEnabled();
         }
-        private void UpdateRecipeStatus(string buttonname)
+        private void ConfirmUpdate(string status)
         {
-
-            switch (buttonname)
+            bindsource.EndEdit();
+            var response = MessageBox.Show($"Are you sure want to change this recipe to {status.ToLower()}ed?", Application.ProductName, MessageBoxButtons.YesNoCancel);
+            if (response == DialogResult.Yes)
             {
-                case "btnDraft":
+                UpdateRecipeStatus(status);
+                Save();
+            }
+        }
+        private void UpdateRecipeStatus(string status)
+        {
+            switch (status)
+            {
+                case "Draft": 
                     lblDraftDate.Text = DateTime.Now.ToString();
-                    break;
+                    break;  
 
-                case "btnPublish":
+                case "Publish": 
                     lblPublishedDate.Text = DateTime.Now.ToString();
                     break;
-                case "btnArchive":
+
+                case "Archive": 
                     lblArchivedDate.Text = DateTime.Now.ToString();
                     break;
             }
         }
-
-
-
-
         private void Save()
         {
             Application.UseWaitCursor = true;
@@ -77,7 +79,8 @@
             }
             finally
             {
-                bindsource.ResetBindings(false);
+                bindsource.DataSource = dtRecipe;
+                bindsource.ResetBindings(false); 
                 SetButtonsEnabled();
                 Application.UseWaitCursor = false;
             }
@@ -87,7 +90,7 @@
 
         private void SetButtonsEnabled()
         {
-            tblControls.Enabled = true;
+            lstbuttons.ForEach(b => b.Enabled = true);
             switch (lblCurrentStatus.Text)
             {
                 case "Draft":
@@ -102,13 +105,11 @@
             }
         }
 
+
         private void Btn_Click(object? sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            UpdateRecipeStatus(btn.Name);
-            Save();
-
-
+            ConfirmUpdate(btn.Text);
         }
 
 

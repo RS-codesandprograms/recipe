@@ -13,9 +13,11 @@
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
             btnRecipeSave.Click += BtnSaveRecipe_Click;
-            gCookbookRecipe.CellClick += GCookbookRecipe_CellClick;
+            gCookbookRecipe.CellContentClick += GCookbookRecipe_CellContentClick; ;
             this.FormClosing += FrmCookbook_FormClosing;
         }
+
+       
 
         private void FrmCookbook_FormClosing(object? sender, FormClosingEventArgs e)
         {
@@ -185,12 +187,12 @@
         {
             SaveRecipe();
         }
-        private void GCookbookRecipe_CellClick(object? sender, DataGridViewCellEventArgs e)
+        private void GCookbookRecipe_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            
             DeleteRecipe(e.RowIndex);
             LoadCookbookRecipe();
         }
+      
 
     }
 }

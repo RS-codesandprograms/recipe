@@ -22,6 +22,9 @@
             this.FormClosing += FrmRecipe_FormClosing;
 
         }
+
+      
+
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
             bindsource.EndEdit();
@@ -57,7 +60,6 @@
             {
                 dtRecipe.Rows.Add();
             }
-
             WindowsFormUtility.SetListBinding(lstCuisineName, ListManager.GetList("CuisineType"), dtRecipe, "CuisineType");
             WindowsFormUtility.SetListBinding(lstUserName, ListManager.GetList("Staff"), dtRecipe, "Staff");
             WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
@@ -66,9 +68,6 @@
             WindowsFormUtility.SetControlBinding(lblPublishedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
-
-
-
             this.Text = GetRecipeDesc();
             SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmRecipe_Shown;
@@ -119,6 +118,7 @@
             gSteps.DataSource = dtRecipeDirection;
             WindowsFormUtility.AddDeleteButtonToGrid(gSteps, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gSteps, "RecipeDirection");
+            gSteps.Columns["DirectionSequence"].HeaderText = "Sequence";
         }
         public string GetRecipeDesc()
         {
@@ -244,7 +244,8 @@
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
+            
+           DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
             LoadRecipeDirections();
         }
 
