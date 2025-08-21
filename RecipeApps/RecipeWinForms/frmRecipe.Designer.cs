@@ -95,7 +95,7 @@
             tblMain.Controls.Add(tbChildRecords, 0, 6);
             tblMain.Font = new Font("Segoe UI", 12F);
             tblMain.Location = new Point(0, 32);
-            tblMain.Margin = new Padding(2, 2, 2, 2);
+            tblMain.Margin = new Padding(2);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 8;
             tblMain.RowStyles.Add(new RowStyle());
@@ -417,7 +417,7 @@
             tbSteps.Margin = new Padding(3, 2, 3, 2);
             tbSteps.Name = "tbSteps";
             tbSteps.Padding = new Padding(3, 2, 3, 2);
-            tbSteps.Size = new Size(455, 220);
+            tbSteps.Size = new Size(469, 220);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
@@ -435,7 +435,7 @@
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblSteps.Size = new Size(449, 216);
+            tblSteps.Size = new Size(463, 216);
             tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
@@ -457,7 +457,7 @@
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
             gSteps.RowTemplate.Height = 29;
-            gSteps.Size = new Size(443, 179);
+            gSteps.Size = new Size(457, 179);
             gSteps.TabIndex = 1;
             // 
             // tsMain
@@ -513,7 +513,7 @@
             ClientSize = new Size(467, 491);
             Controls.Add(tsMain);
             Controls.Add(tblMain);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "frmRecipe";
             Text = "Recipe";
             tblMain.ResumeLayout(false);

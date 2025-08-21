@@ -17,7 +17,30 @@
             this.FormClosing += FrmCookbook_FormClosing;
         }
 
+        private void FrmCookbook_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            bindsource.EndEdit();
+            if (SQLUtility.DoesTableHasChanges(dtcookbook))
+            {
+                var response = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
+                switch (response)
 
+                {
+                    case DialogResult.Yes:
+                        bool b = Save();
+                        if (b == false)
+                        {
+                            e.Cancel = true;
+                            this.Activate();
+                        }
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        this.Activate();
+                        break;
+                }
+            }
+        }
         public void LoadCookbookForm(int cookbookidval)
         {
             cookbookid = cookbookidval;
@@ -57,6 +80,12 @@
         }
         private void FrmCookbook_Shown(object? sender, EventArgs e)
         {
+            if (lblCookbookCreationDate.Text == "")
+
+            {
+                lblCookbookCreationDate.Text = DateTime.Now.ToString();
+
+            }
             LoadCookbookRecipe();
             this.Show();
         }
@@ -142,30 +171,7 @@
                 MessageBox.Show(ex.Message, Application.ProductName);
             }
         }
-        private void FrmCookbook_FormClosing(object? sender, FormClosingEventArgs e)
-        {
-            bindsource.EndEdit();
-            if (SQLUtility.DoesTableHasChanges(dtcookbook))
-            {
-                var response = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
-                switch (response)
-
-                {
-                    case DialogResult.Yes:
-                        bool b = Save();
-                        if (b == false)
-                        {
-                            e.Cancel = true;
-                            this.Activate();
-                        }
-                        break;
-                    case DialogResult.Cancel:
-                        e.Cancel = true;
-                        this.Activate();
-                        break;
-                }
-            }
-        }
+      
 
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
@@ -181,6 +187,7 @@
         }
         private void GCookbookRecipe_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
+            
             DeleteRecipe(e.RowIndex);
             LoadCookbookRecipe();
         }
