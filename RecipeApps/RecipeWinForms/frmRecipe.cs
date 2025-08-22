@@ -1,4 +1,6 @@
-﻿namespace RecipeWinForms
+﻿using RecipeSystem;
+
+namespace RecipeWinForms
 {
     public partial class frmRecipe : Form
     {
@@ -20,10 +22,7 @@
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
             this.FormClosing += FrmRecipe_FormClosing;
-
         }
-
-      
 
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
@@ -225,6 +224,7 @@
                     ((frmMain)this.MdiParent).OpenForm(typeof(frmChangeStatus), recipeid);
                 }
             }
+            this.Close(); 
 
         }
         private void BtnDelete_Click(object? sender, EventArgs e)

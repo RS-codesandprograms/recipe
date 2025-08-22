@@ -13,9 +13,20 @@
             InitializeComponent();
             lstbuttons = new() { btnDraft, btnPublish, btnArchive };
             lstbuttons.ForEach(b => b.Click += Btn_Click);
+            this.FormClosing += FrmChangeStatus_FormClosing;
+          
         }
 
-   
+        private void FrmChangeStatus_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), recipeid);
+            }
+        }
+
+  
+
         public void LoadChangeStatusForm(int Recipeid)
         {
             recipeid = Recipeid;
@@ -45,6 +56,12 @@
             {
                 UpdateRecipeStatus(status);
                 Save();
+
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), recipeid);
+                }
+                this.Close();
             }
         }
         private void UpdateRecipeStatus(string status)
