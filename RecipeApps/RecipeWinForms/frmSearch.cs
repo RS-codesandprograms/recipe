@@ -27,7 +27,7 @@
             int id = 0;
             if (rowindex > -1)
             {
-                id = (int)gRecipe.Rows[rowindex].Cells["RecipeID"].Value;
+                id = (int)gRecipe.Rows[rowindex].Cells["RecipeId"].Value;
             }
             frmRecipe frm = new frmRecipe();
             frm.LoadRecipeForm(id);
