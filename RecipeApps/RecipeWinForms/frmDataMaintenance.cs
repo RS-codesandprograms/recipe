@@ -143,7 +143,7 @@
 
         private void FrmDataMaintenance_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            if (SQLUtility.DoesTableHasChanges(dtlist))
+            if (SQLUtility.DoesTableHaveChanges(dtlist))
             {
                 var response = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
                 switch (response)

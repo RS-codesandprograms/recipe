@@ -22,7 +22,7 @@
         private void FrmCookbook_FormClosing(object? sender, FormClosingEventArgs e)
         {
             bindsource.EndEdit();
-            if (SQLUtility.DoesTableHasChanges(dtcookbook))
+            if (SQLUtility.DoesTableHaveChanges(dtcookbook))
             {
                 var response = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
                 switch (response)

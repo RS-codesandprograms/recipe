@@ -27,7 +27,7 @@ namespace RecipeWinForms
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
             bindsource.EndEdit();
-            if (SQLUtility.DoesTableHasChanges(dtRecipe))
+            if (SQLUtility.DoesTableHaveChanges(dtRecipe))
             {
                 var response = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
                 switch (response)
