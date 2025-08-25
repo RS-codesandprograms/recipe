@@ -14,8 +14,7 @@ begin
 	where r.RecipeID = @RecipeId
 	or @All = 1
 	or r.RecipeName like '%' + @RecipeName + '%'
-	order by r.RecipeID
-
+	order by r.CurrentStatus
 end
 go
 

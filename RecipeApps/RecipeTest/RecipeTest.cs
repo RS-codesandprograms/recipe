@@ -7,8 +7,8 @@ namespace RecipeTest
         [SetUp]
         public void Setup()
         {
-            //DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
+            DBManager.SetConnectionString("Server=tcp:dev-codesandprograms.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=CodesandProgramsAdmin;Password=Hashem Yachol!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+           // DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=True");
 
         }
 
@@ -32,7 +32,7 @@ namespace RecipeTest
             r["RecipeName"] = RecipeName + DateTime.Now.ToString();
             r["Calories"] = Calories;
             r["DraftDate"] = DraftDate;
-            FormRecordManager.SaveTable(dt);
+            FormRecordManager.SaveTable(dt, "recipe");
 
             int newid = SQLUtility.GetFirstColumnFirstRowValue("select max(recipeid) from recipe");
             Assert.IsTrue(newid == id
@@ -55,10 +55,10 @@ namespace RecipeTest
             TestContext.WriteLine("Draftdate for recipeid " + recipeid + " is " + draftdate);
             draftdate = DateTime.Now.AddDays(1);
             TestContext.WriteLine("Update draftdate to " + draftdate);
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = FormRecordManager.LoadRecord("recipe", recipeid);
 
             dt.Rows[0]["draftdate"] = draftdate;
-            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.SaveTable(dt));
+            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.SaveTable(dt, "recipe"));
 
             TestContext.WriteLine(ex.Message);
         }
@@ -71,9 +71,9 @@ namespace RecipeTest
             string currentname = GetFirstColumnFirstRowValueAsString("select top 1 RecipeName from recipe where recipeid = " + recipeid);
             string name = GetFirstColumnFirstRowValueAsString("select top 1 RecipeName from recipe where recipeid <> " + recipeid);
             TestContext.WriteLine("Change recipeid " + recipeid + " name from " + currentname + " to " + name + " which belongs to a different recipe.");
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = FormRecordManager.LoadRecord("recipe", recipeid);
             dt.Rows[0]["RecipeName"] = name;
-            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.SaveTable(dt));
+            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.SaveTable(dt, "recipe"));
             TestContext.WriteLine(ex.Message);
 
         }
@@ -89,10 +89,10 @@ namespace RecipeTest
             TestContext.WriteLine("Draftdate for recipeid " + recipeid + " is " + draftdate);
             draftdate = draftdate.AddDays(1);
             TestContext.WriteLine("Update draftdate to " + draftdate);
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = FormRecordManager.LoadRecord("recipe", recipeid);
 
             dt.Rows[0]["draftdate"] = draftdate;
-            FormRecordManager.SaveTable(dt);
+            FormRecordManager.SaveTable(dt, "recipe");
 
             DateTime newdraftdate = GetFirstColumnFirstRowDateTimeValue(recipeid);
             Assert.IsTrue(newdraftdate == draftdate, "draftdate for recipe (" + recipeid + ") equals " + newdraftdate);
@@ -102,19 +102,10 @@ namespace RecipeTest
         public void DeleteRecipewithStatusofPublishedorArchived30daysagoOrless()
         {
             string sql = @"
-select top 1 r.recipeid, r.recipename
-from recipe r
-join RecipeIngredient ri 
-on r.RecipeID = ri.RecipeID
-join RecipeDirection rd
-on r.RecipeID = rd.RecipeID
-left join MealCourseRecipe m 
-on r.RecipeID = m.RecipeID
-left join CookBookRecipe c
-on r.RecipeID = c.RecipeID
-where m.RecipeID is null and c.RecipeID is null
-and (
-r.CurrentStatus = 'Published' 
+select top 1 *
+from recipe r 
+where 
+(r.CurrentStatus = 'Published'
 or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <= 30))";
             DataTable dt = SQLUtility.GetDataTable(sql);
             int recipeid = 0;
@@ -127,7 +118,7 @@ or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <=
             Assume.That(recipeid > 0, "No recipes in published status or archived 30 days ago or less in DB, cannot run tests.");
             TestContext.WriteLine("Existing recipe in published status or archived 30 days ago or less = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app cannot delete and will exist in DB " + recipeid + " " + recipename);
-            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.DeleteRecord("recipe", recipeid));
             TestContext.WriteLine(ex.Message);
         }
 
@@ -146,7 +137,7 @@ or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <=
             Assume.That(recipeid > 0, "No recipes with ingredients in DB, cannot run tests.");
             TestContext.WriteLine("Existing recipe with ingredients with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app cannot delete " + recipeid + " " + recipename);
-            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            Exception ex = Assert.Throws<Exception>(() => FormRecordManager.DeleteRecord("recipe", recipeid));
             TestContext.WriteLine(ex.Message);
         }
 
@@ -157,8 +148,10 @@ or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) <=
 select top 1 r.recipeid, r.recipename
 from recipe r
  left join RecipeIngredient i on r.recipeid = i.recipeid
+left join CookBookRecipe cb on r.recipeid = cb.recipeid
 where i.recipeid is null
-and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) > 30))";
+and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day, r.ArchivedDate, GETDATE()) > 30))
+and cb.recipeid is null";
             DataTable dt = SQLUtility.GetDataTable(sql);
             int recipeid = 0;
             string recipename = "";
@@ -170,7 +163,7 @@ and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day
             Assume.That(recipeid > 0, "No recipes without ingredients in DB, cannot run tests.");
             TestContext.WriteLine("Existing recipe without ingredients with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app can delete and will not exist in DB " + recipeid + " " + recipename);
-            Recipe.Delete(dt);
+           FormRecordManager.DeleteRecord("recipe", recipeid);
             DataTable dtafterdelete = SQLUtility.GetDataTable("select * from recipe where recipeid = " + recipeid);
             Assert.IsTrue(dtafterdelete.Rows.Count == 0, "record with recipeid " + recipeid + " exists in database.");
             TestContext.WriteLine("App deleted " + recipeid + " " + recipename + " from DB.");
@@ -185,7 +178,7 @@ and (r.CurrentStatus = 'Draft' or (r.CurrentStatus = 'Archived' and datediff(day
             TestContext.WriteLine("Existing recipe with id = " + recipeid);
             TestContext.WriteLine("Ensure that app loads recipe " + recipeid);
 
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = FormRecordManager.LoadRecord("recipe", recipeid);
             int loadedid = (int)dt.Rows[0]["recipeid"];
 
             Assert.IsTrue(loadedid == recipeid, loadedid + " <> " + recipeid);

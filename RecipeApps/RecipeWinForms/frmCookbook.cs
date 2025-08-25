@@ -118,7 +118,7 @@
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Recipe App");
+                MessageBox.Show(ex.Message, Application.ProductName);
             }
             finally
             {

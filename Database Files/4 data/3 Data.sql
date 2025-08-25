@@ -106,7 +106,7 @@ union select 'BBQ sauce'
 ;
 with x as(
     Select UserName = 'TKelly', CuisineName = 'American', RecipeName = 'Chocolate Chip Cookies', Calories = 155, DraftDate = '10/15/2017 12:34', PublishedDate = '12/01/2017 8:00', ArchivedDate = null
-    Union Select 'RStevens', 'French', 'Apple Yogurt Smoothie', 43, '01/25/2018 16:00', '03/10/2018 14:00', '07/18/2019 8:00'
+    Union Select 'RStevens', 'French', 'Apple Yogurt Smoothie', 43, '01/25/2018 16:00', '03/10/2018 14:00', '08/18/2025 8:00'
     Union Select 'LGreen', 'English', 'Cheese Bread', 123, '12/15/2018 9:23', '01/01/2020', null  
     Union Select 'LGreen', 'American', 'Butter Muffins', 95, '04/17/2019 16:15', '05/22/2019 15:23', null 
     Union Select 'AChavitz', 'American', 'Sweet Chicken', 45, '08/25/22 12:00', null, '11/22/22 11:00'

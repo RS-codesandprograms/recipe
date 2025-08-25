@@ -7,10 +7,11 @@
             InitializeComponent();
             btnNewRecipe.Click += BtnNewRecipe_Click;
             gRecipeList.CellDoubleClick += GRecipeList_CellDoubleClick;
+            gRecipeList.KeyDown += GRecipeList_KeyDown;
             this.Activated += FrmRecipeList_Activated;
         }
 
-
+        
 
         private void FrmRecipeList_Activated(object? sender, EventArgs e)
         {
@@ -49,6 +50,14 @@
         private void GRecipeList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             LoadRecipe(e.RowIndex);
+        }
+        private void GRecipeList_KeyDown(object? sender, KeyEventArgs e)
+        {
+           if (e.KeyCode == Keys.Enter && gRecipeList.SelectedRows.Count > 0)
+            {
+                LoadRecipe(gRecipeList.SelectedRows[0].Index);
+                e.SuppressKeyPress = true; 
+            }
         }
 
     }

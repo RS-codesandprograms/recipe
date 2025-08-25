@@ -58,7 +58,7 @@
             lstUserName.Location = new Point(100, 93);
             lstUserName.Margin = new Padding(100, 3, 100, 3);
             lstUserName.Name = "lstUserName";
-            lstUserName.Size = new Size(325, 36);
+            lstUserName.Size = new Size(325, 29);
             lstUserName.TabIndex = 0;
             // 
             // btnCreateCkbk
@@ -74,7 +74,7 @@
             // 
             // frmCookbookAutoCreate
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1050, 271);
             Controls.Add(tblAutoCreateCkbk);

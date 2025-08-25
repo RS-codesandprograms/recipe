@@ -52,15 +52,15 @@
             // 
             // tsMain
             // 
-            tsMain.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tsMain.Font = new Font("Segoe UI", 12F);
             tsMain.Location = new Point(0, 29);
             tsMain.Name = "tsMain";
             tsMain.Size = new Size(1029, 25);
-            tsMain.TabIndex = 7;
+            tsMain.TabIndex = 1;
             // 
             // mnuMain
             // 
-            mnuMain.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            mnuMain.Font = new Font("Segoe UI", 12F);
             mnuMain.Items.AddRange(new ToolStripItem[] { mnuFile, mnuRecipes, mnuMeals, mnuCookbooks, mnuDataMaintenance, mnuTile });
             mnuMain.Location = new Point(0, 0);
             mnuMain.Name = "mnuMain";
@@ -78,7 +78,7 @@
             // mnuDashboard
             // 
             mnuDashboard.Name = "mnuDashboard";
-            mnuDashboard.Size = new Size(156, 26);
+            mnuDashboard.Size = new Size(180, 26);
             mnuDashboard.Text = "Dashboard";
             // 
             // mnuRecipes
@@ -91,19 +91,19 @@
             // mnuRecipeList
             // 
             mnuRecipeList.Name = "mnuRecipeList";
-            mnuRecipeList.Size = new Size(170, 26);
+            mnuRecipeList.Size = new Size(180, 26);
             mnuRecipeList.Text = "List";
             // 
             // mnuRecipeNew
             // 
             mnuRecipeNew.Name = "mnuRecipeNew";
-            mnuRecipeNew.Size = new Size(170, 26);
+            mnuRecipeNew.Size = new Size(180, 26);
             mnuRecipeNew.Text = "New Recipe";
             // 
             // mnuRecipeClone
             // 
             mnuRecipeClone.Name = "mnuRecipeClone";
-            mnuRecipeClone.Size = new Size(170, 26);
+            mnuRecipeClone.Size = new Size(180, 26);
             mnuRecipeClone.Text = "Clone Recipe";
             // 
             // mnuMeals
@@ -183,7 +183,7 @@
             ClientSize = new Size(1029, 630);
             Controls.Add(tsMain);
             Controls.Add(mnuMain);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 12F);
             IsMdiContainer = true;
             MainMenuStrip = mnuMain;
             Margin = new Padding(4);

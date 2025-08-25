@@ -1,5 +1,4 @@
-﻿
-namespace RecipeSystem
+﻿namespace RecipeSystem
 {
     public class ListManager
     {

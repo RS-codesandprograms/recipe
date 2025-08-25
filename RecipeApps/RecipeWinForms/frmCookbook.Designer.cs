@@ -190,16 +190,18 @@
             txtPrice.Location = new Point(201, 207);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(192, 29);
-            txtPrice.TabIndex = 8;
+            txtPrice.TabIndex = 4;
             // 
             // ckbIsActive
             // 
             ckbIsActive.AutoSize = true;
+            ckbIsActive.Checked = true;
+            ckbIsActive.CheckState = CheckState.Checked;
             ckbIsActive.Dock = DockStyle.Fill;
             ckbIsActive.Location = new Point(201, 258);
             ckbIsActive.Name = "ckbIsActive";
             ckbIsActive.Size = new Size(192, 48);
-            ckbIsActive.TabIndex = 9;
+            ckbIsActive.TabIndex = 5;
             ckbIsActive.UseVisualStyleBackColor = true;
             // 
             // txtCookbookName
@@ -209,7 +211,7 @@
             txtCookbookName.Location = new Point(201, 54);
             txtCookbookName.Name = "txtCookbookName";
             txtCookbookName.Size = new Size(390, 29);
-            txtCookbookName.TabIndex = 10;
+            txtCookbookName.TabIndex = 2;
             // 
             // lstUserName
             // 
@@ -219,7 +221,7 @@
             lstUserName.Location = new Point(201, 105);
             lstUserName.Name = "lstUserName";
             lstUserName.Size = new Size(390, 29);
-            lstUserName.TabIndex = 11;
+            lstUserName.TabIndex = 3;
             // 
             // pRecipe
             // 

@@ -357,7 +357,7 @@
             tbChildRecords.Name = "tbChildRecords";
             tbChildRecords.SelectedIndex = 0;
             tbChildRecords.Size = new Size(477, 254);
-            tbChildRecords.TabIndex = 20;
+            tbChildRecords.TabIndex = 5;
             // 
             // tbIngredients
             // 
@@ -469,7 +469,7 @@
             tsMain.Name = "tsMain";
             tsMain.Padding = new Padding(0, 2, 2, 0);
             tsMain.Size = new Size(467, 33);
-            tsMain.TabIndex = 1;
+            tsMain.TabIndex = 0;
             tsMain.Text = "toolStrip1";
             // 
             // btnSave

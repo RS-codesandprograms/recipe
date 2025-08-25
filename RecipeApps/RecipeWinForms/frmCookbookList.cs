@@ -7,10 +7,11 @@
             InitializeComponent();
             btnNewCookbook.Click += BtnNewCookbook_Click;
             gCookbookList.CellDoubleClick += GCookbookList_CellDoubleClick;
+            gCookbookList.KeyDown += GCookbookList_KeyDown;
             this.Activated += FrmCookbookList_Activated;
         }
 
-
+       
 
         private void FrmCookbookList_Activated(object? sender, EventArgs e)
         {
@@ -46,6 +47,14 @@
         private void GCookbookList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             LoadCookbook(e.RowIndex);
+        }
+        private void GCookbookList_KeyDown(object? sender, KeyEventArgs e)
+        {
+           if(e.KeyCode == Keys.Enter && gCookbookList.SelectedRows.Count > 0)
+            {
+                LoadCookbook(gCookbookList.SelectedRows[0].Index);
+                e.SuppressKeyPress = true; 
+            }
         }
     }
 }

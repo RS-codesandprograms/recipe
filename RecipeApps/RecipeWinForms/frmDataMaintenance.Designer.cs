@@ -45,8 +45,8 @@
             // tblMain
             // 
             tblMain.ColumnCount = 2;
-            tblMain.ColumnStyles.Add(new ColumnStyle());
-            tblMain.ColumnStyles.Add(new ColumnStyle());
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.2387705F));
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 86.76123F));
             tblMain.Controls.Add(pnlOptionButton, 0, 0);
             tblMain.Controls.Add(gData, 1, 0);
             tblMain.Controls.Add(btnSave, 1, 1);
@@ -56,7 +56,7 @@
             tblMain.RowCount = 2;
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
-            tblMain.Size = new Size(1100, 630);
+            tblMain.Size = new Size(1269, 621);
             tblMain.TabIndex = 0;
             // 
             // pnlOptionButton
@@ -70,7 +70,7 @@
             pnlOptionButton.Location = new Point(10, 10);
             pnlOptionButton.Margin = new Padding(10);
             pnlOptionButton.Name = "pnlOptionButton";
-            pnlOptionButton.Size = new Size(167, 547);
+            pnlOptionButton.Size = new Size(148, 547);
             pnlOptionButton.TabIndex = 0;
             // 
             // optStaff
@@ -78,7 +78,7 @@
             optStaff.AutoSize = true;
             optStaff.Location = new Point(3, 3);
             optStaff.Name = "optStaff";
-            optStaff.Size = new Size(80, 32);
+            optStaff.Size = new Size(67, 25);
             optStaff.TabIndex = 0;
             optStaff.TabStop = true;
             optStaff.Text = "Users";
@@ -88,9 +88,9 @@
             // optCuisineType
             // 
             optCuisineType.AutoSize = true;
-            optCuisineType.Location = new Point(3, 41);
+            optCuisineType.Location = new Point(3, 34);
             optCuisineType.Name = "optCuisineType";
-            optCuisineType.Size = new Size(103, 32);
+            optCuisineType.Size = new Size(86, 25);
             optCuisineType.TabIndex = 1;
             optCuisineType.TabStop = true;
             optCuisineType.Text = "Cuisines";
@@ -100,9 +100,9 @@
             // optIngredient
             // 
             optIngredient.AutoSize = true;
-            optIngredient.Location = new Point(3, 79);
+            optIngredient.Location = new Point(3, 65);
             optIngredient.Name = "optIngredient";
-            optIngredient.Size = new Size(131, 32);
+            optIngredient.Size = new Size(106, 25);
             optIngredient.TabIndex = 2;
             optIngredient.TabStop = true;
             optIngredient.Text = "Ingredients";
@@ -112,9 +112,9 @@
             // optMeasurementType
             // 
             optMeasurementType.AutoSize = true;
-            optMeasurementType.Location = new Point(3, 117);
+            optMeasurementType.Location = new Point(3, 96);
             optMeasurementType.Name = "optMeasurementType";
-            optMeasurementType.Size = new Size(160, 32);
+            optMeasurementType.Size = new Size(131, 25);
             optMeasurementType.TabIndex = 3;
             optMeasurementType.TabStop = true;
             optMeasurementType.Text = "Measurements";
@@ -124,9 +124,9 @@
             // optCourse
             // 
             optCourse.AutoSize = true;
-            optCourse.Location = new Point(3, 155);
+            optCourse.Location = new Point(3, 127);
             optCourse.Name = "optCourse";
-            optCourse.Size = new Size(101, 32);
+            optCourse.Size = new Size(84, 25);
             optCourse.TabIndex = 4;
             optCourse.TabStop = true;
             optCourse.Text = "Courses";
@@ -137,32 +137,32 @@
             // 
             gData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gData.Dock = DockStyle.Fill;
-            gData.Location = new Point(197, 10);
+            gData.Location = new Point(178, 10);
             gData.Margin = new Padding(10);
             gData.Name = "gData";
             gData.RowHeadersWidth = 51;
             gData.RowTemplate.Height = 29;
-            gData.Size = new Size(893, 547);
-            gData.TabIndex = 1;
+            gData.Size = new Size(1081, 547);
+            gData.TabIndex = 0;
             // 
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSave.Location = new Point(952, 577);
+            btnSave.Location = new Point(1121, 577);
             btnSave.Margin = new Padding(10);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(138, 43);
-            btnSave.TabIndex = 2;
+            btnSave.TabIndex = 1;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             // 
             // frmDataMaintenance
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1100, 630);
+            ClientSize = new Size(1269, 621);
             Controls.Add(tblMain);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "frmDataMaintenance";
             Text = "DataMaintenance";

@@ -15,7 +15,7 @@
             btnSave.Click += BtnSave_Click;
             this.FormClosing += FrmDataMaintenance_FormClosing;
             SetupRadioButtions();
-            gData.CellClick += GData_CellClick;
+            gData.CellContentClick += GData_CellClick;
             BindData(currenttabletype);
         }
 
@@ -170,5 +170,6 @@
             Save();
         }
 
+        
     }
 }
