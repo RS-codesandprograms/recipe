@@ -1,3 +1,4 @@
+--AS Combine this sproc with MealGet
 create or alter procedure dbo.MealSummaryGet(
 	@Message varchar(500) = ''  output
 

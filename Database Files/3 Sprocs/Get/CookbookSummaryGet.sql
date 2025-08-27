@@ -1,3 +1,4 @@
+--AS Combine this sproc with CookbookGet sproc
 create or alter procedure dbo.CookbookSummaryGet(
 	@Message varchar(500) = ''  output
 

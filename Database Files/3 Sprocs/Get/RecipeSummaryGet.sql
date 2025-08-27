@@ -1,3 +1,4 @@
+--AS Combine this sproc with RecipeGet
 create or alter procedure dbo.RecipeSummaryGet(
 	@Message varchar(500) = ''  output
 
