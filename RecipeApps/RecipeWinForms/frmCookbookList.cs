@@ -46,7 +46,11 @@
 
         private void GCookbookList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            LoadCookbook(e.RowIndex);
+            if (e.RowIndex > -1)
+            {
+                LoadCookbook(e.RowIndex);
+            }
+            
         }
         private void GCookbookList_KeyDown(object? sender, KeyEventArgs e)
         {

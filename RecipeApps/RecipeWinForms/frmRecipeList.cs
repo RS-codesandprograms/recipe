@@ -49,7 +49,11 @@
 
         private void GRecipeList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            LoadRecipe(e.RowIndex);
+            if (e.RowIndex > -1)
+            {
+                LoadRecipe(e.RowIndex);
+            }
+            
         }
         private void GRecipeList_KeyDown(object? sender, KeyEventArgs e)
         {
