@@ -60,6 +60,7 @@
             lstRecipeName.Name = "lstRecipeName";
             lstRecipeName.Size = new Size(274, 36);
             lstRecipeName.TabIndex = 0;
+            lstRecipeName.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // btnClone
             // 

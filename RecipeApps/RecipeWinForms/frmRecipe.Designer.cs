@@ -145,7 +145,7 @@
             txtRecipeName.Location = new Point(109, 2);
             txtRecipeName.Margin = new Padding(0, 2, 0, 2);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(374, 29);
+            txtRecipeName.Size = new Size(414, 29);
             txtRecipeName.TabIndex = 0;
             // 
             // lblCurrentStatuslbl
@@ -184,7 +184,7 @@
             txtCalories.Location = new Point(109, 101);
             txtCalories.Margin = new Padding(0, 2, 0, 2);
             txtCalories.Name = "txtCalories";
-            txtCalories.Size = new Size(374, 29);
+            txtCalories.Size = new Size(414, 29);
             txtCalories.TabIndex = 3;
             // 
             // lstCuisineName
@@ -195,8 +195,9 @@
             lstCuisineName.Location = new Point(109, 68);
             lstCuisineName.Margin = new Padding(0, 2, 0, 2);
             lstCuisineName.Name = "lstCuisineName";
-            lstCuisineName.Size = new Size(374, 29);
+            lstCuisineName.Size = new Size(414, 29);
             lstCuisineName.TabIndex = 2;
+            lstCuisineName.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // lstUserName
             // 
@@ -206,8 +207,9 @@
             lstUserName.Location = new Point(109, 35);
             lstUserName.Margin = new Padding(0, 2, 0, 2);
             lstUserName.Name = "lstUserName";
-            lstUserName.Size = new Size(374, 29);
+            lstUserName.Size = new Size(414, 29);
             lstUserName.TabIndex = 1;
+            lstUserName.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // lblCaptionRecipeName
             // 
@@ -232,7 +234,7 @@
             lblCurrentStatus.Location = new Point(109, 134);
             lblCurrentStatus.Margin = new Padding(0, 2, 0, 2);
             lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(374, 23);
+            lblCurrentStatus.Size = new Size(414, 23);
             lblCurrentStatus.TabIndex = 17;
             lblCurrentStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -268,7 +270,7 @@
             tblStatusDates.RowCount = 2;
             tblStatusDates.RowStyles.Add(new RowStyle());
             tblStatusDates.RowStyles.Add(new RowStyle());
-            tblStatusDates.Size = new Size(368, 58);
+            tblStatusDates.Size = new Size(408, 58);
             tblStatusDates.TabIndex = 19;
             // 
             // lblDrafted
@@ -278,7 +280,7 @@
             lblDrafted.Location = new Point(0, 0);
             lblDrafted.Margin = new Padding(0);
             lblDrafted.Name = "lblDrafted";
-            lblDrafted.Size = new Size(122, 21);
+            lblDrafted.Size = new Size(135, 21);
             lblDrafted.TabIndex = 0;
             lblDrafted.Text = "Drafted";
             lblDrafted.TextAlign = ContentAlignment.MiddleCenter;
@@ -287,10 +289,10 @@
             // 
             lblPublished.AutoSize = true;
             lblPublished.Dock = DockStyle.Fill;
-            lblPublished.Location = new Point(122, 0);
+            lblPublished.Location = new Point(135, 0);
             lblPublished.Margin = new Padding(0);
             lblPublished.Name = "lblPublished";
-            lblPublished.Size = new Size(122, 21);
+            lblPublished.Size = new Size(135, 21);
             lblPublished.TabIndex = 1;
             lblPublished.Text = "Published";
             lblPublished.TextAlign = ContentAlignment.MiddleCenter;
@@ -299,10 +301,10 @@
             // 
             lblArchived.AutoSize = true;
             lblArchived.Dock = DockStyle.Fill;
-            lblArchived.Location = new Point(244, 0);
+            lblArchived.Location = new Point(270, 0);
             lblArchived.Margin = new Padding(0);
             lblArchived.Name = "lblArchived";
-            lblArchived.Size = new Size(124, 21);
+            lblArchived.Size = new Size(138, 21);
             lblArchived.TabIndex = 2;
             lblArchived.Text = "Archived";
             lblArchived.TextAlign = ContentAlignment.MiddleCenter;
@@ -316,7 +318,7 @@
             lblDraftDate.Location = new Point(0, 23);
             lblDraftDate.Margin = new Padding(0, 2, 0, 2);
             lblDraftDate.Name = "lblDraftDate";
-            lblDraftDate.Size = new Size(122, 33);
+            lblDraftDate.Size = new Size(135, 33);
             lblDraftDate.TabIndex = 3;
             lblDraftDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -326,10 +328,10 @@
             lblPublishedDate.BackColor = SystemColors.ControlDark;
             lblPublishedDate.BorderStyle = BorderStyle.FixedSingle;
             lblPublishedDate.Dock = DockStyle.Fill;
-            lblPublishedDate.Location = new Point(122, 23);
+            lblPublishedDate.Location = new Point(135, 23);
             lblPublishedDate.Margin = new Padding(0, 2, 0, 2);
             lblPublishedDate.Name = "lblPublishedDate";
-            lblPublishedDate.Size = new Size(122, 33);
+            lblPublishedDate.Size = new Size(135, 33);
             lblPublishedDate.TabIndex = 4;
             lblPublishedDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -339,10 +341,10 @@
             lblArchivedDate.BackColor = SystemColors.ControlDark;
             lblArchivedDate.BorderStyle = BorderStyle.FixedSingle;
             lblArchivedDate.Dock = DockStyle.Fill;
-            lblArchivedDate.Location = new Point(244, 23);
+            lblArchivedDate.Location = new Point(270, 23);
             lblArchivedDate.Margin = new Padding(0, 2, 0, 2);
             lblArchivedDate.Name = "lblArchivedDate";
-            lblArchivedDate.Size = new Size(124, 33);
+            lblArchivedDate.Size = new Size(138, 33);
             lblArchivedDate.TabIndex = 5;
             lblArchivedDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -356,7 +358,7 @@
             tbChildRecords.Margin = new Padding(3, 2, 3, 2);
             tbChildRecords.Name = "tbChildRecords";
             tbChildRecords.SelectedIndex = 0;
-            tbChildRecords.Size = new Size(477, 254);
+            tbChildRecords.Size = new Size(517, 254);
             tbChildRecords.TabIndex = 5;
             // 
             // tbIngredients
@@ -366,7 +368,7 @@
             tbIngredients.Margin = new Padding(3, 2, 3, 2);
             tbIngredients.Name = "tbIngredients";
             tbIngredients.Padding = new Padding(3, 2, 3, 2);
-            tbIngredients.Size = new Size(469, 220);
+            tbIngredients.Size = new Size(509, 220);
             tbIngredients.TabIndex = 0;
             tbIngredients.Text = "Ingredients";
             tbIngredients.UseVisualStyleBackColor = true;
@@ -385,7 +387,7 @@
             tblIngredients.RowCount = 2;
             tblIngredients.RowStyles.Add(new RowStyle());
             tblIngredients.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblIngredients.Size = new Size(463, 216);
+            tblIngredients.Size = new Size(503, 216);
             tblIngredients.TabIndex = 0;
             // 
             // btnSaveIngredients
@@ -406,8 +408,7 @@
             gIngredients.Margin = new Padding(3, 2, 3, 2);
             gIngredients.Name = "gIngredients";
             gIngredients.RowHeadersWidth = 51;
-            gIngredients.RowTemplate.Height = 29;
-            gIngredients.Size = new Size(457, 179);
+            gIngredients.Size = new Size(497, 179);
             gIngredients.TabIndex = 1;
             // 
             // tbSteps
@@ -417,7 +418,7 @@
             tbSteps.Margin = new Padding(3, 2, 3, 2);
             tbSteps.Name = "tbSteps";
             tbSteps.Padding = new Padding(3, 2, 3, 2);
-            tbSteps.Size = new Size(469, 220);
+            tbSteps.Size = new Size(509, 220);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
@@ -435,7 +436,7 @@
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblSteps.Size = new Size(463, 216);
+            tblSteps.Size = new Size(503, 216);
             tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
@@ -456,8 +457,7 @@
             gSteps.Margin = new Padding(3, 2, 3, 2);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
-            gSteps.RowTemplate.Height = 29;
-            gSteps.Size = new Size(457, 179);
+            gSteps.Size = new Size(497, 179);
             gSteps.TabIndex = 1;
             // 
             // tsMain

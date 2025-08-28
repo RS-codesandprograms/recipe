@@ -54,6 +54,7 @@
             // lstUserName
             // 
             lstUserName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lstUserName.DropDownStyle = ComboBoxStyle.DropDownList;
             lstUserName.FormattingEnabled = true;
             lstUserName.Location = new Point(100, 93);
             lstUserName.Margin = new Padding(100, 3, 100, 3);

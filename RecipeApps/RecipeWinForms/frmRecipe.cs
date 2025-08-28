@@ -24,6 +24,7 @@ namespace RecipeWinForms
             this.FormClosing += FrmRecipe_FormClosing;
         }
 
+     
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
             bindsource.EndEdit();
@@ -130,7 +131,7 @@ namespace RecipeWinForms
             return value;
         }
 
-        private void SaveRecipeChildren(DataTable dt,  string childtablename)
+        private void SaveRecipeChildren(DataTable dt, string childtablename)
         {
             try
             {
@@ -154,7 +155,7 @@ namespace RecipeWinForms
             }
         }
 
-       
+
 
         private void SetButtonsEnabledBasedOnNewRecord()
         {
@@ -224,7 +225,7 @@ namespace RecipeWinForms
                     ((frmMain)this.MdiParent).OpenForm(typeof(frmChangeStatus), recipeid);
                 }
             }
-            this.Close(); 
+            this.Close();
 
         }
         private void BtnDelete_Click(object? sender, EventArgs e)
@@ -244,8 +245,8 @@ namespace RecipeWinForms
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            
-           DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
+
+            DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
             LoadRecipeDirections();
         }
 
@@ -263,7 +264,8 @@ namespace RecipeWinForms
 
         private void BtnSaveIngredients_Click(object? sender, EventArgs e)
         {
-            SaveRecipeChildren(dtRecipeIngredient,  "RecipeIngredient");
+            SaveRecipeChildren(dtRecipeIngredient, "RecipeIngredient");
         }
+
     }
 }

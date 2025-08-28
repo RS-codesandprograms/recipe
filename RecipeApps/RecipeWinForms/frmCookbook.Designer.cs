@@ -217,6 +217,7 @@
             // 
             tblDetails.SetColumnSpan(lstUserName, 2);
             lstUserName.Dock = DockStyle.Fill;
+            lstUserName.DropDownStyle = ComboBoxStyle.DropDownList;
             lstUserName.FormattingEnabled = true;
             lstUserName.Location = new Point(201, 105);
             lstUserName.Name = "lstUserName";
