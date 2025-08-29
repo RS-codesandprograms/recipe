@@ -57,7 +57,7 @@
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
             WindowsFormUtility.SetControlBinding(lblCookbookCreationDate, bindsource);
             WindowsFormUtility.SetControlBinding(ckbIsActive, bindsource);
-            this.Text = GetCookbookDesc();
+            this.Text = $"Cookbook - {GetCookbookDesc()}";
             SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmCookbook_Shown;
 
@@ -99,6 +99,7 @@
             WindowsFormUtility.AddComboBoxToGrid(gCookbookRecipe, ListManager.GetList("Recipe"), "Recipe", "RecipeName");
             WindowsFormUtility.AddDeleteButtonToGrid(gCookbookRecipe, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gCookbookRecipe, "RecipeIngredient");
+            gCookbookRecipe.Columns["BookRecipeSequence"].HeaderText = "Sequence";
         }
         private bool Save()
         {

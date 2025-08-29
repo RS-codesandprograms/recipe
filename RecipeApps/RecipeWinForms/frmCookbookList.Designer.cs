@@ -78,14 +78,14 @@
             // 
             // frmCookbookList
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 630);
             Controls.Add(tblCookBookList);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "frmCookbookList";
-            Text = "frmCookbookList";
+            Text = "Cookbook List";
             tblCookBookList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gCookbookList).EndInit();
             ResumeLayout(false);

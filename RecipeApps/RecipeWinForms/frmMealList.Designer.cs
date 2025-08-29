@@ -41,32 +41,34 @@
             tblMealList.Controls.Add(gMealList, 0, 0);
             tblMealList.Dock = DockStyle.Fill;
             tblMealList.Location = new Point(0, 0);
+            tblMealList.Margin = new Padding(3, 2, 3, 2);
             tblMealList.Name = "tblMealList";
             tblMealList.RowCount = 1;
             tblMealList.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblMealList.Size = new Size(800, 450);
+            tblMealList.Size = new Size(700, 338);
             tblMealList.TabIndex = 0;
             // 
             // gMealList
             // 
             gMealList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gMealList.Dock = DockStyle.Fill;
-            gMealList.Location = new Point(10, 10);
-            gMealList.Margin = new Padding(10);
+            gMealList.Location = new Point(9, 8);
+            gMealList.Margin = new Padding(9, 8, 9, 8);
             gMealList.Name = "gMealList";
             gMealList.RowHeadersWidth = 51;
             gMealList.RowTemplate.Height = 29;
-            gMealList.Size = new Size(780, 430);
+            gMealList.Size = new Size(682, 322);
             gMealList.TabIndex = 0;
             // 
             // frmMealList
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(tblMealList);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmMealList";
-            Text = "frmMealList";
+            Text = "Meal List";
             tblMealList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gMealList).EndInit();
             ResumeLayout(false);

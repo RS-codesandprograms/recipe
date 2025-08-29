@@ -70,7 +70,7 @@
             lblTitle.AutoSize = true;
             tblMain.SetColumnSpan(lblTitle, 5);
             lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Segoe UI", 20.25F);
             lblTitle.Location = new Point(3, 45);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(794, 90);
@@ -82,7 +82,7 @@
             // 
             tblMain.SetColumnSpan(lblDescription, 5);
             lblDescription.Dock = DockStyle.Fill;
-            lblDescription.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDescription.Font = new Font("Segoe UI", 15.75F);
             lblDescription.Location = new Point(3, 135);
             lblDescription.Name = "lblDescription";
             lblDescription.Size = new Size(794, 90);
@@ -97,7 +97,6 @@
             gSummary.Dock = DockStyle.Fill;
             gSummary.Location = new Point(163, 228);
             gSummary.Name = "gSummary";
-            gSummary.RowTemplate.Height = 25;
             gSummary.Size = new Size(474, 174);
             gSummary.TabIndex = 3;
             gSummary.TabStop = false;
@@ -139,7 +138,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tblMain);
             Name = "frmDashboard";
-            Text = "frmDashboard";
+            Text = "Dashboard";
             tblMain.ResumeLayout(false);
             tblMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gSummary).EndInit();

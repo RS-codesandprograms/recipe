@@ -165,7 +165,7 @@
             Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "frmDataMaintenance";
-            Text = "DataMaintenance";
+            Text = "Data Maintenance";
             tblMain.ResumeLayout(false);
             pnlOptionButton.ResumeLayout(false);
             pnlOptionButton.PerformLayout();

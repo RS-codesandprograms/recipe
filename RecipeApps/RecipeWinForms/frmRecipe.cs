@@ -68,7 +68,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblPublishedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblArchivedDate, bindsource);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
-            this.Text = GetRecipeDesc();
+            this.Text = $"Recipe - {GetRecipeDesc()}";
             SetButtonsEnabledBasedOnNewRecord();
             this.Shown += FrmRecipe_Shown;
 
@@ -119,6 +119,7 @@ namespace RecipeWinForms
             WindowsFormUtility.AddDeleteButtonToGrid(gSteps, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gSteps, "RecipeDirection");
             gSteps.Columns["DirectionSequence"].HeaderText = "Sequence";
+            gSteps.Columns["Instruction"].HeaderText = "Step";
         }
         public string GetRecipeDesc()
         {

@@ -4,7 +4,7 @@ create or alter procedure dbo.CookbookSummaryGet(
 )
 as
 begin
-	select cb.CookbookID, cb.CookbookName, Author = s.UserName, 'Num Recipes' = count(cbr.RecipeID), cb.Price
+	select cb.CookbookID, 'Cookbook Name' = cb.CookbookName, Author = s.UserName, 'Num Recipes' = count(cbr.RecipeID), cb.Price
 	from Cookbook cb 
 	join Staff s 
 	on cb.StaffID = s.StaffID
