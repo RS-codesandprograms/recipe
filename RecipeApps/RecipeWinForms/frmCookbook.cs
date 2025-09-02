@@ -103,6 +103,7 @@
         }
         private bool Save()
         {
+            
             bool b = false;
             Application.UseWaitCursor = true;
             try
@@ -151,7 +152,7 @@
             }
         }
         
-        private void SaveRecipe()
+        private void SaveCookbookRecipe()
         {
             try
             {
@@ -163,8 +164,9 @@
             }
         }
 
-        private void DeleteRecipe(int rowindex)
+        private void DeleteCookbookRecipe(int rowindex)
         {
+   
             try
             {
                 FormRecordManager.DeleteChildRecord(gCookbookRecipe, rowindex, "CookbookRecipe");
@@ -186,12 +188,15 @@
         }
         private void BtnSaveRecipe_Click(object? sender, EventArgs e)
         {
-            SaveRecipe();
+            SaveCookbookRecipe();
         }
         private void GCookbookRecipe_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipe(e.RowIndex);
-            LoadCookbookRecipe();
+            if (e.RowIndex > -1)
+            {
+                DeleteCookbookRecipe(e.RowIndex);
+                LoadCookbookRecipe();
+            }
         }
       
 

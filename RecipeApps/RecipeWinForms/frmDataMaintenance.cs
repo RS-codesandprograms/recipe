@@ -135,7 +135,7 @@
 
         private void GData_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (gData.Columns[e.ColumnIndex].Name == deletecolname)
+           if (e.RowIndex > -1 && gData.Columns[e.ColumnIndex].Name == deletecolname)
             {
                 Delete(e.RowIndex);
             }

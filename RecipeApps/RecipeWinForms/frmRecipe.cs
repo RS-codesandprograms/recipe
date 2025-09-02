@@ -257,14 +257,18 @@ namespace RecipeWinForms
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
 
-            DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
-            LoadRecipeDirections();
+           if (e.RowIndex > -1) 
+           { DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
+                LoadRecipeDirections();
+            }
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
-            LoadRecipeIngredients();
+            if (e.RowIndex > -1)
+            {DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
+                LoadRecipeIngredients();
+            }
         }
 
 

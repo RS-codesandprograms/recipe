@@ -45,8 +45,8 @@
             // tblMain
             // 
             tblMain.ColumnCount = 2;
-            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.2387705F));
-            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 86.76123F));
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.130024F));
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84.86998F));
             tblMain.Controls.Add(pnlOptionButton, 0, 0);
             tblMain.Controls.Add(gData, 1, 0);
             tblMain.Controls.Add(btnSave, 1, 1);
@@ -70,7 +70,7 @@
             pnlOptionButton.Location = new Point(10, 10);
             pnlOptionButton.Margin = new Padding(10);
             pnlOptionButton.Name = "pnlOptionButton";
-            pnlOptionButton.Size = new Size(148, 547);
+            pnlOptionButton.Size = new Size(172, 547);
             pnlOptionButton.TabIndex = 0;
             // 
             // optStaff
@@ -78,7 +78,7 @@
             optStaff.AutoSize = true;
             optStaff.Location = new Point(3, 3);
             optStaff.Name = "optStaff";
-            optStaff.Size = new Size(67, 25);
+            optStaff.Size = new Size(80, 32);
             optStaff.TabIndex = 0;
             optStaff.TabStop = true;
             optStaff.Text = "Users";
@@ -88,9 +88,9 @@
             // optCuisineType
             // 
             optCuisineType.AutoSize = true;
-            optCuisineType.Location = new Point(3, 34);
+            optCuisineType.Location = new Point(3, 41);
             optCuisineType.Name = "optCuisineType";
-            optCuisineType.Size = new Size(86, 25);
+            optCuisineType.Size = new Size(103, 32);
             optCuisineType.TabIndex = 1;
             optCuisineType.TabStop = true;
             optCuisineType.Text = "Cuisines";
@@ -100,9 +100,9 @@
             // optIngredient
             // 
             optIngredient.AutoSize = true;
-            optIngredient.Location = new Point(3, 65);
+            optIngredient.Location = new Point(3, 79);
             optIngredient.Name = "optIngredient";
-            optIngredient.Size = new Size(106, 25);
+            optIngredient.Size = new Size(131, 32);
             optIngredient.TabIndex = 2;
             optIngredient.TabStop = true;
             optIngredient.Text = "Ingredients";
@@ -112,9 +112,9 @@
             // optMeasurementType
             // 
             optMeasurementType.AutoSize = true;
-            optMeasurementType.Location = new Point(3, 96);
+            optMeasurementType.Location = new Point(3, 117);
             optMeasurementType.Name = "optMeasurementType";
-            optMeasurementType.Size = new Size(131, 25);
+            optMeasurementType.Size = new Size(160, 32);
             optMeasurementType.TabIndex = 3;
             optMeasurementType.TabStop = true;
             optMeasurementType.Text = "Measurements";
@@ -124,9 +124,9 @@
             // optCourse
             // 
             optCourse.AutoSize = true;
-            optCourse.Location = new Point(3, 127);
+            optCourse.Location = new Point(3, 155);
             optCourse.Name = "optCourse";
-            optCourse.Size = new Size(84, 25);
+            optCourse.Size = new Size(101, 32);
             optCourse.TabIndex = 4;
             optCourse.TabStop = true;
             optCourse.Text = "Courses";
@@ -137,12 +137,11 @@
             // 
             gData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gData.Dock = DockStyle.Fill;
-            gData.Location = new Point(178, 10);
+            gData.Location = new Point(202, 10);
             gData.Margin = new Padding(10);
             gData.Name = "gData";
             gData.RowHeadersWidth = 51;
-            gData.RowTemplate.Height = 29;
-            gData.Size = new Size(1081, 547);
+            gData.Size = new Size(1057, 547);
             gData.TabIndex = 0;
             // 
             // btnSave
@@ -158,7 +157,7 @@
             // 
             // frmDataMaintenance
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1269, 621);
             Controls.Add(tblMain);
