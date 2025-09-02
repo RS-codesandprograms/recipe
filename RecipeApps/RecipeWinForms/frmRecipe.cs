@@ -24,7 +24,7 @@ namespace RecipeWinForms
             this.FormClosing += FrmRecipe_FormClosing;
         }
 
-     
+
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
             bindsource.EndEdit();
@@ -70,12 +70,14 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
             this.Text = $"Recipe - {GetRecipeDesc()}";
             SetButtonsEnabledBasedOnNewRecord();
+
             this.Shown += FrmRecipe_Shown;
 
         }
 
         private void FrmRecipe_Shown(object? sender, EventArgs e)
         {
+            txtRecipeName.SelectionStart = txtRecipeName.Text.Length;
             if (lblDraftDate.Text == "")
 
             {
@@ -84,6 +86,8 @@ namespace RecipeWinForms
             }
             LoadRecipeIngredients();
             LoadRecipeDirections();
+
+         
         }
         private void LoadRecipeIngredients()
         {
@@ -93,8 +97,10 @@ namespace RecipeWinForms
             gIngredients.DataSource = dtRecipeIngredient;
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
-            WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
+            WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
+          
+
             int colcount = gIngredients.Columns.Count;
             gIngredients.Columns["IngredientId"].DisplayIndex = colcount - 5;
             gIngredients.Columns["MeasurementType"].DisplayIndex = colcount - 4;
@@ -105,7 +111,11 @@ namespace RecipeWinForms
             gIngredients.Columns["IngredientAmount"].HeaderText = "Quantity";
             gIngredients.Columns["IngredientSequence"].HeaderText = "Sequence";
 
-
+            //foreach (DataGridViewRow r in gIngredients.Rows)
+            //{
+            //    if (r.Index <= -1 && r.IsNewRow is true)
+            //    { gIngredients.Rows[r.Index]; }
+            //}
 
 
         }
@@ -268,5 +278,6 @@ namespace RecipeWinForms
             SaveRecipeChildren(dtRecipeIngredient, "RecipeIngredient");
         }
 
+    
     }
 }
