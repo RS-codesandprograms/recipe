@@ -103,7 +103,14 @@
             }
             else if (id == 0 && rowindex < gData.Rows.Count)
             {
-                gData.Rows.Remove(gData.Rows[rowindex]);
+                try {
+                    gData.Rows.Remove(gData.Rows[rowindex]); 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+               
             }
 
         }

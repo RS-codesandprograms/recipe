@@ -99,7 +99,7 @@ namespace RecipeWinForms
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
             WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
-          
+
 
             int colcount = gIngredients.Columns.Count;
             gIngredients.Columns["IngredientId"].DisplayIndex = colcount - 5;
@@ -110,15 +110,22 @@ namespace RecipeWinForms
             gIngredients.Columns["MeasurementType"].HeaderText = "Measurement";
             gIngredients.Columns["IngredientAmount"].HeaderText = "Quantity";
             gIngredients.Columns["IngredientSequence"].HeaderText = "Sequence";
-
-            //foreach (DataGridViewRow r in gIngredients.Rows)
-            //{
-            //    if (r.Index <= -1 && r.IsNewRow is true)
-            //    { gIngredients.Rows[r.Index]; }
-            //}
-
-
         }
+
+        //    foreach (DataGridViewRow r in gIngredients.Rows)
+        //    {
+        //        if (r.Index <= -1 && r.IsNewRow is true)
+        //        {
+        //            DataGridViewCell deleteCell = r.Cells[deletecolname];
+        //            if (deleteCell != null)
+        //            {
+        //                deleteCell.ReadOnly = true;
+        //            }
+        //        }
+        //    }
+        //}
+
+
 
 
         private void LoadRecipeDirections()
