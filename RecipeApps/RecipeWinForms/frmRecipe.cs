@@ -21,9 +21,11 @@ namespace RecipeWinForms
             btnSaveSteps.Click += BtnSaveSteps_Click;
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
+            txtCalories.TextChanged += TxtCalories_TextChanged;
             this.FormClosing += FrmRecipe_FormClosing;
         }
 
+        
 
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
@@ -78,12 +80,6 @@ namespace RecipeWinForms
         private void FrmRecipe_Shown(object? sender, EventArgs e)
         {
             txtRecipeName.SelectionStart = txtRecipeName.Text.Length;
-            if (lblDraftDate.Text == "")
-
-            {
-                lblDraftDate.Text = DateTime.Now.ToString();
-
-            }
             LoadRecipeIngredients();
             LoadRecipeDirections();
 
@@ -148,6 +144,9 @@ namespace RecipeWinForms
             }
             return value;
         }
+
+      
+
 
         private void SaveRecipeChildren(DataTable dt, string childtablename)
         {
@@ -245,6 +244,10 @@ namespace RecipeWinForms
             }
             this.Close();
 
+        }
+        private void TxtCalories_TextChanged(object? sender, EventArgs e)
+        {
+           WindowsFormUtility.ValidateUserInputNumericField(txtCalories.Text);
         }
         private void BtnDelete_Click(object? sender, EventArgs e)
         {

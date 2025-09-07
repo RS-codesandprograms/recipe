@@ -21,8 +21,8 @@ begin
 
 	if @RecipeID = 0
 	begin
-		insert Recipe(StaffID, CuisineTypeID, RecipeName, Calories, DraftDate, PublishedDate, ArchivedDate)
-		values(@StaffID, @CuisineTypeID, @RecipeName, @Calories, @DraftDate, @PublishedDate, @ArchivedDate)
+		insert Recipe(StaffID, CuisineTypeID, RecipeName,Calories, DraftDate, PublishedDate, ArchivedDate)
+		values(@StaffID, @CuisineTypeID, @RecipeName, @Calories, GETDATE(), @PublishedDate, @ArchivedDate)
 		
 		select @RecipeID = SCOPE_IDENTITY()
 	end
