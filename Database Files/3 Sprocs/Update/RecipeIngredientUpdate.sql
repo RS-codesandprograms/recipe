@@ -11,7 +11,7 @@ as
 begin
 	declare @return int = 0;
 
-	select @RecipeIngredientID = isnull(@RecipeIngredientID, 0), @RecipeID = isnull(@RecipeID,0), @MeasurementTypeID = isnull(@MeasurementTypeID, 0), @IngredientID = isnull(@IngredientID, 0)
+	select @RecipeIngredientID = isnull(@RecipeIngredientID, 0), @RecipeID = isnull(@RecipeID,0)
 
 	if @RecipeIngredientID = 0
 	begin 

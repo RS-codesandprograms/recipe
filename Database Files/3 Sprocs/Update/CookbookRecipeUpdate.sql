@@ -10,7 +10,7 @@ as
 begin
 	declare @return int = 0
 
-	select @CookbookRecipeId = isnull(@CookbookRecipeId, 0), @CookbookId = isnull(@CookbookId, 0), @RecipeId = isnull(@RecipeId, 0)
+	select @CookbookRecipeId = isnull(@CookbookRecipeId, 0), @CookbookId = isnull(@CookbookId, 0)
 
 	if @CookBookRecipeID = 0
 	begin
