@@ -137,12 +137,14 @@
         }
 
 
-
-
-
         private void GData_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-           if (e.RowIndex > -1 && gData.Columns[e.ColumnIndex].Name == deletecolname)
+            var id = gData.Rows[e.RowIndex].Cells[$"{currenttabletype}Id"].Value;
+
+
+            if (e.RowIndex > -1 && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
+
+                if (e.RowIndex > -1 && gData.Columns[e.ColumnIndex].Name == deletecolname)
             {
                 Delete(e.RowIndex);
             }

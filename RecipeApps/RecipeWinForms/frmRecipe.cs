@@ -1,4 +1,5 @@
 ﻿using RecipeSystem;
+using System.Windows.Forms;
 
 namespace RecipeWinForms
 {
@@ -108,18 +109,7 @@ namespace RecipeWinForms
             gIngredients.Columns["IngredientSequence"].HeaderText = "Sequence";
         }
 
-        //    foreach (DataGridViewRow r in gIngredients.Rows)
-        //    {
-        //        if (r.Index <= -1 && r.IsNewRow is true)
-        //        {
-        //            DataGridViewCell deleteCell = r.Cells[deletecolname];
-        //            if (deleteCell != null)
-        //            {
-        //                deleteCell.ReadOnly = true;
-        //            }
-        //        }
-        //    }
-        //}
+      
 
 
 
@@ -266,17 +256,29 @@ namespace RecipeWinForms
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
+            var id = gSteps.Rows[e.RowIndex].Cells["RecipeDirectionId"].Value;
 
-           if (e.RowIndex > -1) 
-           { DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
-                LoadRecipeDirections();
+
+            if (e.RowIndex > -1 && gSteps.Columns[e.ColumnIndex].Name == deletecolname  && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
+            { 
+                {
+                    DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
+                    LoadRecipeDirections();
+                }
             }
+           
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1)
-            {DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
+
+            var id = gIngredients.Rows[e.RowIndex].Cells["RecipeIngredientId"].Value;
+          
+
+                  if( e.RowIndex > -1 && gIngredients.Columns[e.ColumnIndex].Name == deletecolname && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
+
+            {
+                DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
                 LoadRecipeIngredients();
             }
         }

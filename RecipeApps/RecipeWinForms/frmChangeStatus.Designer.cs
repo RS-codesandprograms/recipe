@@ -58,7 +58,7 @@
             tblChangeStatus.Controls.Add(lblCurrentStatus, 2, 1);
             tblChangeStatus.Controls.Add(tblControls, 0, 4);
             tblChangeStatus.Controls.Add(lblTitle, 0, 0);
-            tblChangeStatus.Controls.Add(lblCurrentStatusText, 0, 1);
+            tblChangeStatus.Controls.Add(lblCurrentStatusText, 1, 1);
             tblChangeStatus.Controls.Add(lblDrafted, 1, 2);
             tblChangeStatus.Controls.Add(lblPublished, 2, 2);
             tblChangeStatus.Controls.Add(lblArchived, 3, 2);
@@ -84,10 +84,10 @@
             lblCurrentStatus.AutoSize = true;
             tblChangeStatus.SetColumnSpan(lblCurrentStatus, 2);
             lblCurrentStatus.Dock = DockStyle.Fill;
-            lblCurrentStatus.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCurrentStatus.Location = new Point(271, 53);
+            lblCurrentStatus.Font = new Font("Segoe UI", 16F);
+            lblCurrentStatus.Location = new Point(405, 53);
             lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(262, 53);
+            lblCurrentStatus.Size = new Size(266, 53);
             lblCurrentStatus.TabIndex = 10;
             lblCurrentStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -160,7 +160,7 @@
             lblTitle.AutoSize = true;
             tblChangeStatus.SetColumnSpan(lblTitle, 5);
             lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Segoe UI", 19.8000011F);
             lblTitle.Location = new Point(3, 0);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(668, 53);
@@ -173,8 +173,8 @@
             lblCurrentStatusText.AutoSize = true;
             tblChangeStatus.SetColumnSpan(lblCurrentStatusText, 2);
             lblCurrentStatusText.Dock = DockStyle.Fill;
-            lblCurrentStatusText.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCurrentStatusText.Location = new Point(3, 53);
+            lblCurrentStatusText.Font = new Font("Segoe UI", 16F);
+            lblCurrentStatusText.Location = new Point(137, 53);
             lblCurrentStatusText.Name = "lblCurrentStatusText";
             lblCurrentStatusText.Size = new Size(262, 53);
             lblCurrentStatusText.TabIndex = 2;
@@ -270,7 +270,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(674, 321);
             Controls.Add(tblChangeStatus);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "frmChangeStatus";
             Text = "Change Status";
