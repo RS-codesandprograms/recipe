@@ -11,7 +11,7 @@ begin
 
 	select @All = isnull(@All,0), @CourseId = isnull(@CourseId,0), @IncludeBlank = ISNULL(@IncludeBlank,0)
 	
-	select c.CourseID, c.CourseName, c.CourseSequence
+	select c.CourseId, c.CourseName, c.CourseSequence
 	from Course c
 	where c.CourseId = @CourseId
 	or @All = 1

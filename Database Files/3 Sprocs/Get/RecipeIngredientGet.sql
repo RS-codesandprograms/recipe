@@ -10,9 +10,9 @@ begin
 	select  @RecipeIngredientId = isnull(@RecipeIngredientId,0), @RecipeId = isnull(@RecipeId,0)
 	
 	
-	select  ri.RecipeIngredientID, ri.RecipeID, ri.IngredientID, ri.MeasurementTypeID, ri.IngredientAmount, ri.IngredientSequence
+	select  ri.RecipeIngredientId, ri.RecipeId, ri.IngredientId, ri.MeasurementTypeId, ri.IngredientAmount, ri.IngredientSequence
 	from RecipeIngredient ri 
-	where ri.RecipeID = @RecipeId
+	where ri.RecipeId = @RecipeId
 	order by ri.IngredientSequence
 
 	return @return

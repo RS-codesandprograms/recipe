@@ -14,7 +14,7 @@ begin
 		insert CuisineType(CuisineName)
 		values(@CuisineName)
 		
-		select @CuisineTypeId = SCOPE_IDENTITY()
+		select @CuisineTypeId = SCOPE_IdENTITY()
 	end
 	else
 	begin

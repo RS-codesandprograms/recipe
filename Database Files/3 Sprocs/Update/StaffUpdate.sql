@@ -16,7 +16,7 @@ begin
 		insert Staff(FirstName, LastName, UserName)
 		values(@FirstName, @LastName, @UserName)
 		
-		select @StaffId = SCOPE_IDENTITY()
+		select @StaffId = SCOPE_IdENTITY()
 	end
 	else
 	begin

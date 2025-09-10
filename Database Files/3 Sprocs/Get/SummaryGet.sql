@@ -5,9 +5,9 @@ as
 begin
 	
 	
-	select  Type = 'Recipes', Number = count(r.RecipeID) from Recipe r
-	union select 'Meals', count(m.MealID) from Meal m
-	union select 'Cookbooks', count(cb.CookbookID) from CookBook cb
+	select  Type = 'Recipes', Number = count(r.RecipeId) from Recipe r
+	union select 'Meals', count(m.MealId) from Meal m
+	union select 'Cookbooks', count(cb.CookbookId) from CookBook cb
 
 	
 

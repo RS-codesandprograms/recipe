@@ -8,25 +8,25 @@ begin
 
 declare @return int = 0
 
-Insert Recipe (StaffID, CuisineTypeID, RecipeName, Calories)
-select r.StaffID, r.CuisineTypeID, concat(r.RecipeName, ' - clone'), r.Calories
+Insert Recipe (StaffId, CuisineTypeId, RecipeName, Calories)
+select r.StaffId, r.CuisineTypeId, concat(r.RecipeName, ' - clone'), r.Calories
 from Recipe r 
 where Recipeid = @BaseRecipeid
 
-select @Recipeid = SCOPE_IDENTITY();
+select @Recipeid = SCOPE_IdENTITY();
 
 ; 
 with x as (
     select RecipeName = concat(r.RecipeName, ' - clone'),
-    MeasurementTypeID = ri.MeasurementTypeID, IngredientID = ri.IngredientID,
+    MeasurementTypeId = ri.MeasurementTypeId, IngredientId = ri.IngredientId,
     IngredientAmount = ri.IngredientAmount, IngredientSequence = ri.IngredientSequence
     from RecipeIngredient ri 
     join Recipe r 
-    on ri.RecipeID = r.RecipeID
+    on ri.RecipeId = r.RecipeId
     where r.Recipeid = @BaseRecipeid
 )
-Insert RecipeIngredient (RecipeID, MeasurementTypeID, IngredientID, IngredientAmount, IngredientSequence)
-select r.RecipeID, x.MeasurementTypeID, x.IngredientID, x.IngredientAmount, x.IngredientSequence
+Insert RecipeIngredient (RecipeId, MeasurementTypeId, IngredientId, IngredientAmount, IngredientSequence)
+select r.RecipeId, x.MeasurementTypeId, x.IngredientId, x.IngredientAmount, x.IngredientSequence
 from x
 join Recipe r
 on x.RecipeName = r.RecipeName 
@@ -37,11 +37,11 @@ with x as (
     DirectionSequence = rd.DirectionSequence, Instruction = rd.Instruction
     from RecipeDirection rd 
     join Recipe r 
-    on rd.RecipeID = r.RecipeID
+    on rd.RecipeId = r.RecipeId
     where r.Recipeid = @BaseRecipeid
 )
-Insert RecipeDirection (RecipeID, DirectionSequence, Instruction)
-select r.RecipeID, x.DirectionSequence, x.Instruction
+Insert RecipeDirection (RecipeId, DirectionSequence, Instruction)
+select r.RecipeId, x.DirectionSequence, x.Instruction
 from x
 join Recipe r
 on x.RecipeName = r.RecipeName

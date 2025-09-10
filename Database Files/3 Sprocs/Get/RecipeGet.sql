@@ -7,11 +7,11 @@ create or alter procedure dbo.RecipeGet(
 )
 as
 begin
-	select @RecipeId = isnull(@RecipeID,0), @RecipeName = nullif(@RecipeName, '')
+	select @RecipeId = isnull(@RecipeId,0), @RecipeName = nullif(@RecipeName, '')
 	
-	select r.RecipeID, r.StaffID, r.CuisineTypeID, r.RecipeName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture
+	select r.RecipeId, r.StaffId, r.CuisineTypeId, r.RecipeName, r.Calories, r.DraftDate, r.PublishedDate, r.ArchivedDate, r.CurrentStatus, r.RecipePicture
 	from Recipe r 
-	where r.RecipeID = @RecipeId
+	where r.RecipeId = @RecipeId
 	or @All = 1
 	or r.RecipeName like '%' + @RecipeName + '%'
 	order by r.CurrentStatus

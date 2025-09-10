@@ -1,6 +1,6 @@
 create or alter proc dbo.CookbookUpdate(
-	@CookbookID int  output,
-	@StaffID int,
+	@CookbookId int  output,
+	@StaffId int,
 	@CookbookName varchar (50),
 	@Price decimal (6,2),
 	@IsActive bit,
@@ -12,25 +12,25 @@ begin
 
 declare @return int 
 
-select @CookbookID = ISNULL(@CookbookID, 0)
+select @CookbookId = ISNULL(@CookbookId, 0)
 
-if @CookbookID  = 0
+if @CookbookId  = 0
 begin 
-	insert Cookbook (StaffID, CookbookName, Price, IsActive, CookbookCreationDate)
-	values (@StaffID, @CookbookName, @Price, @IsActive, @CookbookCreationDate)
-	select @CookbookID = SCOPE_IDENTITY()
+	insert Cookbook (StaffId, CookbookName, Price, IsActive, CookbookCreationDate)
+	values (@StaffId, @CookbookName, @Price, @IsActive, @CookbookCreationDate)
+	select @CookbookId = SCOPE_IdENTITY()
 end 
 else
 begin 
 
 	update Cookbook
 	set 
-	StaffID = @StaffID, 
+	StaffId = @StaffId, 
 	CookbookName = @CookbookName, 
 	Price = @Price, 
 	IsActive = @IsActive, 
 	CookbookCreationDate = @CookbookCreationDate
-	where CookbookID = @CookbookID
+	where CookbookId = @CookbookId
 end 
 finished: 
 return @return 

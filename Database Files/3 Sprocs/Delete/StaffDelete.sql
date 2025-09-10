@@ -8,87 +8,87 @@ begin
 	declare @return int = 0
 		; 
 		with x as(
-			select StaffID = s.StaffID
+			select StaffId = s.StaffId
 			from staff s 
-			where s.StaffID = @StaffId
+			where s.StaffId = @StaffId
 		)
 		delete cbr
 		from x 
 		cross join staff s 
 		join cookbook cb 
-		on s.StaffID = cb.StaffID
+		on s.StaffId = cb.StaffId
 		join CookBookRecipe cbr 
-		on cb.CookbookID = cbr.CookbookID
+		on cb.CookbookId = cbr.CookbookId
 		join Recipe r 
-		on cbr.RecipeID = r.RecipeID
-		where r.StaffID = x.StaffID 
-		or s.staffID = x.StaffID
+		on cbr.RecipeId = r.RecipeId
+		where r.StaffId = x.StaffId 
+		or s.staffId = x.StaffId
 
 		delete cb
 		from staff s 
 		join Cookbook cb 
-		on s.StaffID = cb.StaffID
-		where s.StaffID = @StaffId
+		on s.StaffId = cb.StaffId
+		where s.StaffId = @StaffId
 
 		; 
 		with x as(
-			select StaffID = s.StaffID
+			select StaffId = s.StaffId
 			from staff s 
-			where s.StaffID = @StaffId
+			where s.StaffId = @StaffId
 		)
 		delete mcr 
 		from x 
 		cross join staff s 
 		join Meal m 
-		on s.StaffID = m.StaffID
+		on s.StaffId = m.StaffId
 		join MealCourse mc
-		on m.MealID = mc.MealID
+		on m.MealId = mc.MealId
 		join MealCourseRecipe mcr 
-		on mc.MealCourseID = mcr.MealCourseID
+		on mc.MealCourseId = mcr.MealCourseId
 		join recipe r 
-		on mcr.RecipeID = r.RecipeID
-		where r.StaffID = x.StaffID 
-		or s.staffID = x.StaffID
+		on mcr.RecipeId = r.RecipeId
+		where r.StaffId = x.StaffId 
+		or s.staffId = x.StaffId
 
 		delete mc
 		from staff s 
 		join Meal m 
-		on s.StaffID = m.StaffID
+		on s.StaffId = m.StaffId
 		join MealCourse mc 
-		on m.MealID = mc.MealID
-		where s.StaffID = @StaffId
+		on m.MealId = mc.MealId
+		where s.StaffId = @StaffId
 
 		delete m
 		from staff s 
 		join Meal m 
-		on s.StaffID = m.StaffID
-		where s.StaffID = @StaffId
+		on s.StaffId = m.StaffId
+		where s.StaffId = @StaffId
 
 		delete ri
 		from staff s 
 		join Recipe r 
-		on s.StaffID = r.StaffID
+		on s.StaffId = r.StaffId
 		join RecipeIngredient ri 
-		on r.RecipeID = ri.RecipeID
-		where s.StaffID = @StaffId
+		on r.RecipeId = ri.RecipeId
+		where s.StaffId = @StaffId
 
 		delete rd
 		from staff s 
 		join Recipe r 
-		on s.StaffID = r.StaffID
+		on s.StaffId = r.StaffId
 		join RecipeDirection rd 
-		on r.RecipeID = rd.RecipeID
-		where s.StaffID = @StaffId
+		on r.RecipeId = rd.RecipeId
+		where s.StaffId = @StaffId
 
 		delete r
 		from staff s 
 		join Recipe r 
-		on s.StaffID = r.StaffID
-		where s.StaffID = @StaffId
+		on s.StaffId = r.StaffId
+		where s.StaffId = @StaffId
 
 		delete s 
 		from staff s 
-		where s.StaffID = @StaffId
+		where s.StaffId = @StaffId
 
 	return @return
 end

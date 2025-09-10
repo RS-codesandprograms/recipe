@@ -12,7 +12,7 @@ begin
 	
 	select ri.RecipeId, ri.RecipeDirectionId, ri.Instruction, ri.DirectionSequence
 	from RecipeDirection ri 
-	where ri.RecipeID = @RecipeId
+	where ri.RecipeId = @RecipeId
 	order by ri.DirectionSequence
 
 	return @return

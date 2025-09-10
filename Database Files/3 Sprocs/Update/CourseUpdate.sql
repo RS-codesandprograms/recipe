@@ -15,7 +15,7 @@ begin
 		insert Course(CourseName, CourseSequence)
 		values(@CourseName, @CourseSequence)
 		
-		select @CourseId = SCOPE_IDENTITY()
+		select @CourseId = SCOPE_IdENTITY()
 	end
 	else
 	begin

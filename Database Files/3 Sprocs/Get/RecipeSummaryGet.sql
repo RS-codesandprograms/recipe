@@ -6,18 +6,18 @@ as
 begin
 	
 	select
-		r.RecipeID, 
+		r.RecipeId, 
 		'Recipe Name' = r.RecipeName,
 		'Status' = r.CurrentStatus,
 		'User' = concat(s.FirstName, ' ',  s.LastName),
 		r.Calories,
-		'Num Ingredients' = count(ri.RecipeIngredientID) 
+		'Num Ingredients' = count(ri.RecipeIngredientId) 
 	from recipe r
 	join Staff s 
-	on r.StaffID = s.StaffID
+	on r.StaffId = s.StaffId
 	left join RecipeIngredient ri
-	on r.RecipeID = ri.RecipeID
-	group by r.RecipeID, r.RecipeName, r.CurrentStatus, s.FirstName, s.LastName, r.Calories
+	on r.RecipeId = ri.RecipeId
+	group by r.RecipeId, r.RecipeName, r.CurrentStatus, s.FirstName, s.LastName, r.Calories
 	order by r.CurrentStatus desc
 	
 	

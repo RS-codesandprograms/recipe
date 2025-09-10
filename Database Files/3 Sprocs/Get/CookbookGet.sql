@@ -11,7 +11,7 @@ begin
 
 	select @All = isnull(@All,0), @CookbookId = isnull(@CookbookId,0), @IncludeBlank = ISNULL(@IncludeBlank,0)
 	
-	select cb.CookbookID, cb.CookbookName, cb.StaffID, cb.Price, cb.CookbookCreationDate, cb.IsActive
+	select cb.CookbookId, cb.CookbookName, cb.StaffId, cb.Price, cb.CookbookCreationDate, cb.IsActive
 	from Cookbook cb
 	where --cb.IsActive = 1
 	--and

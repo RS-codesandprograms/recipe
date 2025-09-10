@@ -6,20 +6,20 @@ as
 begin
 	
 	
-	select m.MealID, 'Meal Name' = m.MealName, 'User' = s.UserName, 
+	select m.MealId, 'Meal Name' = m.MealName, 'User' = s.UserName, 
 	'Num Calories' = Sum(r.Calories),
-	'Num Courses' = count(distinct mc.MealCourseID),
-	'Num Recipes' = count(distinct mcr.MealCourseRecipeID)
+	'Num Courses' = count(distinct mc.MealCourseId),
+	'Num Recipes' = count(distinct mcr.MealCourseRecipeId)
 	from Meal m 
 	join Staff s 
-	on m.StaffID = s.StaffID
+	on m.StaffId = s.StaffId
 	join MealCourse mc 
-	on m.MealID = mc.MealID
+	on m.MealId = mc.MealId
 	join MealCourseRecipe mcr
-	on mc.MealCourseID = mcr.MealCourseID 
+	on mc.MealCourseId = mcr.MealCourseId 
 	join Recipe r 
-	on mcr.RecipeID = r.RecipeID
-	group by m.MealID, m.MealName, s.StaffID, s.UserName, m.MealPicture
+	on mcr.RecipeId = r.RecipeId
+	group by m.MealId, m.MealName, s.StaffId, s.UserName, m.MealPicture
 	order by m.MealName
 	
 end

@@ -14,7 +14,7 @@ begin
 		insert MeasurementType(MeasurementName)
 		values(@MeasurementName)
 		
-		select @MeasurementTypeId = SCOPE_IDENTITY()
+		select @MeasurementTypeId = SCOPE_IdENTITY()
 	end
 	else
 	begin

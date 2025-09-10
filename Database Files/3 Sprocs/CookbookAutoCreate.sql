@@ -12,24 +12,24 @@ begin
 	begin try
 		begin tran
 	
-	Insert Cookbook(StaffID, CookBookName, Price, IsActive)
-	Select s.StaffID, concat('Recipes by ', s.Firstname, ' ', s.Lastname), count(r.RecipeID) * 1.33, 1
+	Insert Cookbook(StaffId, CookBookName, Price, IsActive)
+	Select s.StaffId, concat('Recipes by ', s.Firstname, ' ', s.Lastname), count(r.RecipeId) * 1.33, 1
 	from Staff s
 	join Recipe r 
-	on s.StaffID = r.StaffID
-	where s.StaffID = @StaffId
+	on s.StaffId = r.StaffId
+	where s.StaffId = @StaffId
 	and r.CurrentStatus in ('Archived', 'Published')
-	group by s.StaffID, concat('Recipes by ', s.Firstname, ' ', s.Lastname)
+	group by s.StaffId, concat('Recipes by ', s.Firstname, ' ', s.Lastname)
 
-	select @CookbookId = SCOPE_IDENTITY();
+	select @CookbookId = SCOPE_IdENTITY();
 
-	Insert CookbookRecipe(CookbookID, RecipeID, BookRecipeSequence)
-	select cb.CookbookID, r.RecipeID, Row_Number() over (order by r.RecipeName)
+	Insert CookbookRecipe(CookbookId, RecipeId, BookRecipeSequence)
+	select cb.CookbookId, r.RecipeId, Row_Number() over (order by r.RecipeName)
 	from Cookbook cb 
 	join staff s
-	on cb.StaffID = s.StaffID 
+	on cb.StaffId = s.StaffId 
 	join Recipe r 
-	on r.StaffID = s.StaffID  
+	on r.StaffId = s.StaffId  
 	where cb.Cookbookid = @CookbookId
 	and r.CurrentStatus in ('Archived', 'Published')
 	order by r.RecipeName

@@ -13,7 +13,7 @@ begin
 	
 	select s.StaffId, s.FirstName, s.LastName, s.UserName
 	from Staff s
-	where s.StaffID = @StaffId
+	where s.StaffId = @StaffId
 	or @All = 1
 	or s.UserName like '%' + @UserName + '%'
 	union select 0, '', '', ''

@@ -1,7 +1,7 @@
 create or alter proc dbo.CookbookRecipeUpdate(
-@CookBookRecipeID int output,
-@CookbookID int,
-@RecipeID int,
+@CookBookRecipeId int output,
+@CookbookId int,
+@RecipeId int,
 @BookRecipeSequence int,
 @Message varchar(500) = ''
 )
@@ -12,22 +12,22 @@ begin
 
 	select @CookbookRecipeId = isnull(@CookbookRecipeId, 0), @CookbookId = isnull(@CookbookId, 0)
 
-	if @CookBookRecipeID = 0
+	if @CookBookRecipeId = 0
 	begin
-		insert CookBookRecipe(CookbookID, RecipeID, BookRecipeSequence)
-		values (@CookbookID, @RecipeID, @BookRecipeSequence)
+		insert CookBookRecipe(CookbookId, RecipeId, BookRecipeSequence)
+		values (@CookbookId, @RecipeId, @BookRecipeSequence)
 
-		select @CookBookRecipeID = SCOPE_IDENTITY()
+		select @CookBookRecipeId = SCOPE_IdENTITY()
 	end
 
 	else 
 	begin
 		update CookBookRecipe
 		set
-		CookbookID = @CookbookID, 
-		RecipeID = @RecipeID, 
+		CookbookId = @CookbookId, 
+		RecipeId = @RecipeId, 
 		BookRecipeSequence = @BookRecipeSequence
-		where CookBookRecipeID = @CookBookRecipeID
+		where CookBookRecipeId = @CookBookRecipeId
 	end
 
 	finished:
