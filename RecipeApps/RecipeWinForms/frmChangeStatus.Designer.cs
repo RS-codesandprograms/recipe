@@ -35,7 +35,6 @@
             btnPublish = new Button();
             btnArchive = new Button();
             lblTitle = new Label();
-            lblCurrentStatusText = new Label();
             lblDrafted = new Label();
             lblPublished = new Label();
             lblArchived = new Label();
@@ -43,6 +42,7 @@
             lblDraftDate = new Label();
             lblPublishedDate = new Label();
             lblArchivedDate = new Label();
+            lblCurrentStatusText = new Label();
             tblChangeStatus.SuspendLayout();
             tblControls.SuspendLayout();
             SuspendLayout();
@@ -168,26 +168,13 @@
             lblTitle.Text = "Recipe Name";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblCurrentStatusText
-            // 
-            lblCurrentStatusText.AutoSize = true;
-            tblChangeStatus.SetColumnSpan(lblCurrentStatusText, 2);
-            lblCurrentStatusText.Dock = DockStyle.Fill;
-            lblCurrentStatusText.Font = new Font("Segoe UI", 16F);
-            lblCurrentStatusText.Location = new Point(137, 53);
-            lblCurrentStatusText.Name = "lblCurrentStatusText";
-            lblCurrentStatusText.Size = new Size(262, 53);
-            lblCurrentStatusText.TabIndex = 2;
-            lblCurrentStatusText.Text = "Current Status:";
-            lblCurrentStatusText.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // lblDrafted
             // 
             lblDrafted.AutoSize = true;
             lblDrafted.Dock = DockStyle.Bottom;
-            lblDrafted.Location = new Point(137, 131);
+            lblDrafted.Location = new Point(137, 138);
             lblDrafted.Name = "lblDrafted";
-            lblDrafted.Size = new Size(128, 28);
+            lblDrafted.Size = new Size(128, 21);
             lblDrafted.TabIndex = 3;
             lblDrafted.Text = "Drafted";
             lblDrafted.TextAlign = ContentAlignment.MiddleCenter;
@@ -196,9 +183,9 @@
             // 
             lblPublished.AutoSize = true;
             lblPublished.Dock = DockStyle.Bottom;
-            lblPublished.Location = new Point(271, 131);
+            lblPublished.Location = new Point(271, 138);
             lblPublished.Name = "lblPublished";
-            lblPublished.Size = new Size(128, 28);
+            lblPublished.Size = new Size(128, 21);
             lblPublished.TabIndex = 4;
             lblPublished.Text = "Published";
             lblPublished.TextAlign = ContentAlignment.MiddleCenter;
@@ -207,9 +194,9 @@
             // 
             lblArchived.AutoSize = true;
             lblArchived.Dock = DockStyle.Bottom;
-            lblArchived.Location = new Point(405, 131);
+            lblArchived.Location = new Point(405, 138);
             lblArchived.Name = "lblArchived";
-            lblArchived.Size = new Size(128, 28);
+            lblArchived.Size = new Size(128, 21);
             lblArchived.TabIndex = 5;
             lblArchived.Text = "Archived";
             lblArchived.TextAlign = ContentAlignment.MiddleCenter;
@@ -264,9 +251,22 @@
             lblArchivedDate.TabIndex = 9;
             lblArchivedDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // lblCurrentStatusText
+            // 
+            lblCurrentStatusText.AutoSize = true;
+            tblChangeStatus.SetColumnSpan(lblCurrentStatusText, 2);
+            lblCurrentStatusText.Dock = DockStyle.Fill;
+            lblCurrentStatusText.Font = new Font("Segoe UI", 16F);
+            lblCurrentStatusText.Location = new Point(137, 53);
+            lblCurrentStatusText.Name = "lblCurrentStatusText";
+            lblCurrentStatusText.Size = new Size(262, 53);
+            lblCurrentStatusText.TabIndex = 2;
+            lblCurrentStatusText.Text = "Current Status:";
+            lblCurrentStatusText.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // frmChangeStatus
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(674, 321);
             Controls.Add(tblChangeStatus);
@@ -285,7 +285,6 @@
         private TableLayoutPanel tblChangeStatus;
         private TableLayoutPanel tblControls;
         private Label lblTitle;
-        private Label lblCurrentStatusText;
         private Label lblDrafted;
         private Label lblPublished;
         private Label lblArchived;
@@ -297,5 +296,6 @@
         private Button btnPublish;
         private Button btnArchive;
         private Label lblCurrentStatus;
+        private Label lblCurrentStatusText;
     }
 }

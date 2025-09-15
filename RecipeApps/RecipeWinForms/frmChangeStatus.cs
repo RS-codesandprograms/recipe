@@ -6,6 +6,8 @@
         int recipeid;
         string recipename = "";
         List<Button> lstbuttons;
+        List<Label> lststatusdates;
+        List<Label> lststatusdatesvalid = new();
         BindingSource bindsource = new BindingSource();
 
         public frmChangeStatus()
@@ -13,8 +15,10 @@
             InitializeComponent();
             lstbuttons = new() { btnDraft, btnPublish, btnArchive };
             lstbuttons.ForEach(b => b.Click += Btn_Click);
+            lststatusdates = new() { lblDraftDate, lblPublishedDate, lblArchivedDate };
+          //  string 
             this.FormClosing += FrmChangeStatus_FormClosing;
-          
+
         }
 
         private void FrmChangeStatus_FormClosing(object? sender, FormClosingEventArgs e)
@@ -25,7 +29,7 @@
             }
         }
 
-  
+
 
         public void LoadChangeStatusForm(int Recipeid)
         {
@@ -46,6 +50,9 @@
 
         private void FrmChangeStatus_Shown(object? sender, EventArgs e)
         {
+            draftdate = 
+            WindowsFormUtility.DisplayDateTimeAsDate(lststatusdates, lststatusdatesvalid);
+
             SetButtonsEnabled();
         }
         private void ConfirmUpdate(string status)
@@ -57,26 +64,34 @@
                 UpdateRecipeStatus(status);
                 Save();
 
-                if (this.MdiParent != null && this.MdiParent is frmMain)
-                {
-                    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), recipeid);
-                }
-                this.Close();
+
             }
         }
         private void UpdateRecipeStatus(string status)
         {
             switch (status)
             {
-                case "Draft": 
+                case "Draft":
                     lblDraftDate.Text = DateTime.Now.ToString();
-                    break;  
-
-                case "Publish": 
-                    lblPublishedDate.Text = DateTime.Now.ToString();
+                    lblPublishedDate.Text = string.Empty;
+                    lblArchivedDate.Text = string.Empty;
+                    if (dtRecipe.Rows.Count > 0)
+                    {
+                        dtRecipe.Rows[0]["PublishedDate"] = DBNull.Value;
+                        dtRecipe.Rows[0]["ArchivedDate"] = DBNull.Value;
+                    }
                     break;
 
-                case "Archive": 
+                case "Publish":
+                    lblPublishedDate.Text = DateTime.Now.ToString();
+                    lblArchivedDate.Text = string.Empty;
+                    if (dtRecipe.Rows.Count > 0)
+                    {
+                        dtRecipe.Rows[0]["ArchivedDate"] = DBNull.Value;
+                    }
+                    break;
+
+                case "Archive":
                     lblArchivedDate.Text = DateTime.Now.ToString();
                     break;
             }
@@ -97,12 +112,19 @@
             finally
             {
                 bindsource.DataSource = dtRecipe;
-                bindsource.ResetBindings(false); 
+                bindsource.ResetBindings(false);
                 SetButtonsEnabled();
+                foreach (Label lbl in lststatusdates)
+                {
+                    if (string.IsNullOrWhiteSpace(lbl.Text) == false)
+                    {
+                        lststatusdatesvalid.Add(lbl);
+                    }
+                }
+
+                lststatusdatesvalid.ForEach(lbl => lbl.Text = DateTime.Parse(lbl.Text).ToString("d"));
                 Application.UseWaitCursor = false;
             }
-
-
         }
 
         private void SetButtonsEnabled()
