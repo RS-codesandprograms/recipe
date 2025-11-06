@@ -6,20 +6,13 @@
         int recipeid;
         string recipename = "";
         List<Button> lstbuttons;
-        List<Label> lststatusdates;
-        List<Label> lststatusdatesvalid = new();
         BindingSource bindsource = new BindingSource();
-        DateTime draftdate, publisheddate, archiveddate;
-        string displaydraftdate, displaypublisheddate, displayarchiveddate;
-
 
         public frmChangeStatus()
         {
             InitializeComponent();
             lstbuttons = new() { btnDraft, btnPublish, btnArchive };
             lstbuttons.ForEach(b => b.Click += Btn_Click);
-            lststatusdates = new() { lblDraftDate, lblPublishedDate, lblArchivedDate };
-         
             this.FormClosing += FrmChangeStatus_FormClosing;
 
         }
@@ -31,8 +24,6 @@
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), recipeid);
             }
         }
-
-
 
         public void LoadChangeStatusForm(int Recipeid)
         {
@@ -53,42 +44,19 @@
 
         private void FrmChangeStatus_Shown(object? sender, EventArgs e)
         {
-            DisplayDate();
-          
-
-
-
-
-            //WindowsFormUtility.DisplayDateTimeAsDate(lststatusdates, lststatusdatesvalid);
-
             SetButtonsEnabled();
-        }
-
-        private void RestoreDateTime()
-        {
-            if (lblDraftDate.Text.Contains(displaydraftdate))
-            {
-                lblDraftDate.Text = draftdate.ToString();
-            }
-        }
-
-        private void DisplayDate()
-        {
-            if (string.IsNullOrWhiteSpace(lblDraftDate.Text) == false)
-            {
-                DateTime.TryParse(lblDraftDate.Text, out draftdate);
-                displaydraftdate = draftdate.ToString("MM/dd/yyyy");
-                lblDraftDate.Text = displaydraftdate;
-            }
         }
 
         private void ConfirmUpdate(string status)
         {
             bindsource.EndEdit();
-            var response = MessageBox.Show($"Are you sure want to change this recipe to {status.ToLower()}ed?", Application.ProductName, MessageBoxButtons.YesNoCancel);
+            string message = $"Are you sure want to change this recipe to {status.ToLower()}ed?";
+            if (status.EndsWith('e'))
+                { message = $"Are you sure want to change this recipe to {status.ToLower()}d?"; }
+            var response = MessageBox.Show(message, Application.ProductName, MessageBoxButtons.YesNoCancel);
             if (response == DialogResult.Yes)
             {
-                
+
                 UpdateRecipeStatus(status);
                 Save();
 
@@ -129,7 +97,6 @@
             Application.UseWaitCursor = true;
             try
             {
-                RestoreDateTime();
                 FormRecordManager.SaveTable(dtRecipe, "Recipe");
 
 
@@ -143,15 +110,6 @@
                 bindsource.DataSource = dtRecipe;
                 bindsource.ResetBindings(false);
                 SetButtonsEnabled();
-                foreach (Label lbl in lststatusdates)
-                {
-                    if (string.IsNullOrWhiteSpace(lbl.Text) == false)
-                    {
-                        lststatusdatesvalid.Add(lbl);
-                    }
-                }
-                DisplayDate();
-                // lststatusdatesvalid.ForEach(lbl => lbl.Text = DateTime.Parse(lbl.Text).ToString("d"));
                 Application.UseWaitCursor = false;
             }
         }
@@ -178,7 +136,7 @@
         {
             Button btn = (Button)sender;
             ConfirmUpdate(btn.Text);
-            
+
         }
 
 
