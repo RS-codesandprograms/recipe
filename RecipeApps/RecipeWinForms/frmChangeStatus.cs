@@ -9,6 +9,9 @@
         List<Label> lststatusdates;
         List<Label> lststatusdatesvalid = new();
         BindingSource bindsource = new BindingSource();
+        DateTime draftdate, publisheddate, archiveddate;
+        string displaydraftdate, displaypublisheddate, displayarchiveddate;
+
 
         public frmChangeStatus()
         {
@@ -16,7 +19,7 @@
             lstbuttons = new() { btnDraft, btnPublish, btnArchive };
             lstbuttons.ForEach(b => b.Click += Btn_Click);
             lststatusdates = new() { lblDraftDate, lblPublishedDate, lblArchivedDate };
-          //  string 
+         
             this.FormClosing += FrmChangeStatus_FormClosing;
 
         }
@@ -50,17 +53,42 @@
 
         private void FrmChangeStatus_Shown(object? sender, EventArgs e)
         {
-            draftdate = 
-            WindowsFormUtility.DisplayDateTimeAsDate(lststatusdates, lststatusdatesvalid);
+            DisplayDate();
+          
+
+
+
+
+            //WindowsFormUtility.DisplayDateTimeAsDate(lststatusdates, lststatusdatesvalid);
 
             SetButtonsEnabled();
         }
+
+        private void RestoreDateTime()
+        {
+            if (lblDraftDate.Text.Contains(displaydraftdate))
+            {
+                lblDraftDate.Text = draftdate.ToString();
+            }
+        }
+
+        private void DisplayDate()
+        {
+            if (string.IsNullOrWhiteSpace(lblDraftDate.Text) == false)
+            {
+                DateTime.TryParse(lblDraftDate.Text, out draftdate);
+                displaydraftdate = draftdate.ToString("MM/dd/yyyy");
+                lblDraftDate.Text = displaydraftdate;
+            }
+        }
+
         private void ConfirmUpdate(string status)
         {
             bindsource.EndEdit();
             var response = MessageBox.Show($"Are you sure want to change this recipe to {status.ToLower()}ed?", Application.ProductName, MessageBoxButtons.YesNoCancel);
             if (response == DialogResult.Yes)
             {
+                
                 UpdateRecipeStatus(status);
                 Save();
 
@@ -101,6 +129,7 @@
             Application.UseWaitCursor = true;
             try
             {
+                RestoreDateTime();
                 FormRecordManager.SaveTable(dtRecipe, "Recipe");
 
 
@@ -121,8 +150,8 @@
                         lststatusdatesvalid.Add(lbl);
                     }
                 }
-
-                lststatusdatesvalid.ForEach(lbl => lbl.Text = DateTime.Parse(lbl.Text).ToString("d"));
+                DisplayDate();
+                // lststatusdatesvalid.ForEach(lbl => lbl.Text = DateTime.Parse(lbl.Text).ToString("d"));
                 Application.UseWaitCursor = false;
             }
         }
@@ -149,6 +178,7 @@
         {
             Button btn = (Button)sender;
             ConfirmUpdate(btn.Text);
+            
         }
 
 
