@@ -75,7 +75,7 @@
             // 
             // tblMain
             // 
-            tblMain.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tblMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tblMain.ColumnCount = 2;
             tblMain.ColumnStyles.Add(new ColumnStyle());
             tblMain.ColumnStyles.Add(new ColumnStyle());
@@ -93,8 +93,8 @@
             tblMain.Controls.Add(lblStatusDates, 0, 5);
             tblMain.Controls.Add(tblStatusDates, 1, 5);
             tblMain.Font = new Font("Segoe UI", 12F);
-            tblMain.Location = new Point(0, 35);
-            tblMain.Margin = new Padding(2);
+            tblMain.Location = new Point(0, 47);
+            tblMain.Margin = new Padding(2, 3, 2, 3);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 7;
             tblMain.RowStyles.Add(new RowStyle());
@@ -104,7 +104,7 @@
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
-            tblMain.Size = new Size(577, 509);
+            tblMain.Size = new Size(751, 679);
             tblMain.TabIndex = 1;
             // 
             // tbChildRecords
@@ -113,22 +113,20 @@
             tbChildRecords.Controls.Add(tbIngredients);
             tbChildRecords.Controls.Add(tbSteps);
             tbChildRecords.Dock = DockStyle.Fill;
-            tbChildRecords.Location = new Point(3, 223);
-            tbChildRecords.Margin = new Padding(3, 2, 3, 2);
+            tbChildRecords.Location = new Point(3, 286);
             tbChildRecords.Name = "tbChildRecords";
             tbChildRecords.SelectedIndex = 0;
-            tbChildRecords.Size = new Size(585, 359);
+            tbChildRecords.Size = new Size(745, 479);
             tbChildRecords.TabIndex = 13;
             tbChildRecords.TabStop = false;
             // 
             // tbIngredients
             // 
             tbIngredients.Controls.Add(tblIngredients);
-            tbIngredients.Location = new Point(4, 30);
-            tbIngredients.Margin = new Padding(3, 2, 3, 2);
+            tbIngredients.Location = new Point(4, 37);
             tbIngredients.Name = "tbIngredients";
-            tbIngredients.Padding = new Padding(3, 2, 3, 2);
-            tbIngredients.Size = new Size(577, 325);
+            tbIngredients.Padding = new Padding(3);
+            tbIngredients.Size = new Size(737, 438);
             tbIngredients.TabIndex = 8;
             tbIngredients.Text = "Ingredients";
             tbIngredients.UseVisualStyleBackColor = true;
@@ -137,25 +135,23 @@
             // 
             tblIngredients.ColumnCount = 1;
             tblIngredients.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tblIngredients.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
+            tblIngredients.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 21F));
             tblIngredients.Controls.Add(btnSaveIngredients, 0, 0);
             tblIngredients.Controls.Add(gIngredients, 0, 1);
             tblIngredients.Dock = DockStyle.Fill;
-            tblIngredients.Location = new Point(3, 2);
-            tblIngredients.Margin = new Padding(3, 2, 3, 2);
+            tblIngredients.Location = new Point(3, 3);
             tblIngredients.Name = "tblIngredients";
             tblIngredients.RowCount = 2;
             tblIngredients.RowStyles.Add(new RowStyle());
             tblIngredients.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblIngredients.Size = new Size(571, 321);
+            tblIngredients.Size = new Size(731, 432);
             tblIngredients.TabIndex = 0;
             // 
             // btnSaveIngredients
             // 
-            btnSaveIngredients.Location = new Point(3, 2);
-            btnSaveIngredients.Margin = new Padding(3, 2, 3, 2);
+            btnSaveIngredients.Location = new Point(3, 3);
             btnSaveIngredients.Name = "btnSaveIngredients";
-            btnSaveIngredients.Size = new Size(93, 29);
+            btnSaveIngredients.Size = new Size(106, 39);
             btnSaveIngredients.TabIndex = 9;
             btnSaveIngredients.Text = "Save";
             btnSaveIngredients.UseVisualStyleBackColor = true;
@@ -164,21 +160,19 @@
             // 
             gIngredients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gIngredients.Dock = DockStyle.Fill;
-            gIngredients.Location = new Point(3, 35);
-            gIngredients.Margin = new Padding(3, 2, 3, 2);
+            gIngredients.Location = new Point(3, 48);
             gIngredients.Name = "gIngredients";
             gIngredients.RowHeadersWidth = 51;
-            gIngredients.Size = new Size(565, 284);
+            gIngredients.Size = new Size(725, 381);
             gIngredients.TabIndex = 10;
             // 
             // tbSteps
             // 
             tbSteps.Controls.Add(tblSteps);
-            tbSteps.Location = new Point(4, 30);
-            tbSteps.Margin = new Padding(3, 2, 3, 2);
+            tbSteps.Location = new Point(4, 37);
             tbSteps.Name = "tbSteps";
-            tbSteps.Padding = new Padding(3, 2, 3, 2);
-            tbSteps.Size = new Size(577, 325);
+            tbSteps.Padding = new Padding(3);
+            tbSteps.Size = new Size(690, 438);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
@@ -190,21 +184,19 @@
             tblSteps.Controls.Add(btnSaveSteps, 0, 0);
             tblSteps.Controls.Add(gSteps, 0, 1);
             tblSteps.Dock = DockStyle.Fill;
-            tblSteps.Location = new Point(3, 2);
-            tblSteps.Margin = new Padding(3, 2, 3, 2);
+            tblSteps.Location = new Point(3, 3);
             tblSteps.Name = "tblSteps";
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblSteps.Size = new Size(571, 321);
+            tblSteps.Size = new Size(684, 432);
             tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
             // 
-            btnSaveSteps.Location = new Point(3, 2);
-            btnSaveSteps.Margin = new Padding(3, 2, 3, 2);
+            btnSaveSteps.Location = new Point(3, 3);
             btnSaveSteps.Name = "btnSaveSteps";
-            btnSaveSteps.Size = new Size(93, 29);
+            btnSaveSteps.Size = new Size(106, 39);
             btnSaveSteps.TabIndex = 0;
             btnSaveSteps.Text = "Save";
             btnSaveSteps.UseVisualStyleBackColor = true;
@@ -213,11 +205,10 @@
             // 
             gSteps.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gSteps.Dock = DockStyle.Fill;
-            gSteps.Location = new Point(3, 35);
-            gSteps.Margin = new Padding(3, 2, 3, 2);
+            gSteps.Location = new Point(3, 48);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
-            gSteps.Size = new Size(565, 284);
+            gSteps.Size = new Size(678, 381);
             gSteps.TabIndex = 1;
             // 
             // lblCaptionCuisineName
@@ -226,10 +217,10 @@
             lblCaptionCuisineName.AutoSize = true;
             lblCaptionCuisineName.BackColor = SystemColors.Control;
             lblCaptionCuisineName.ForeColor = SystemColors.WindowText;
-            lblCaptionCuisineName.Location = new Point(0, 72);
-            lblCaptionCuisineName.Margin = new Padding(0, 2, 0, 2);
+            lblCaptionCuisineName.Location = new Point(0, 89);
+            lblCaptionCuisineName.Margin = new Padding(0, 3, 0, 3);
             lblCaptionCuisineName.Name = "lblCaptionCuisineName";
-            lblCaptionCuisineName.Size = new Size(61, 21);
+            lblCaptionCuisineName.Size = new Size(74, 28);
             lblCaptionCuisineName.TabIndex = 0;
             lblCaptionCuisineName.Text = "Cuisine";
             lblCaptionCuisineName.TextAlign = ContentAlignment.MiddleCenter;
@@ -240,10 +231,10 @@
             lblCaptionUserName.AutoSize = true;
             lblCaptionUserName.BackColor = SystemColors.Control;
             lblCaptionUserName.ForeColor = SystemColors.WindowText;
-            lblCaptionUserName.Location = new Point(0, 39);
-            lblCaptionUserName.Margin = new Padding(0, 2, 0, 2);
+            lblCaptionUserName.Location = new Point(0, 47);
+            lblCaptionUserName.Margin = new Padding(0, 3, 0, 3);
             lblCaptionUserName.Name = "lblCaptionUserName";
-            lblCaptionUserName.Size = new Size(42, 21);
+            lblCaptionUserName.Size = new Size(51, 28);
             lblCaptionUserName.TabIndex = 1;
             lblCaptionUserName.Text = "User";
             lblCaptionUserName.TextAlign = ContentAlignment.MiddleCenter;
@@ -253,10 +244,10 @@
             txtRecipeName.BackColor = Color.White;
             txtRecipeName.BorderStyle = BorderStyle.FixedSingle;
             txtRecipeName.Dock = DockStyle.Fill;
-            txtRecipeName.Location = new Point(109, 2);
-            txtRecipeName.Margin = new Padding(0, 2, 0, 2);
+            txtRecipeName.Location = new Point(135, 3);
+            txtRecipeName.Margin = new Padding(0, 3, 0, 3);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(482, 29);
+            txtRecipeName.Size = new Size(616, 34);
             txtRecipeName.TabIndex = 4;
             // 
             // lblCurrentStatuslbl
@@ -265,10 +256,10 @@
             lblCurrentStatuslbl.AutoSize = true;
             lblCurrentStatuslbl.BackColor = SystemColors.Control;
             lblCurrentStatuslbl.ForeColor = SystemColors.WindowText;
-            lblCurrentStatuslbl.Location = new Point(0, 135);
-            lblCurrentStatuslbl.Margin = new Padding(0, 2, 0, 2);
+            lblCurrentStatuslbl.Location = new Point(0, 168);
+            lblCurrentStatuslbl.Margin = new Padding(0, 3, 0, 3);
             lblCurrentStatuslbl.Name = "lblCurrentStatuslbl";
-            lblCurrentStatuslbl.Size = new Size(109, 21);
+            lblCurrentStatuslbl.Size = new Size(135, 28);
             lblCurrentStatuslbl.TabIndex = 5;
             lblCurrentStatuslbl.Text = "Current Status";
             lblCurrentStatuslbl.TextAlign = ContentAlignment.MiddleCenter;
@@ -279,10 +270,10 @@
             lblCaptionCalories.AutoSize = true;
             lblCaptionCalories.BackColor = SystemColors.Control;
             lblCaptionCalories.ForeColor = SystemColors.WindowText;
-            lblCaptionCalories.Location = new Point(0, 105);
-            lblCaptionCalories.Margin = new Padding(0, 2, 0, 2);
+            lblCaptionCalories.Location = new Point(0, 130);
+            lblCaptionCalories.Margin = new Padding(0, 3, 0, 3);
             lblCaptionCalories.Name = "lblCaptionCalories";
-            lblCaptionCalories.Size = new Size(105, 21);
+            lblCaptionCalories.Size = new Size(129, 28);
             lblCaptionCalories.TabIndex = 6;
             lblCaptionCalories.Text = "Num Calories";
             lblCaptionCalories.TextAlign = ContentAlignment.MiddleCenter;
@@ -292,10 +283,10 @@
             txtCalories.BackColor = Color.White;
             txtCalories.BorderStyle = BorderStyle.FixedSingle;
             txtCalories.Dock = DockStyle.Fill;
-            txtCalories.Location = new Point(109, 101);
-            txtCalories.Margin = new Padding(0, 2, 0, 2);
+            txtCalories.Location = new Point(135, 127);
+            txtCalories.Margin = new Padding(0, 3, 0, 3);
             txtCalories.Name = "txtCalories";
-            txtCalories.Size = new Size(482, 29);
+            txtCalories.Size = new Size(616, 34);
             txtCalories.TabIndex = 7;
             // 
             // lstCuisineName
@@ -304,10 +295,10 @@
             lstCuisineName.Dock = DockStyle.Fill;
             lstCuisineName.DropDownStyle = ComboBoxStyle.DropDownList;
             lstCuisineName.FormattingEnabled = true;
-            lstCuisineName.Location = new Point(109, 68);
-            lstCuisineName.Margin = new Padding(0, 2, 0, 2);
+            lstCuisineName.Location = new Point(135, 85);
+            lstCuisineName.Margin = new Padding(0, 3, 0, 3);
             lstCuisineName.Name = "lstCuisineName";
-            lstCuisineName.Size = new Size(482, 29);
+            lstCuisineName.Size = new Size(616, 36);
             lstCuisineName.TabIndex = 6;
             // 
             // lstUserName
@@ -316,10 +307,10 @@
             lstUserName.Dock = DockStyle.Fill;
             lstUserName.DropDownStyle = ComboBoxStyle.DropDownList;
             lstUserName.FormattingEnabled = true;
-            lstUserName.Location = new Point(109, 35);
-            lstUserName.Margin = new Padding(0, 2, 0, 2);
+            lstUserName.Location = new Point(135, 43);
+            lstUserName.Margin = new Padding(0, 3, 0, 3);
             lstUserName.Name = "lstUserName";
-            lstUserName.Size = new Size(482, 29);
+            lstUserName.Size = new Size(616, 36);
             lstUserName.TabIndex = 5;
             // 
             // lblCaptionRecipeName
@@ -329,9 +320,9 @@
             lblCaptionRecipeName.BackColor = SystemColors.Control;
             lblCaptionRecipeName.ForeColor = SystemColors.WindowText;
             lblCaptionRecipeName.Location = new Point(0, 6);
-            lblCaptionRecipeName.Margin = new Padding(0, 2, 0, 2);
+            lblCaptionRecipeName.Margin = new Padding(0, 3, 0, 3);
             lblCaptionRecipeName.Name = "lblCaptionRecipeName";
-            lblCaptionRecipeName.Size = new Size(102, 21);
+            lblCaptionRecipeName.Size = new Size(126, 28);
             lblCaptionRecipeName.TabIndex = 8;
             lblCaptionRecipeName.Text = "Recipe Name";
             lblCaptionRecipeName.TextAlign = ContentAlignment.MiddleCenter;
@@ -342,10 +333,10 @@
             lblCurrentStatus.BackColor = SystemColors.ControlDark;
             lblCurrentStatus.BorderStyle = BorderStyle.FixedSingle;
             lblCurrentStatus.Dock = DockStyle.Fill;
-            lblCurrentStatus.Location = new Point(109, 134);
-            lblCurrentStatus.Margin = new Padding(0, 2, 0, 2);
+            lblCurrentStatus.Location = new Point(135, 167);
+            lblCurrentStatus.Margin = new Padding(0, 3, 0, 3);
             lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(482, 23);
+            lblCurrentStatus.Size = new Size(616, 30);
             lblCurrentStatus.TabIndex = 9;
             lblCurrentStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -354,10 +345,10 @@
             lblStatusDates.Anchor = AnchorStyles.Left;
             lblStatusDates.AutoSize = true;
             lblStatusDates.ForeColor = SystemColors.WindowText;
-            lblStatusDates.Location = new Point(0, 179);
-            lblStatusDates.Margin = new Padding(0, 2, 0, 2);
+            lblStatusDates.Location = new Point(0, 227);
+            lblStatusDates.Margin = new Padding(0, 3, 0, 3);
             lblStatusDates.Name = "lblStatusDates";
-            lblStatusDates.Size = new Size(95, 21);
+            lblStatusDates.Size = new Size(119, 28);
             lblStatusDates.TabIndex = 10;
             lblStatusDates.Text = "Status Dates";
             lblStatusDates.TextAlign = ContentAlignment.MiddleCenter;
@@ -375,13 +366,12 @@
             tblStatusDates.Controls.Add(lblPublishedDate, 1, 1);
             tblStatusDates.Controls.Add(lblArchivedDate, 2, 1);
             tblStatusDates.Dock = DockStyle.Fill;
-            tblStatusDates.Location = new Point(112, 161);
-            tblStatusDates.Margin = new Padding(3, 2, 3, 2);
+            tblStatusDates.Location = new Point(138, 203);
             tblStatusDates.Name = "tblStatusDates";
             tblStatusDates.RowCount = 2;
             tblStatusDates.RowStyles.Add(new RowStyle());
             tblStatusDates.RowStyles.Add(new RowStyle());
-            tblStatusDates.Size = new Size(476, 58);
+            tblStatusDates.Size = new Size(610, 77);
             tblStatusDates.TabIndex = 11;
             // 
             // lblDrafted
@@ -391,7 +381,7 @@
             lblDrafted.Location = new Point(0, 0);
             lblDrafted.Margin = new Padding(0);
             lblDrafted.Name = "lblDrafted";
-            lblDrafted.Size = new Size(158, 21);
+            lblDrafted.Size = new Size(203, 28);
             lblDrafted.TabIndex = 0;
             lblDrafted.Text = "Drafted";
             lblDrafted.TextAlign = ContentAlignment.MiddleCenter;
@@ -400,10 +390,10 @@
             // 
             lblPublished.AutoSize = true;
             lblPublished.Dock = DockStyle.Fill;
-            lblPublished.Location = new Point(158, 0);
+            lblPublished.Location = new Point(203, 0);
             lblPublished.Margin = new Padding(0);
             lblPublished.Name = "lblPublished";
-            lblPublished.Size = new Size(158, 21);
+            lblPublished.Size = new Size(203, 28);
             lblPublished.TabIndex = 1;
             lblPublished.Text = "Published";
             lblPublished.TextAlign = ContentAlignment.MiddleCenter;
@@ -412,10 +402,10 @@
             // 
             lblArchived.AutoSize = true;
             lblArchived.Dock = DockStyle.Fill;
-            lblArchived.Location = new Point(316, 0);
+            lblArchived.Location = new Point(406, 0);
             lblArchived.Margin = new Padding(0);
             lblArchived.Name = "lblArchived";
-            lblArchived.Size = new Size(160, 21);
+            lblArchived.Size = new Size(204, 28);
             lblArchived.TabIndex = 2;
             lblArchived.Text = "Archived";
             lblArchived.TextAlign = ContentAlignment.MiddleCenter;
@@ -426,10 +416,10 @@
             lblDraftDate.BackColor = SystemColors.ControlDark;
             lblDraftDate.BorderStyle = BorderStyle.FixedSingle;
             lblDraftDate.Dock = DockStyle.Fill;
-            lblDraftDate.Location = new Point(0, 23);
-            lblDraftDate.Margin = new Padding(0, 2, 0, 2);
+            lblDraftDate.Location = new Point(0, 31);
+            lblDraftDate.Margin = new Padding(0, 3, 0, 3);
             lblDraftDate.Name = "lblDraftDate";
-            lblDraftDate.Size = new Size(158, 33);
+            lblDraftDate.Size = new Size(203, 43);
             lblDraftDate.TabIndex = 3;
             lblDraftDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -439,10 +429,10 @@
             lblPublishedDate.BackColor = SystemColors.ControlDark;
             lblPublishedDate.BorderStyle = BorderStyle.FixedSingle;
             lblPublishedDate.Dock = DockStyle.Fill;
-            lblPublishedDate.Location = new Point(158, 23);
-            lblPublishedDate.Margin = new Padding(0, 2, 0, 2);
+            lblPublishedDate.Location = new Point(203, 31);
+            lblPublishedDate.Margin = new Padding(0, 3, 0, 3);
             lblPublishedDate.Name = "lblPublishedDate";
-            lblPublishedDate.Size = new Size(158, 33);
+            lblPublishedDate.Size = new Size(203, 43);
             lblPublishedDate.TabIndex = 4;
             lblPublishedDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -452,10 +442,10 @@
             lblArchivedDate.BackColor = SystemColors.ControlDark;
             lblArchivedDate.BorderStyle = BorderStyle.FixedSingle;
             lblArchivedDate.Dock = DockStyle.Fill;
-            lblArchivedDate.Location = new Point(316, 23);
-            lblArchivedDate.Margin = new Padding(0, 2, 0, 2);
+            lblArchivedDate.Location = new Point(406, 31);
+            lblArchivedDate.Margin = new Padding(0, 3, 0, 3);
             lblArchivedDate.Name = "lblArchivedDate";
-            lblArchivedDate.Size = new Size(160, 33);
+            lblArchivedDate.Size = new Size(204, 43);
             lblArchivedDate.TabIndex = 5;
             lblArchivedDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -466,8 +456,8 @@
             tsMain.Items.AddRange(new ToolStripItem[] { btnSave, toolStripSeparator1, btnDelete, btnChangeStatus });
             tsMain.Location = new Point(0, 0);
             tsMain.Name = "tsMain";
-            tsMain.Padding = new Padding(0, 2, 2, 0);
-            tsMain.Size = new Size(577, 33);
+            tsMain.Padding = new Padding(0, 3, 2, 0);
+            tsMain.Size = new Size(751, 41);
             tsMain.TabIndex = 0;
             tsMain.Text = "toolStrip1";
             // 
@@ -477,13 +467,13 @@
             btnSave.ImageTransparentColor = Color.Magenta;
             btnSave.Margin = new Padding(0, 3, 0, 3);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(47, 25);
+            btnSave.Size = new Size(57, 32);
             btnSave.Text = "&Save";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 31);
+            toolStripSeparator1.Size = new Size(6, 38);
             // 
             // btnDelete
             // 
@@ -491,7 +481,7 @@
             btnDelete.ImageTransparentColor = Color.Magenta;
             btnDelete.Margin = new Padding(0, 3, 0, 3);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(58, 25);
+            btnDelete.Size = new Size(72, 32);
             btnDelete.Text = "&Delete";
             // 
             // btnChangeStatus
@@ -501,18 +491,18 @@
             btnChangeStatus.ImageTransparentColor = Color.Magenta;
             btnChangeStatus.Margin = new Padding(0, 3, 0, 3);
             btnChangeStatus.Name = "btnChangeStatus";
-            btnChangeStatus.Size = new Size(122, 25);
+            btnChangeStatus.Size = new Size(152, 32);
             btnChangeStatus.Text = "&Change Status...";
             // 
             // frmRecipe
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(577, 544);
+            ClientSize = new Size(751, 725);
             Controls.Add(tsMain);
             Controls.Add(tblMain);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "frmRecipe";
             Text = "Recipe";
             tblMain.ResumeLayout(false);
