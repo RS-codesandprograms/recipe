@@ -8,8 +8,6 @@
         int recipeid = 0;
         BindingSource bindsource = new BindingSource();
         string deletecolname = "deletecol";
-        List<Label> lststatusdates;
-        List<Label> lststatusdatesvalid = new();
 
         public frmRecipe()
         {
@@ -22,7 +20,6 @@
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
             txtCalories.TextChanged += TxtCalories_TextChanged;
-            lststatusdates = new() { lblDraftDate, lblPublishedDate, lblArchivedDate };
             this.FormClosing += FrmRecipe_FormClosing;
         }
 
@@ -81,8 +78,6 @@
         private void FrmRecipe_Shown(object? sender, EventArgs e)
         {
             txtRecipeName.SelectionStart = txtRecipeName.Text.Length;
-           // WindowsFormUtility.DisplayDateTimeAsDate(lststatusdates, lststatusdatesvalid);
-            lststatusdatesvalid.ForEach(lbl => lbl.Text = DateTime.Parse(lbl.Text).ToString("d"));
             LoadRecipeIngredients();
             LoadRecipeDirections();
 
