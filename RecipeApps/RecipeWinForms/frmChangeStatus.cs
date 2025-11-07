@@ -44,21 +44,25 @@
 
         private void FrmChangeStatus_Shown(object? sender, EventArgs e)
         {
+            SetCurrentStatusTextLabelText();
             SetButtonsEnabled();
         }
+
+        
 
         private void ConfirmUpdate(string status)
         {
             bindsource.EndEdit();
             string message = $"Are you sure want to change this recipe to {status.ToLower()}ed?";
             if (status.EndsWith('e'))
-                { message = $"Are you sure want to change this recipe to {status.ToLower()}d?"; }
+            { message = $"Are you sure want to change this recipe to {status.ToLower()}d?"; }
             var response = MessageBox.Show(message, Application.ProductName, MessageBoxButtons.YesNoCancel);
             if (response == DialogResult.Yes)
             {
 
                 UpdateRecipeStatus(status);
                 Save();
+                SetCurrentStatusTextLabelText();
 
 
             }
@@ -131,6 +135,10 @@
             }
         }
 
+        private void SetCurrentStatusTextLabelText()
+        {
+            lblCurrentStatusText.Text = $"Current Status: {lblCurrentStatus.Text}";
+        }
 
         private void Btn_Click(object? sender, EventArgs e)
         {
@@ -139,6 +147,6 @@
 
         }
 
-
+        
     }
 }
