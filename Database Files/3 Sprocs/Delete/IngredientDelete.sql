@@ -8,8 +8,25 @@ begin
 
 	select @IngredientId = isnull(@IngredientId,0)
 
-	delete Ingredient where IngredientId = @IngredientId
+	begin try 
+		begin tran 
+			delete ri 
+			from Ingredient i 
+			join RecipeIngredient ri 
+			on i.IngredientID = ri.IngredientID
+			where i.IngredientID = @IngredientId
 
+			delete i 
+			from Ingredient i 
+			where i.IngredientID = @IngredientId
+		commit 
+		end try 
+		begin catch
+		rollback;
+		throw
+	end catch
+
+	finished: 
 	return @return
 end
 go

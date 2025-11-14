@@ -7,8 +7,29 @@ begin
 	declare @return int = 0
 
 	select @MeasurementTypeId = isnull(@MeasurementTypeId,0)
+	begin try 
+		begin tran 
 
-	delete MeasurementType where MeasurementTypeId = @MeasurementTypeId
+			delete ri 
+			from RecipeIngredient ri 
+			join MeasurementType mt
+			on ri.MeasurementTypeID = mt.MeasurementTypeID
+			where mt.MeasurementTypeID = @MeasurementTypeId
+
+
+			delete MeasurementType where MeasurementTypeId = @MeasurementTypeId
+
+
+		commit 
+		end try 
+		begin catch
+		rollback;
+		throw
+	end catch
+
+	finished: 
+
+
 
 	return @return
 end

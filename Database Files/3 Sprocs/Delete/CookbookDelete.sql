@@ -8,7 +8,25 @@ begin
 
 	select @CookbookId = isnull(@CookbookId,0)
 
-	delete Cookbook where CookbookId = @CookbookId
+	begin try 
+		begin tran 
+
+			delete cbr
+			from CookBookRecipe cbr
+			join Cookbook cb 
+			on cbr.CookbookID = cb.CookbookID
+			where cb.CookbookID = @CookbookId
+
+			delete Cookbook where CookbookId = @CookbookId	
+
+		commit 
+		end try 
+		begin catch
+		rollback;
+		throw
+	end catch
+
+	finished: 
 
 	return @return
 end
