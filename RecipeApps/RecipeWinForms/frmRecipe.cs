@@ -78,6 +78,7 @@
         private void FrmRecipe_Shown(object? sender, EventArgs e)
         {
             txtRecipeName.SelectionStart = txtRecipeName.Text.Length;
+            
             LoadRecipeIngredients();
             LoadRecipeDirections();
 
@@ -176,6 +177,7 @@
             Application.UseWaitCursor = true;
             try
             {
+                PopulateDraftDate();
                 FormRecordManager.SaveTable(dtRecipe, "Recipe");
                 b = true;
                 bindsource.DataSource = dtRecipe;
@@ -184,7 +186,7 @@
                 this.Tag = recipeid;
                 this.Text = GetRecipeDesc();
                 SetButtonsEnabledBasedOnNewRecord();
-
+                
             }
             catch (Exception ex)
             {
@@ -195,6 +197,14 @@
                 Application.UseWaitCursor = false;
             }
             return b;
+        }
+
+        private void PopulateDraftDate()
+        {
+            if (string.IsNullOrWhiteSpace(lblDraftDate.Text))
+            {
+                lblDraftDate.Text = DateTime.Now.ToString("d");
+            }
         }
 
         private void Delete()
