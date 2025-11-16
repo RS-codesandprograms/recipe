@@ -2,11 +2,12 @@
 {
     public class ListManager
     {
-        public static DataTable GetList(string tablename, bool includeblank = false, bool all = true)
+        public static DataTable GetList(string tablename, bool includeblank = false, bool all = true, bool summary = false)
         {
             SqlCommand cmd = SQLUtility.GetSQLCommand($"{tablename}Get");
             if (all) { SQLUtility.SetParamValue(cmd, "@All", 1); }
-            if (includeblank) { SQLUtility.SetParamValue(cmd, "@IncludeBlank", true); }
+            if (includeblank) { SQLUtility.SetParamValue(cmd, "@IncludeBlank", 1); }
+            if (summary) { SQLUtility.SetParamValue(cmd, "@Summary", 1); }
             return SQLUtility.GetDataTable(cmd);
 
         }

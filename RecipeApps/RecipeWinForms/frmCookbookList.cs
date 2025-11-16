@@ -20,7 +20,7 @@
 
         private void BindData()
         {
-            gCookbookList.DataSource = ListManager.GetList("CookbookSummary", false, false);
+            gCookbookList.DataSource = ListManager.GetList("Cookbook", false, false, true);
             WindowsFormUtility.FormatGridForSearchResults(gCookbookList, "Cookbook");
         }
 

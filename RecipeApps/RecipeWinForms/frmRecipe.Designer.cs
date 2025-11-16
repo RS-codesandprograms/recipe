@@ -172,7 +172,7 @@
             tbSteps.Location = new Point(4, 37);
             tbSteps.Name = "tbSteps";
             tbSteps.Padding = new Padding(3);
-            tbSteps.Size = new Size(690, 438);
+            tbSteps.Size = new Size(737, 438);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
@@ -189,7 +189,7 @@
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblSteps.Size = new Size(684, 432);
+            tblSteps.Size = new Size(731, 432);
             tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
@@ -208,7 +208,7 @@
             gSteps.Location = new Point(3, 48);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
-            gSteps.Size = new Size(678, 381);
+            gSteps.Size = new Size(725, 381);
             gSteps.TabIndex = 1;
             // 
             // lblCaptionCuisineName

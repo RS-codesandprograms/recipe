@@ -73,10 +73,10 @@
             // tblDetails
             // 
             tblDetails.ColumnCount = 4;
-            tblDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.1428566F));
-            tblDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.1428566F));
-            tblDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.1428566F));
-            tblDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3.57142854F));
+            tblDetails.ColumnStyles.Add(new ColumnStyle());
+            tblDetails.ColumnStyles.Add(new ColumnStyle());
+            tblDetails.ColumnStyles.Add(new ColumnStyle());
+            tblDetails.ColumnStyles.Add(new ColumnStyle());
             tblDetails.Controls.Add(btnSave, 0, 0);
             tblDetails.Controls.Add(btnDelete, 1, 0);
             tblDetails.Controls.Add(lblCookbookname, 0, 1);
@@ -93,12 +93,12 @@
             tblDetails.Location = new Point(3, 3);
             tblDetails.Name = "tblDetails";
             tblDetails.RowCount = 6;
-            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tblDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             tblDetails.Size = new Size(619, 309);
             tblDetails.TabIndex = 0;
             // 
@@ -131,6 +131,7 @@
             lblCookbookname.Size = new Size(161, 28);
             lblCookbookname.TabIndex = 2;
             lblCookbookname.Text = "Cookbook Name";
+            lblCookbookname.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblUser
             // 
@@ -141,6 +142,7 @@
             lblUser.Size = new Size(51, 28);
             lblUser.TabIndex = 3;
             lblUser.Text = "User";
+            lblUser.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblPrice
             // 
@@ -151,6 +153,7 @@
             lblPrice.Size = new Size(54, 28);
             lblPrice.TabIndex = 4;
             lblPrice.Text = "Price";
+            lblPrice.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblActive
             // 
@@ -161,6 +164,7 @@
             lblActive.Size = new Size(66, 28);
             lblActive.TabIndex = 5;
             lblActive.Text = "Active";
+            lblActive.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDateCreated
             // 
