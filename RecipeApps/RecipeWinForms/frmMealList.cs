@@ -15,7 +15,7 @@
 
         private void BindData()
         {
-            gMealList.DataSource = ListManager.GetList("MealSummary", false, false);
+            gMealList.DataSource = ListManager.GetList("Meal", false, false, true);
             WindowsFormUtility.FormatGridForSearchResults(gMealList, "Meal");
         }
     }

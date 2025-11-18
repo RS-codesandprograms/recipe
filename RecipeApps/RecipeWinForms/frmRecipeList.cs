@@ -20,7 +20,7 @@
 
         private void BindData()
         {
-            gRecipeList.DataSource = ListManager.GetList("RecipeSummary", false, false);
+            gRecipeList.DataSource = ListManager.GetList("Recipe", false, false, true);
             WindowsFormUtility.FormatGridForSearchResults(gRecipeList, "Recipe");
         }
 
