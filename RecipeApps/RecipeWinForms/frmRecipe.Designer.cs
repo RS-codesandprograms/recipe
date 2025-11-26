@@ -163,6 +163,7 @@
             gIngredients.Location = new Point(3, 48);
             gIngredients.Name = "gIngredients";
             gIngredients.RowHeadersWidth = 51;
+            gIngredients.ScrollBars = ScrollBars.Vertical;
             gIngredients.Size = new Size(725, 381);
             gIngredients.TabIndex = 10;
             // 
@@ -208,6 +209,7 @@
             gSteps.Location = new Point(3, 48);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
+            gSteps.ScrollBars = ScrollBars.Vertical;
             gSteps.Size = new Size(725, 381);
             gSteps.TabIndex = 1;
             // 

@@ -266,6 +266,7 @@
             gCookbookRecipe.Location = new Point(3, 57);
             gCookbookRecipe.Name = "gCookbookRecipe";
             gCookbookRecipe.RowHeadersWidth = 51;
+            gCookbookRecipe.ScrollBars = ScrollBars.Horizontal;
             gCookbookRecipe.Size = new Size(679, 247);
             gCookbookRecipe.TabIndex = 1;
             // 
