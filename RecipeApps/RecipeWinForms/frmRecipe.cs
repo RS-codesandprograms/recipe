@@ -20,10 +20,12 @@
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
             txtCalories.TextChanged += TxtCalories_TextChanged;
+            gIngredients.DataError += ChildGrid_DataError;
+            gSteps.DataError += ChildGrid_DataError;
             this.FormClosing += FrmRecipe_FormClosing;
         }
 
-        
+      
 
         private void FrmRecipe_FormClosing(object? sender, FormClosingEventArgs e)
         {
@@ -246,6 +248,12 @@
         {
            WindowsFormUtility.ValidateUserInputNumericField(txtCalories.Text);
         }
+
+        private void ChildGrid_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            WindowsFormUtility.DisplayErrorMessageForDataGridViewDataErrorForNumericField(e);
+        }
+
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
             Delete();
@@ -263,30 +271,33 @@
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            var id = gSteps.Rows[e.RowIndex].Cells["RecipeDirectionId"].Value;
+            if (e.RowIndex > -1)
+            {
+                var id = gSteps.Rows[e.RowIndex].Cells["RecipeDirectionId"].Value;
 
 
-            if (e.RowIndex > -1 && gSteps.Columns[e.ColumnIndex].Name == deletecolname  && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
-            { 
+                if (gSteps.Columns[e.ColumnIndex].Name == deletecolname && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
                 {
-                    DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
-                    LoadRecipeDirections();
+                    {
+                        DeleteRecipeChild(gSteps, e.RowIndex, "RecipeDirection");
+                        LoadRecipeDirections();
+                    }
                 }
             }
-           
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
 
-            var id = gIngredients.Rows[e.RowIndex].Cells["RecipeIngredientId"].Value;
-          
-
-                  if( e.RowIndex > -1 && gIngredients.Columns[e.ColumnIndex].Name == deletecolname && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
-
+            if (e.RowIndex > -1)
             {
-                DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
-                LoadRecipeIngredients();
+                var id = gIngredients.Rows[e.RowIndex].Cells["RecipeIngredientId"].Value;
+                if (gIngredients.Columns[e.ColumnIndex].Name == deletecolname && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
+
+                {
+                    DeleteRecipeChild(gIngredients, e.RowIndex, "RecipeIngredient");
+                    LoadRecipeIngredients();
+                }
             }
         }
 

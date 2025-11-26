@@ -16,9 +16,11 @@
             this.FormClosing += FrmDataMaintenance_FormClosing;
             SetupRadioButtions();
             gData.CellContentClick += GData_CellClick;
+            gData.DataError += GData_DataError;
             BindData(currenttabletype);
         }
 
+     
 
         private void BindData(TableTypeEnum tabletype)
         {
@@ -179,6 +181,10 @@
             Save();
         }
 
-        
+        private void GData_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            WindowsFormUtility.DisplayErrorMessageForDataGridViewDataErrorForNumericField(e);
+
+        }
     }
 }

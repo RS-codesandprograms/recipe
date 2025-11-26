@@ -15,10 +15,11 @@
             btnRecipeSave.Click += BtnSaveRecipe_Click;
             gCookbookRecipe.CellContentClick += GCookbookRecipe_CellContentClick;
             txtPrice.TextChanged += TxtPrice_TextChanged;
+            gCookbookRecipe.DataError += GCookbookRecipe_DataError;
             this.FormClosing += FrmCookbook_FormClosing;
         }
 
-       
+  
 
         private void FrmCookbook_FormClosing(object? sender, FormClosingEventArgs e)
         {
@@ -182,6 +183,11 @@
             WindowsFormUtility.ValidateUserInputNumericField(txtPrice.Text, true);
         }
 
+        private void GCookbookRecipe_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            WindowsFormUtility.DisplayErrorMessageForDataGridViewDataErrorForNumericField(e);
+        }
+
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
             Delete();
@@ -196,17 +202,19 @@
         }
         private void GCookbookRecipe_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex > -1)
 
-            var id = gCookbookRecipe.Rows[e.RowIndex].Cells["CookbookRecipeId"].Value;
-
-
-            if (e.RowIndex > -1 && gCookbookRecipe.Columns[e.ColumnIndex].Name == deletecolname && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
             {
-                DeleteCookbookRecipe(e.RowIndex);
-                LoadCookbookRecipe();
+                var id = gCookbookRecipe.Rows[e.RowIndex].Cells["CookbookRecipeId"].Value;
+
+
+                if (gCookbookRecipe.Columns[e.ColumnIndex].Name == deletecolname && id != null && id != DBNull.Value && !string.IsNullOrWhiteSpace(id.ToString()))
+                {
+                    DeleteCookbookRecipe(e.RowIndex);
+                    LoadCookbookRecipe();
+                }
             }
         }
-      
 
     }
 }
