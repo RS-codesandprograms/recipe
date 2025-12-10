@@ -127,7 +127,7 @@
             lblCookbookname.AutoSize = true;
             lblCookbookname.Location = new Point(3, 55);
             lblCookbookname.Name = "lblCookbookname";
-            lblCookbookname.Size = new Size(161, 28);
+            lblCookbookname.Size = new Size(127, 21);
             lblCookbookname.TabIndex = 2;
             lblCookbookname.Text = "Cookbook Name";
             lblCookbookname.TextAlign = ContentAlignment.MiddleCenter;
@@ -137,7 +137,7 @@
             lblUser.AutoSize = true;
             lblUser.Location = new Point(3, 110);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(51, 28);
+            lblUser.Size = new Size(42, 21);
             lblUser.TabIndex = 3;
             lblUser.Text = "User";
             lblUser.TextAlign = ContentAlignment.MiddleCenter;
@@ -147,7 +147,7 @@
             lblPrice.AutoSize = true;
             lblPrice.Location = new Point(3, 198);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(54, 28);
+            lblPrice.Size = new Size(44, 21);
             lblPrice.TabIndex = 4;
             lblPrice.Text = "Price";
             lblPrice.TextAlign = ContentAlignment.MiddleCenter;
@@ -156,9 +156,9 @@
             // 
             lblDateCreated.Anchor = AnchorStyles.Bottom;
             lblDateCreated.AutoSize = true;
-            lblDateCreated.Location = new Point(442, 170);
+            lblDateCreated.Location = new Point(455, 177);
             lblDateCreated.Name = "lblDateCreated";
-            lblDateCreated.Size = new Size(126, 28);
+            lblDateCreated.Size = new Size(100, 21);
             lblDateCreated.TabIndex = 6;
             lblDateCreated.Text = "Date Created";
             lblDateCreated.TextAlign = ContentAlignment.BottomCenter;
@@ -179,7 +179,7 @@
             txtPrice.Dock = DockStyle.Fill;
             txtPrice.Location = new Point(205, 201);
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(196, 34);
+            txtPrice.Size = new Size(196, 29);
             txtPrice.TabIndex = 4;
             // 
             // ckbIsActive
@@ -199,7 +199,7 @@
             txtCookbookName.Dock = DockStyle.Fill;
             txtCookbookName.Location = new Point(205, 58);
             txtCookbookName.Name = "txtCookbookName";
-            txtCookbookName.Size = new Size(398, 34);
+            txtCookbookName.Size = new Size(398, 29);
             txtCookbookName.TabIndex = 2;
             // 
             // lstUserName
@@ -210,7 +210,7 @@
             lstUserName.FormattingEnabled = true;
             lstUserName.Location = new Point(205, 113);
             lstUserName.Name = "lstUserName";
-            lstUserName.Size = new Size(398, 36);
+            lstUserName.Size = new Size(398, 29);
             lstUserName.TabIndex = 3;
             // 
             // lblActive
@@ -218,7 +218,7 @@
             lblActive.AutoSize = true;
             lblActive.Location = new Point(3, 253);
             lblActive.Name = "lblActive";
-            lblActive.Size = new Size(66, 28);
+            lblActive.Size = new Size(52, 21);
             lblActive.TabIndex = 5;
             lblActive.Text = "Active";
             lblActive.TextAlign = ContentAlignment.MiddleCenter;
@@ -272,7 +272,7 @@
             // 
             // frmCookbook
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(693, 630);
             Controls.Add(tblCookbook);
