@@ -92,7 +92,7 @@
             dtRecipeIngredient = FormRecordManager.LoadChildRecords("RecipeIngredient", "Recipe", recipeid);
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
-            WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient"), "Ingredient", "IngredientName");
+            WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("Ingredient", true), "Ingredient", "IngredientName");
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, ListManager.GetList("MeasurementType", true), "MeasurementType", "MeasurementName");
             WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
             WindowsFormUtility.AddDeleteButtonToGrid(gIngredients, deletecolname);
@@ -108,10 +108,6 @@
             gIngredients.Columns["IngredientAmount"].HeaderText = "Quantity";
             gIngredients.Columns["IngredientSequence"].HeaderText = "Sequence";
         }
-
-      
-
-
 
 
         private void LoadRecipeDirections()

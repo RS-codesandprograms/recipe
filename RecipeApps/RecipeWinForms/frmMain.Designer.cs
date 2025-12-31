@@ -189,7 +189,7 @@
             Margin = new Padding(4);
             Name = "frmMain";
             Text = "Hearty Hearth";
-            WindowState = FormWindowState.Maximized;
+            //WindowState = FormWindowState.Maximized;
             mnuMain.ResumeLayout(false);
             mnuMain.PerformLayout();
             ResumeLayout(false);
